@@ -1,0 +1,34 @@
+<resources>
+
+    <string name="app_name">APPEP</string>
+
+    <string name="addTitle">Añadir Nuevo Pozo</string>
+    <string name="updateTitle">Actualizar Informacion de Pozo</string>
+        <string name="addComponent">Seleccionar Componentes</string>
+    <string name="viewTitle">Informacion del Pozo</string>
+    <string name="mainTitle">Mis Pozos</string>
+
+
+    <string name="todo_name">Nombre</string>
+    <string name="todo_desc">Campo</string>
+    <string name="todo_date">Fecha Creacion</string>
+    <string name="todo_actv">Abierto</string>
+    <string name="todo_idts">Numero</string>
+
+    <string name="comp_dp1">Drill Pipe 1</string>
+    <string name="comp_dp2">Drill Pipe 2</string>
+    <string name="comp_dc">Drill Collar</string>
+    <string name="comp_hwdp">HeavyWeight Drill Pipe</string>
+    <string name="comp_broca">Broca</string>
+    <string name="comp_estab">Estabilizador</string>
+    <string name="comp_rev1">Revestimiento 1</string>
+    <string name="comp_rev2">Revestimiento 2</string>
+
+    <string name="todo_add_button">Añadir Pozo</string>
+    <string name="todo_del_button">Eliminar Pozo</string>
+    <string name="todo_upd_button">Actualizar Pozo</string>
+    <string name="todo_cmp_button">Finalizar Pozo</string>
+
+    <string name="splashimg">splashImg</string>
+
+</resources>
