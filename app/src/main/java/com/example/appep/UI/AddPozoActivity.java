@@ -8,7 +8,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -28,6 +31,7 @@ public class AddPozoActivity extends AppCompatActivity {
 
     private Button addButton;
     private CheckBox dp1, dp2, hwdp, dc,broc, estb, rev1, rev2;
+    private ImageView imgAn1, imgAn2, imgIntD, imgIntB, imgIntC1, imgIntC2;
     private EditText nameText, descText;
     private TextView textTitle;
     DBSQLiteHelper connect;
@@ -41,6 +45,7 @@ public class AddPozoActivity extends AppCompatActivity {
         addButton = findViewById(R.id.todoAddButton);
         nameText = findViewById(R.id.editTextToDoName);
         descText = findViewById(R.id.editTextToDoDesc);
+
         dp1 = findViewById(R.id.checkBoxDP1);
         dp2 = findViewById(R.id.checkBoxDP2);
         dc = findViewById(R.id.checkBoxDC);
@@ -50,9 +55,100 @@ public class AddPozoActivity extends AppCompatActivity {
         rev1 = findViewById(R.id.checkBoxRev1);
         rev2 = findViewById(R.id.checkBoxRev2);
 
+        imgAn1 = findViewById(R.id.imageViewAn1);
+        imgAn2 = findViewById(R.id.imageViewAn2);
+        imgIntD = findViewById(R.id.imageViewIn);
+        imgIntC1 = findViewById(R.id.imageViewIn2_1);
+        imgIntC2 = findViewById(R.id.imageViewIn2_2);
+        imgIntB = findViewById(R.id.imageViewIn3);
+
         int n = getIntent().getIntExtra("indexTask", -1);
 
         broc.setEnabled(false);
+
+        //On each checkbox action change color of figure on the bottom
+        rev1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(rev1.isChecked()){
+                    rev2.setEnabled(true);
+                    imgAn1.setImageResource(R.drawable.an_2);
+                    imgAn2.setImageResource(R.drawable.an_2);
+                }else{
+                    rev2.setChecked(false);
+                    rev2.setEnabled(false);
+                    imgAn1.setImageResource(R.drawable.an_1);
+                    imgAn2.setImageResource(R.drawable.an_1);
+
+                }
+            }
+        });
+        rev2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(rev2.isChecked()){
+                    imgAn1.setImageResource(R.drawable.an_3);
+                    imgAn2.setImageResource(R.drawable.an_3);
+                }else{
+                    imgAn1.setImageResource(R.drawable.an_2);
+                    imgAn2.setImageResource(R.drawable.an_2);
+                }
+            }
+        });
+        dp1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(dp1.isChecked()){
+                    dp2.setEnabled(true);
+                    imgIntD.setImageResource(R.drawable.in_d2);
+                }else{
+                    dp2.setEnabled(false);
+                    dp2.setChecked(false);
+                    imgIntD.setImageResource(R.drawable.in_d1);
+                }
+            }
+        });
+        dp2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(dp2.isChecked()){
+                    imgIntD.setImageResource(R.drawable.in_d3);
+                }else{
+                    imgIntD.setImageResource(R.drawable.in_d2);
+                }
+            }
+        });
+        hwdp.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(hwdp.isChecked()){
+                    imgIntC1.setImageResource(R.drawable.in_c2);
+                }else{
+                    imgIntC1.setImageResource(R.drawable.in_c1);
+                }
+            }
+        });
+        dc.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(dc.isChecked()){
+                    imgIntC2.setImageResource(R.drawable.in_c4);
+                }else{
+                    imgIntC2.setImageResource(R.drawable.in_c3);
+                }
+            }
+        });
+        estb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(estb.isChecked()){
+                    imgIntB.setImageResource(R.drawable.in_b2);
+                }else{
+                    imgIntB.setImageResource(R.drawable.in_b1);
+                }
+            }
+        });
+
 
         //if an index is passed as extra change layout to accomodate Update Rather than Add while gettig info on the Pozo in DB with that index
         if(n != -1){
@@ -96,6 +192,14 @@ public class AddPozoActivity extends AppCompatActivity {
                     addPozo(nameText.getText().toString(), descText.getText().toString());
                 }
             });
+        }
+
+        //Set rev1->rev2 and drill1->drill2 checklist dependency
+        if(!rev1.isChecked()){
+            rev2.setEnabled(false);
+        }
+        if(!dp1.isChecked()){
+            dp2.setEnabled(false);
         }
     }
 

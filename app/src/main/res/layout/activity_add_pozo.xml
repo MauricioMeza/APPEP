@@ -72,6 +72,14 @@
                 android:importantForAutofill="no"
                 android:inputType="textMultiLine" />
 
+            <View
+                android:id="@+id/divider4"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="?android:attr/listDivider"
+                android:textAlignment="center"
+                android:textDirection="inherit" />
+
             <TextView
                 android:id="@+id/textTitleAdd2"
                 android:layout_width="match_parent"
@@ -81,18 +89,28 @@
                 android:textAlignment="center"
                 android:textSize="20sp" />
 
-            <View
-                android:id="@+id/divider4"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="?android:attr/listDivider"
-                android:textAlignment="center"
-                android:textDirection="inherit" />
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
+
+                <CheckBox
+                    android:id="@+id/checkBoxRev1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    android:text="@string/comp_rev1"
+                    android:textColor="?android:attr/textColorSecondary"
+                    android:textSize="16sp" />
+
+                <CheckBox
+                    android:id="@+id/checkBoxRev2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    android:text="@string/comp_rev2"
+                    android:textColor="?android:attr/textColorSecondary"
+                    android:textSize="16sp" />
 
                 <CheckBox
                     android:id="@+id/checkBoxDP1"
@@ -131,16 +149,6 @@
                     android:textSize="16sp" />
 
                 <CheckBox
-                    android:id="@+id/checkBoxBroca"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="4dp"
-                    android:checked="true"
-                    android:text="@string/comp_broca"
-                    android:textColor="?android:attr/textColorSecondary"
-                    android:textSize="16sp" />
-
-                <CheckBox
                     android:id="@+id/checkBoxEstabilizador"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -150,26 +158,100 @@
                     android:textSize="16sp" />
 
                 <CheckBox
-                    android:id="@+id/checkBoxRev1"
+                    android:id="@+id/checkBoxBroca"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="4dp"
-                    android:text="@string/comp_rev1"
+                    android:checked="true"
+                    android:text="@string/comp_broca"
                     android:textColor="?android:attr/textColorSecondary"
                     android:textSize="16sp" />
 
-                <CheckBox
-                    android:id="@+id/checkBoxRev2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="4dp"
-                    android:text="@string/comp_rev2"
-                    android:textColor="?android:attr/textColorSecondary"
-                    android:textSize="16sp" />
             </LinearLayout>
 
             <View
                 android:id="@+id/divider5"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="?android:attr/listDivider"
+                android:textAlignment="center"
+                android:textDirection="inherit" />
+
+            <TextView
+                android:id="@+id/textTitleAdd3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:text="@string/addedComponents"
+                android:textAlignment="center"
+                android:textSize="20sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="-80dp"
+                android:layout_marginBottom="-80dp"
+                android:orientation="horizontal"
+                android:scaleX=".6"
+                android:scaleY=".5">
+
+                <ImageView
+                    android:id="@+id/imageViewAn1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:contentDescription="@string/an1"
+                    app:srcCompat="@drawable/an_1" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:textAlignment="center">
+
+                    <ImageView
+                        android:id="@+id/imageViewIn"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:contentDescription="@string/In1"
+                        app:srcCompat="@drawable/in_d1" />
+
+                    <ImageView
+                        android:id="@+id/imageViewIn2-1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:contentDescription="@string/In1"
+                        app:srcCompat="@drawable/in_c1" />
+
+                    <ImageView
+                        android:id="@+id/imageViewIn2-2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:contentDescription="@string/In1"
+                        app:srcCompat="@drawable/in_c3" />
+
+                    <ImageView
+                        android:id="@+id/imageViewIn3"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:contentDescription="@string/In1"
+                        app:srcCompat="@drawable/in_b1" />
+
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/imageViewAn2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:contentDescription="@string/an2"
+                    android:scaleX="-1"
+                    app:srcCompat="@drawable/an_1" />
+            </LinearLayout>
+
+            <View
+                android:id="@+id/divider6"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="?android:attr/listDivider"

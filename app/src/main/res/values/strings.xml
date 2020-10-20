@@ -5,6 +5,7 @@
     <string name="addTitle">Añadir Nuevo Pozo</string>
     <string name="updateTitle">Actualizar Informacion de Pozo</string>
         <string name="addComponent">Seleccionar Componentes</string>
+        <string name="addedComponents">Componentes Seleccionados</string>
     <string name="viewTitle">Informacion del Pozo</string>
     <string name="mainTitle">Mis Pozos</string>
 
@@ -30,5 +31,11 @@
     <string name="todo_cmp_button">Finalizar Pozo</string>
 
     <string name="splashimg">splashImg</string>
+    <string name="an1">Anular1</string>
+    <string name="an2">Anular2</string>
+    <string name="In1">Interno1</string>
+
+
+
 
 </resources>
