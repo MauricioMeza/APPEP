@@ -19,10 +19,13 @@ public class SplashActivity extends AppCompatActivity {
     }
 
     public void fullyloaded(){
-        final Intent i = new Intent(SplashActivity.this, MainActivity.class);
-        startActivity(i);
-        finish();
-
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            public void run() {
+                final Intent i = new Intent(SplashActivity.this, MainActivity.class);
+                startActivity(i);
+                finish();
+            }
+        }, 5000);
     }
-
 }
