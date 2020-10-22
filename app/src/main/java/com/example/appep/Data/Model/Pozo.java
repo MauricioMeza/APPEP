@@ -1,6 +1,7 @@
 package com.example.appep.Data.Model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Pozo implements Serializable {
@@ -9,17 +10,20 @@ public class Pozo implements Serializable {
     private String campo;
     private Date fecha_creacion;
     private boolean abierto;
+    private ArrayList<Evento> eventos;
 
     public Pozo(int id) {
         this.id = id;
         this.fecha_creacion = new Date();
         this.abierto = true;
+        this.eventos = new ArrayList<>();
     }
     public Pozo(String nombre, String campo) {
         this.nombre = nombre;
         this.campo = campo;
         this.fecha_creacion = new Date();
         this.abierto = true;
+        this.eventos = new ArrayList<>();
     }
 
     public int getId() { return id; }
@@ -35,4 +39,7 @@ public class Pozo implements Serializable {
 
     public Date getFecha_creacion() { return fecha_creacion; }
     public void setFecha_creacion(Date fecha_creacion) { this.fecha_creacion = fecha_creacion;}
+
+    public ArrayList<Evento> getEventos() { return eventos; }
+    public void setEventos(ArrayList<Evento> eventos) { this.eventos = eventos; }
 }

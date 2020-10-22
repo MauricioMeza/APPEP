@@ -29,6 +29,8 @@
     <string name="todo_del_button">Eliminar Pozo</string>
     <string name="todo_upd_button">Actualizar Pozo</string>
     <string name="todo_cmp_button">Finalizar Pozo</string>
+    <string name="yes">Si</string>
+    <string name="no">No</string>
 
     <string name="splashimg">splashImg</string>
     <string name="an1">Anular1</string>

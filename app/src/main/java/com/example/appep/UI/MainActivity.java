@@ -77,6 +77,14 @@ public class MainActivity extends AppCompatActivity {
         startActivity(i);
     }
 
+    //Start Activity to View information of selected Pozo
+    public void selectPozo(int n){
+        Pozo pozoSelected = listaPozos.get(n);
+        Intent i = new Intent(this, ViewPozoActivity.class);
+        i.putExtra("pozo", pozoSelected);
+        startActivity(i);
+    }
+
     //Get a full list of Pozos from DB
     public void getPozosFromDB() throws ParseException {
         SQLiteDatabase db = conect.getReadableDatabase();
@@ -98,12 +106,6 @@ public class MainActivity extends AppCompatActivity {
         db.close();
     }
 
-    //Start Activity to View information of selected Pozo
-    public void selectPozo(int n){
-        Pozo pozoSelected = listaPozos.get(n);
-        Intent i = new Intent(this, ViewPozoActivity.class);
-        i.putExtra("pozo", pozoSelected);
-        startActivity(i);
-    }
+
 
 }
