@@ -1,5 +1,7 @@
 package com.example.appep.Data.Model;
 
+import android.graphics.drawable.Drawable;
+
 public class Componente {
     private double longitud;
     private double diamOD;

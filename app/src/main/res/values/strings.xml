@@ -9,6 +9,8 @@
     <string name="viewTitle">Informacion del Pozo</string>
     <string name="mainTitle">Mis Pozos</string>
 
+    <string name="temp_date">dd/mm/aaaa</string>
+    <string name="temp_real">0.0</string>
 
     <string name="todo_name">Nombre</string>
     <string name="todo_desc">Campo</string>
@@ -24,6 +26,13 @@
     <string name="comp_estab">Estabilizador</string>
     <string name="comp_rev1">Revestimiento 1</string>
     <string name="comp_rev2">Revestimiento 2</string>
+
+    <string name="comps_lon">Longitud</string>
+    <string name="comps_od">Diametro Externo (OD)</string>
+    <string name="comps_id">Diametro Interno (ID)</string>
+    <string name="comps_cap">Capacidad</string>
+    <string name="comps_vol">Volumen</string>
+
 
     <string name="todo_add_button">Añadir Pozo</string>
     <string name="todo_del_button">Eliminar Pozo</string>
