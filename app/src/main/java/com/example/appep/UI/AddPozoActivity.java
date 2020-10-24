@@ -1,76 +1,62 @@
 package com.example.appep.UI;
 
-import android.content.ContentValues;
-import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.RadioGroup;
-import android.widget.TextView;
-import android.widget.Toast;
+
 
 import androidx.appcompat.app.AppCompatActivity;
-
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import android.app.Fragment;
 
 import com.example.appep.Data.Local.DBSQLiteHelper;
-import com.example.appep.Data.Local.DBUtilities;
 import com.example.appep.Data.Model.Pozo;
 import com.example.appep.R;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
 
-public class AddPozoActivity extends AppCompatActivity {
+public class AddPozoActivity extends AppCompatActivity{
 
-    //UI Declarations
-    private Button addButton;
-    private CheckBox rev1, rev2, dp1, dp2, hwdp, dc,broc, estb;
-    private ImageView imgAn1, imgAn2, imgIntD, imgIntB, imgIntC1, imgIntC2;
-    private EditText nameText, descText;
-    private TextView textTitle;
+    FragmentManager fragmentManager;
+
+    AddPozoFragment1 fragment1;
+    AddPozoFragment2 fragment2;
+    AddPozoFragment3 fragment3;
+    AddPozoFragment4 fragment4;
+
+    Button buttonNxt, buttonBfr;
+
+    private int currentFragment;
+
 
     //
-    private boolean componentSelected[];
+
     private Pozo pozo;
     private DBSQLiteHelper connect;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_pozo);
 
-        textTitle = findViewById(R.id.textTitleAdd);
-        addButton = findViewById(R.id.todoAddButton);
-        nameText = findViewById(R.id.editTextToDoName);
-        descText = findViewById(R.id.editTextToDoDesc);
+        buttonNxt = findViewById(R.id.buttonAddNavNxt);
+        buttonBfr = findViewById(R.id.buttonAddNavBfr);
 
-        dp1 = findViewById(R.id.checkBoxDP1);
-        dp2 = findViewById(R.id.checkBoxDP2);
-        dc = findViewById(R.id.checkBoxDC);
-        hwdp = findViewById(R.id.checkBoxHWDP);
-        broc = findViewById(R.id.checkBoxBroca);
-        estb = findViewById(R.id.checkBoxEstabilizador);
-        rev1 = findViewById(R.id.checkBoxRev1);
-        rev2 = findViewById(R.id.checkBoxRev2);
+        fragment1 = new AddPozoFragment1();
+        fragment2 = new AddPozoFragment2();
+        fragment3 = new AddPozoFragment3();
+        fragment4 = new AddPozoFragment4();
+        fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction().add(R.id.addFragmentContainer, fragment1).commit();
+        currentFragment = 1;
+        buttonConfiguration();
 
-        imgAn1 = findViewById(R.id.imageViewAn1);
-        imgAn2 = findViewById(R.id.imageViewAn2);
-        imgIntD = findViewById(R.id.imageViewIn);
-        imgIntC1 = findViewById(R.id.imageViewIn2_1);
-        imgIntC2 = findViewById(R.id.imageViewIn2_2);
-        imgIntB = findViewById(R.id.imageViewIn3);
 
+
+        /*
         int n = getIntent().getIntExtra("indexTask", -1);
-        componentSelected = new boolean[8];
-        configureSelectionGraphic();
 
 
         //if an index is passed as extra change layout to accomodate Update Rather than Add
@@ -94,119 +80,64 @@ public class AddPozoActivity extends AppCompatActivity {
                 }
             });
         }
-
+        */
     }
 
-    //On each checkbox action change color of figure on the bottom
-    private void configureSelectionGraphic() {
-        rev1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+    private void buttonConfiguration() {
+        buttonNxt.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(rev1.isChecked()){
-                    componentSelected[0] = true;
-                    rev2.setEnabled(true);
-                    imgAn1.setImageResource(R.drawable.an_2);
-                    imgAn2.setImageResource(R.drawable.an_2);
-                }else{
-                    componentSelected[0] = false;
-                    componentSelected[1] = false;
-                    rev2.setChecked(false);
-                    rev2.setEnabled(false);
-                    imgAn1.setImageResource(R.drawable.an_1);
-                    imgAn2.setImageResource(R.drawable.an_1);
+            public void onClick(View v) {
+                FragmentTransaction transaction = fragmentManager.beginTransaction();
 
+                switch (currentFragment){
+                    case 1:
+                        transaction.replace(R.id.addFragmentContainer, fragment2).commit();
+                        currentFragment++;
+                        break;
+                    case 2:
+                        transaction.replace(R.id.addFragmentContainer, fragment3).commit();
+                        currentFragment++;
+                        break;
+                    case 3:
+                        transaction.replace(R.id.addFragmentContainer, fragment4).commit();
+                        currentFragment++;
+                        break;
+                    case 4:
+                        finish();
                 }
             }
         });
-        rev2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        buttonBfr.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(rev2.isChecked()){
-                    componentSelected[1] = true;
-                    imgAn1.setImageResource(R.drawable.an_3);
-                    imgAn2.setImageResource(R.drawable.an_3);
-                }else{
-                    componentSelected[1] = false;
-                    imgAn1.setImageResource(R.drawable.an_2);
-                    imgAn2.setImageResource(R.drawable.an_2);
-                }
-            }
-        });
-        dp1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(dp1.isChecked()){
-                    dp2.setEnabled(true);
-                    componentSelected[3] = true;
-                    imgIntD.setImageResource(R.drawable.in_d2);
-                }else{
-                    componentSelected[3] = false;
-                    componentSelected[4] = false;
-                    dp2.setEnabled(false);
-                    dp2.setChecked(false);
-                    imgIntD.setImageResource(R.drawable.in_d1);
-                }
-            }
-        });
-        dp2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(dp2.isChecked()){
-                    componentSelected[4] = true;
-                    imgIntD.setImageResource(R.drawable.in_d3);
-                }else{
-                    componentSelected[4] = false;
-                    imgIntD.setImageResource(R.drawable.in_d2);
-                }
-            }
-        });
-        hwdp.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(hwdp.isChecked()){
-                    componentSelected[5] = true;
-                    imgIntC1.setImageResource(R.drawable.in_c2);
-                }else{
-                    componentSelected[5] = false;
-                    imgIntC1.setImageResource(R.drawable.in_c1);
-                }
-            }
-        });
-        dc.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(dc.isChecked()){
-                    componentSelected[6] = true;
-                    imgIntC2.setImageResource(R.drawable.in_c4);
-                }else{
-                    componentSelected[6] = false;
-                    imgIntC2.setImageResource(R.drawable.in_c3);
-                }
-            }
-        });
-        estb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(estb.isChecked()){
-                    componentSelected[7] = true;
-                    imgIntB.setImageResource(R.drawable.in_b2);
-                }else{
-                    componentSelected[7] = false;
-                    imgIntB.setImageResource(R.drawable.in_b1);
-                }
-            }
-        });
+            public void onClick(View v) {
+                FragmentTransaction transaction = fragmentManager.beginTransaction();
 
-        //Set rev1->rev2 and drill1->drill2 checklist dependency
-        if(!rev1.isChecked()){
-            rev2.setEnabled(false);
-        }
-        if(!dp1.isChecked()){
-            dp2.setEnabled(false);
-        }
-        broc.setEnabled(false);
+                switch (currentFragment){
+                    case 1:
+                        finish();
+                        break;
+                    case 2:
+                        transaction.replace(R.id.addFragmentContainer, fragment1).commit();
+                        currentFragment--;
+                        break;
+                    case 3:
+                        transaction.replace(R.id.addFragmentContainer, fragment2).commit();
+                        currentFragment--;
+                        break;
+                    case 4:
+                        transaction.replace(R.id.addFragmentContainer, fragment3).commit();
+                        currentFragment--;
+                        break;
+                }
+            }
+        });
     }
 
+
+
+
+
+/*
     //Create new Pozo object and set information in DB, after that start a new main activity
     public void addPozo(){
         MainActivity.mainActivity.finish();
@@ -273,12 +204,17 @@ public class AddPozoActivity extends AppCompatActivity {
         } catch (ParseException e) {
             e.printStackTrace();
         }
+
+
         nameText.setText(pozo.getNombre());
         nameText.setEnabled(false);
         descText.setText(pozo.getCampo());
         descText.setEnabled(false);
 
+
         return pozo;
     }
+ */
+
 
 }

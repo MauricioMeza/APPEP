@@ -6,264 +6,43 @@
     android:layout_height="match_parent"
     tools:context=".UI.AddPozoActivity">
 
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginStart="5dp"
-        android:layout_marginEnd="5dp"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="8dp"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <FrameLayout
+            android:id="@+id/addFragmentContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/textTitleAdd"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:text="@string/addTitle"
-                android:textAlignment="center"
-                android:textSize="24sp" />
-
-            <View
-                android:id="@+id/divider"
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:background="?android:attr/listDivider"
-                android:textAlignment="center"
-                android:textDirection="inherit" />
-
-            <TextView
-                android:id="@+id/textViewNombreAdd"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/todo_name" />
-
-            <EditText
-                android:id="@+id/editTextToDoName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10sp"
-                android:ems="10"
-                android:hint="@string/todo_name"
-                android:importantForAutofill="no"
-                android:inputType="textPersonName" />
-
-            <TextView
-                android:id="@+id/textViewDescAdd"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/todo_desc" />
-
-            <EditText
-                android:id="@+id/editTextToDoDesc"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10sp"
-                android:ems="10"
-                android:gravity="start|top"
-                android:hint="@string/todo_desc"
-                android:importantForAutofill="no"
-                android:inputType="textMultiLine" />
-
-            <View
-                android:id="@+id/divider4"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="?android:attr/listDivider"
-                android:textAlignment="center"
-                android:textDirection="inherit" />
-
-            <TextView
-                android:id="@+id/textTitleAdd2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:text="@string/addComponent"
-                android:textAlignment="center"
-                android:textSize="20sp" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <CheckBox
-                    android:id="@+id/checkBoxRev1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="4dp"
-                    android:text="@string/comp_rev1"
-                    android:textColor="?android:attr/textColorSecondary"
-                    android:textSize="16sp" />
-
-                <CheckBox
-                    android:id="@+id/checkBoxRev2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="4dp"
-                    android:text="@string/comp_rev2"
-                    android:textColor="?android:attr/textColorSecondary"
-                    android:textSize="16sp" />
-
-                <CheckBox
-                    android:id="@+id/checkBoxDP1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="4dp"
-                    android:text="@string/comp_dp1"
-                    android:textColor="?android:attr/textColorSecondary"
-                    android:textSize="16sp" />
-
-                <CheckBox
-                    android:id="@+id/checkBoxDP2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="4dp"
-                    android:text="@string/comp_dp2"
-                    android:textColor="?android:attr/textColorSecondary"
-                    android:textSize="16sp" />
-
-                <CheckBox
-                    android:id="@+id/checkBoxHWDP"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="4dp"
-                    android:text="@string/comp_hwdp"
-                    android:textColor="?android:attr/textColorSecondary"
-                    android:textSize="16sp" />
-
-                <CheckBox
-                    android:id="@+id/checkBoxDC"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="4dp"
-                    android:text="@string/comp_dc"
-                    android:textColor="?android:attr/textColorSecondary"
-                    android:textSize="16sp" />
-
-                <CheckBox
-                    android:id="@+id/checkBoxEstabilizador"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="4dp"
-                    android:text="@string/comp_estab"
-                    android:textColor="?android:attr/textColorSecondary"
-                    android:textSize="16sp" />
-
-                <CheckBox
-                    android:id="@+id/checkBoxBroca"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="4dp"
-                    android:checked="true"
-                    android:text="@string/comp_broca"
-                    android:textColor="?android:attr/textColorSecondary"
-                    android:textSize="16sp" />
-
-            </LinearLayout>
-
-            <View
-                android:id="@+id/divider5"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="?android:attr/listDivider"
-                android:textAlignment="center"
-                android:textDirection="inherit" />
-
-            <TextView
-                android:id="@+id/textTitleAdd3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:text="@string/addedComponents"
-                android:textAlignment="center"
-                android:textSize="20sp" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="-80dp"
-                android:layout_marginBottom="-80dp"
-                android:orientation="horizontal"
-                android:scaleX=".6"
-                android:scaleY=".5">
-
-                <ImageView
-                    android:id="@+id/imageViewAn1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:contentDescription="@string/an1"
-                    app:srcCompat="@drawable/an_1" />
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:textAlignment="center">
-
-                    <ImageView
-                        android:id="@+id/imageViewIn"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:contentDescription="@string/In1"
-                        app:srcCompat="@drawable/in_d1" />
-
-                    <ImageView
-                        android:id="@+id/imageViewIn2-1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:contentDescription="@string/In1"
-                        app:srcCompat="@drawable/in_c1" />
-
-                    <ImageView
-                        android:id="@+id/imageViewIn2-2"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:contentDescription="@string/In1"
-                        app:srcCompat="@drawable/in_c3" />
-
-                    <ImageView
-                        android:id="@+id/imageViewIn3"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:contentDescription="@string/In1"
-                        app:srcCompat="@drawable/in_b1" />
-
-                </LinearLayout>
-
-                <ImageView
-                    android:id="@+id/imageViewAn2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:contentDescription="@string/an2"
-                    android:scaleX="-1"
-                    app:srcCompat="@drawable/an_1" />
-            </LinearLayout>
-
-            <View
-                android:id="@+id/divider6"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="?android:attr/listDivider"
-                android:textAlignment="center"
-                android:textDirection="inherit" />
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:orientation="horizontal">
 
             <Button
-                android:id="@+id/todoAddButton"
-                android:layout_width="match_parent"
+                android:id="@+id/buttonAddNavBfr"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/todo_add_button" />
+                android:layout_weight="1"
+                android:text="@string/bfr" />
 
+            <Button
+                android:id="@+id/buttonAddNavNxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/nxt" />
         </LinearLayout>
-    </ScrollView>
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

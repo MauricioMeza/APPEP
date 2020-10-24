@@ -4,8 +4,8 @@
 
     <string name="addTitle">Añadir Nuevo Pozo</string>
     <string name="updateTitle">Actualizar Informacion de Pozo</string>
-        <string name="addComponent">Seleccionar Componentes</string>
-        <string name="addedComponents">Componentes Seleccionados</string>
+    <string name="addComponent">Seleccionar Componentes</string>
+    <string name="addedComponents">Componentes Seleccionados</string>
     <string name="viewTitle">Informacion del Pozo</string>
     <string name="mainTitle">Mis Pozos</string>
 
@@ -41,12 +41,16 @@
     <string name="yes">Si</string>
     <string name="no">No</string>
 
+    <string name="nxt">Siguiente</string>
+    <string name="bfr">Anterior</string>
+
+
     <string name="splashimg">splashImg</string>
     <string name="an1">Anular1</string>
     <string name="an2">Anular2</string>
     <string name="In1">Interno1</string>
-
-
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>
