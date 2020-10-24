@@ -3,9 +3,12 @@
     <string name="app_name">APPEP</string>
 
     <string name="addTitle">Añadir Nuevo Pozo</string>
-    <string name="updateTitle">Actualizar Informacion de Pozo</string>
-    <string name="addComponent">Seleccionar Componentes</string>
-    <string name="addedComponents">Componentes Seleccionados</string>
+        <string name="updateTitle">Actualizar Informacion de Pozo</string>
+        <string name="addComponent">Seleccionar Componentes</string>
+        <string name="addedComponents">Componentes Seleccionados</string>
+        <string name="internalInfo">Informacion Interna</string>
+        <string name="anularInfo">Informacion Anular</string>
+        <string name="finalInfo">Informacion Final del Pozo</string>
     <string name="viewTitle">Informacion del Pozo</string>
     <string name="mainTitle">Mis Pozos</string>
 
@@ -41,8 +44,10 @@
     <string name="yes">Si</string>
     <string name="no">No</string>
 
+    <string name="out">Finalizar</string>
     <string name="nxt">Siguiente</string>
     <string name="bfr">Anterior</string>
+    <string name="bck">Volver</string>
 
 
     <string name="splashimg">splashImg</string>

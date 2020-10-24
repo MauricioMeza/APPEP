@@ -27,7 +27,8 @@ public class AddPozoActivity extends AppCompatActivity{
 
     Button buttonNxt, buttonBfr;
 
-    private int currentFragment;
+    public static int currentFragment;
+    public static boolean componentSelected[];
 
 
     //
@@ -52,6 +53,8 @@ public class AddPozoActivity extends AppCompatActivity{
         fragmentManager.beginTransaction().add(R.id.addFragmentContainer, fragment1).commit();
         currentFragment = 1;
         buttonConfiguration();
+
+        componentSelected = new boolean[7];
 
 
 
@@ -100,6 +103,7 @@ public class AddPozoActivity extends AppCompatActivity{
                         break;
                     case 3:
                         transaction.replace(R.id.addFragmentContainer, fragment4).commit();
+                        buttonNxt.setText(R.string.out);
                         currentFragment++;
                         break;
                     case 4:
@@ -126,6 +130,7 @@ public class AddPozoActivity extends AppCompatActivity{
                         break;
                     case 4:
                         transaction.replace(R.id.addFragmentContainer, fragment3).commit();
+                        buttonNxt.setText(R.string.nxt);
                         currentFragment--;
                         break;
                 }
