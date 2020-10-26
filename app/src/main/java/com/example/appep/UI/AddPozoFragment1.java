@@ -101,7 +101,6 @@ public class AddPozoFragment1 extends Fragment {
 
         configureSelectionGraphic();
 
-
         return vista;
 
     }
@@ -216,6 +215,7 @@ public class AddPozoFragment1 extends Fragment {
         broc.setEnabled(false);
     }
 
+    //Get the information of the EditTexts in the pozo as a String Array
     public String[] getInfoPozo(){
         String[] infoPozo = {nameText.getText().toString(), descText.getText().toString()};
         return infoPozo;

@@ -62,7 +62,7 @@ public class EventoAnular {
     public Componente getHueco() { return hueco; }
     public void setHueco(Componente hueco) { this.hueco = hueco; }
 
-    public ArrayList<Componente> getComponentesInterno(){
+    public ArrayList<Componente> getComponentesAnular(){
         ArrayList<Componente> componentes = new ArrayList<>();
 
         if(revestimiento1 != null){

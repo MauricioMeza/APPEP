@@ -9,13 +9,15 @@ public class Componente {
     private double diamOD;
     private double diamID;
     private String type;
+    private int img;
 
     private double volumen;
     private double capacidad;
     private Evento evento;
 
-    public Componente(String type, Evento evento) {
+    public Componente(int img, String type, Evento evento) {
         this.type = type;
+        this.img = img;
         this.evento = evento;
         this.volumen = 0.0;
         this.capacidad = 0.0;
@@ -44,4 +46,10 @@ public class Componente {
 
     public String getType() { return type; }
     public void setType(String type) { this.type = type; }
+
+    public int getImg() { return img; }
+    public void setImg(int img) { this.img = img; }
+
+    public Evento getEvento() { return evento; }
+    public void setEvento(Evento evento) { this.evento = evento; }
 }

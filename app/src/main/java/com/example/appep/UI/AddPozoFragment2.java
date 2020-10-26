@@ -3,16 +3,19 @@ package com.example.appep.UI;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.example.appep.Data.Model.Componente;
 import com.example.appep.R;
+import com.example.appep.UI.RecyclerViewClasses.ComponenteAdapter;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -29,6 +32,9 @@ public class AddPozoFragment2 extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    private TextView volInt, capInt;
+    private RecyclerView intComponentRecyclerView;
 
     public AddPozoFragment2() {
         // Required empty public constructor
@@ -66,7 +72,13 @@ public class AddPozoFragment2 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        ArrayList<Componente> comps = AddPozoActivity.pozo.getEventos().get(0).getEventoInterno().getComponentesInterno();
+
         View view = inflater.inflate(R.layout.fragment_add_pozo2, container, false);
+
+        intComponentRecyclerView = view.findViewById(R.id.recyclerViewCompIntr);
+        intComponentRecyclerView.setLayoutManager(new LinearLayoutManager(view.getContext(), LinearLayoutManager.VERTICAL, false));
+        intComponentRecyclerView.setAdapter(new ComponenteAdapter(view.getContext(), comps));
         return view;
     }
 

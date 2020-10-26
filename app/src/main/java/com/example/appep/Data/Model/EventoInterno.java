@@ -49,7 +49,7 @@ public class EventoInterno {
     public void setEstabilizador(Componente estabilizador) { this.estabilizador = estabilizador; }
 
 
-    public ArrayList<Componente> getComponentesAnular(){
+    public ArrayList<Componente> getComponentesInterno(){
         ArrayList<Componente> componentes = new ArrayList<>();
 
         if(this.drillPipe1 != null){

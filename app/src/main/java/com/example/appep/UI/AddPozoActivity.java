@@ -32,11 +32,9 @@ public class AddPozoActivity extends AppCompatActivity{
 
     public static int currentFragment;
     public static boolean componentSelected[];
+    public static Pozo pozo;
 
 
-    //
-
-    private Pozo pozo;
     private DBSQLiteHelper connect;
 
     @Override

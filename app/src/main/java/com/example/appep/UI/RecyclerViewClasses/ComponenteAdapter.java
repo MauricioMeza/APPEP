@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -32,7 +33,7 @@ public class ComponenteAdapter extends RecyclerView.Adapter<ComponenteViewHolder
     @Override
     public void onBindViewHolder(ComponenteViewHolder holder, int position) {
         holder.compTitle.setText(componentes.get(position).getType());
-
+        holder.compImage.setImageResource(componentes.get(position).getImg());
     }
 
     @Override
