@@ -215,4 +215,9 @@ public class AddPozoFragment1 extends Fragment {
         }
         broc.setEnabled(false);
     }
+
+    public String[] getInfoPozo(){
+        String[] infoPozo = {nameText.getText().toString(), descText.getText().toString()};
+        return infoPozo;
+    }
 }

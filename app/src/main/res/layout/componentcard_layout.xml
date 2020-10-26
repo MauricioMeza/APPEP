@@ -19,7 +19,7 @@
             android:textAlignment="center">
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/textViewCompTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
@@ -40,7 +40,7 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:id="@+id/imageView"
+                    android:id="@+id/imageViewComp"
                     android:layout_width="wrap_content"
                     android:layout_height="200dp"
                     android:layout_weight="1"

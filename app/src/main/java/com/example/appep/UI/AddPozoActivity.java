@@ -12,8 +12,11 @@ import androidx.fragment.app.FragmentTransaction;
 import android.app.Fragment;
 
 import com.example.appep.Data.Local.DBSQLiteHelper;
+import com.example.appep.Data.Model.Evento;
 import com.example.appep.Data.Model.Pozo;
 import com.example.appep.R;
+
+import java.util.ArrayList;
 
 
 public class AddPozoActivity extends AppCompatActivity{
@@ -49,13 +52,13 @@ public class AddPozoActivity extends AppCompatActivity{
         fragment2 = new AddPozoFragment2();
         fragment3 = new AddPozoFragment3();
         fragment4 = new AddPozoFragment4();
+
         fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().add(R.id.addFragmentContainer, fragment1).commit();
         currentFragment = 1;
         buttonConfiguration();
 
         componentSelected = new boolean[7];
-
 
 
         /*
@@ -91,9 +94,13 @@ public class AddPozoActivity extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 FragmentTransaction transaction = fragmentManager.beginTransaction();
-
                 switch (currentFragment){
                     case 1:
+                        String[] infoPozo = fragment1.getInfoPozo();
+                        Evento evento = new Evento(componentSelected);
+
+                        pozo = new Pozo(infoPozo[0], infoPozo[1]);
+                        pozo.setNewEvento(evento);
                         transaction.replace(R.id.addFragmentContainer, fragment2).commit();
                         currentFragment++;
                         break;

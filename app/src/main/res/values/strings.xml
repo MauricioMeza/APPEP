@@ -31,10 +31,14 @@
     <string name="comp_rev2">Revestimiento 2</string>
 
     <string name="comps_lon">Longitud</string>
+    <string name="comps_lon_sarta">Longitud de Sarta</string>
+    <string name="comps_lon_anulr">Longitud Anular</string>
     <string name="comps_od">Diametro Externo (OD)</string>
     <string name="comps_id">Diametro Interno (ID)</string>
     <string name="comps_cap">Capacidad</string>
     <string name="comps_vol">Volumen</string>
+    <string name="comps_vol_intrn">Volumen Interno</string>
+    <string name="comps_vol_anulr">Volumen Anular</string>
 
 
     <string name="todo_add_button">Añadir Pozo</string>
@@ -54,6 +58,7 @@
     <string name="an1">Anular1</string>
     <string name="an2">Anular2</string>
     <string name="In1">Interno1</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
