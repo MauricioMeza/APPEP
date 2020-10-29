@@ -34,6 +34,7 @@ public class AddPozoFragment1 extends Fragment {
     private ImageView imgAn1, imgAn2, imgIntD, imgIntB, imgIntC1, imgIntC2;
     private EditText nameText, descText;
     private TextView textTitle;
+    private boolean componentSelected[];
 
 
     // TODO: Rename and change types of parameters
@@ -78,6 +79,8 @@ public class AddPozoFragment1 extends Fragment {
 
         // Inflate the layout for this fragment
         vista = inflater.inflate(R.layout.fragment_add_pozo1, container, false);
+        componentSelected = new boolean[7];
+
 
         textTitle = vista.findViewById(R.id.textTitleAdd);
         nameText = vista.findViewById(R.id.editTextToDoName);
@@ -101,6 +104,14 @@ public class AddPozoFragment1 extends Fragment {
 
         configureSelectionGraphic();
 
+        if(!AddPozoActivity.addNew){
+            textTitle.setText(R.string.updateTitle);
+            nameText.setText(AddPozoActivity.pozo.getNombre());
+            nameText.setEnabled(false);
+            descText.setText(AddPozoActivity.pozo.getCampo());
+            descText.setEnabled(false);
+        }
+
         return vista;
 
     }
@@ -111,13 +122,13 @@ public class AddPozoFragment1 extends Fragment {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(rev1.isChecked()){
-                    AddPozoActivity.componentSelected[0] = true;
+                    componentSelected[0] = true;
                     rev2.setEnabled(true);
                     imgAn1.setImageResource(R.drawable.an_2);
                     imgAn2.setImageResource(R.drawable.an_2);
                 }else{
-                    AddPozoActivity.componentSelected[0] = false;
-                    AddPozoActivity.componentSelected[1] = false;
+                    componentSelected[0] = false;
+                    componentSelected[1] = false;
                     rev2.setChecked(false);
                     rev2.setEnabled(false);
                     imgAn1.setImageResource(R.drawable.an_1);
@@ -130,11 +141,11 @@ public class AddPozoFragment1 extends Fragment {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(rev2.isChecked()){
-                    AddPozoActivity.componentSelected[1] = true;
+                    componentSelected[1] = true;
                     imgAn1.setImageResource(R.drawable.an_3);
                     imgAn2.setImageResource(R.drawable.an_3);
                 }else{
-                    AddPozoActivity.componentSelected[1] = false;
+                    componentSelected[1] = false;
                     imgAn1.setImageResource(R.drawable.an_2);
                     imgAn2.setImageResource(R.drawable.an_2);
                 }
@@ -145,11 +156,11 @@ public class AddPozoFragment1 extends Fragment {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(dp1.isChecked()){
                     dp2.setEnabled(true);
-                    AddPozoActivity.componentSelected[2] = true;
+                    componentSelected[2] = true;
                     imgIntD.setImageResource(R.drawable.in_d2);
                 }else{
-                    AddPozoActivity.componentSelected[2] = false;
-                    AddPozoActivity.componentSelected[3] = false;
+                    componentSelected[2] = false;
+                    componentSelected[3] = false;
                     dp2.setEnabled(false);
                     dp2.setChecked(false);
                     imgIntD.setImageResource(R.drawable.in_d1);
@@ -160,10 +171,10 @@ public class AddPozoFragment1 extends Fragment {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(dp2.isChecked()){
-                    AddPozoActivity.componentSelected[3] = true;
+                    componentSelected[3] = true;
                     imgIntD.setImageResource(R.drawable.in_d3);
                 }else{
-                    AddPozoActivity.componentSelected[3] = false;
+                    componentSelected[3] = false;
                     imgIntD.setImageResource(R.drawable.in_d2);
                 }
             }
@@ -172,10 +183,10 @@ public class AddPozoFragment1 extends Fragment {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(hwdp.isChecked()){
-                    AddPozoActivity.componentSelected[4] = true;
+                    componentSelected[4] = true;
                     imgIntC1.setImageResource(R.drawable.in_c2);
                 }else{
-                    AddPozoActivity.componentSelected[4] = false;
+                    componentSelected[4] = false;
                     imgIntC1.setImageResource(R.drawable.in_c1);
                 }
             }
@@ -184,10 +195,10 @@ public class AddPozoFragment1 extends Fragment {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(dc.isChecked()){
-                    AddPozoActivity.componentSelected[5] = true;
+                    componentSelected[5] = true;
                     imgIntC2.setImageResource(R.drawable.in_c4);
                 }else{
-                    AddPozoActivity.componentSelected[5] = false;
+                    componentSelected[5] = false;
                     imgIntC2.setImageResource(R.drawable.in_c3);
                 }
             }
@@ -196,10 +207,10 @@ public class AddPozoFragment1 extends Fragment {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(estb.isChecked()){
-                    AddPozoActivity.componentSelected[6] = true;
+                    componentSelected[6] = true;
                     imgIntB.setImageResource(R.drawable.in_b2);
                 }else{
-                    AddPozoActivity.componentSelected[6] = false;
+                    componentSelected[6] = false;
                     imgIntB.setImageResource(R.drawable.in_b1);
                 }
             }
@@ -220,4 +231,6 @@ public class AddPozoFragment1 extends Fragment {
         String[] infoPozo = {nameText.getText().toString(), descText.getText().toString()};
         return infoPozo;
     }
+
+    public boolean[] getComponentSelected() { return componentSelected; }
 }

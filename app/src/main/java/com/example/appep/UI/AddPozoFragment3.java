@@ -35,6 +35,7 @@ public class AddPozoFragment3 extends Fragment {
 
     private TextView volAnl, capAnl;
     private RecyclerView anlComponentRecyclerView;
+    private ArrayList<Componente> comps;
 
     public AddPozoFragment3() {
         // Required empty public constructor
@@ -71,7 +72,7 @@ public class AddPozoFragment3 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        ArrayList<Componente> comps = AddPozoActivity.pozo.getEventos().get(0).getEventoAnular().getComponentesAnular();
+        comps = AddPozoActivity.pozo.getEventos().get(0).getEventoAnular().getComponentesAnular();
 
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_add_pozo3, container, false);
@@ -82,4 +83,9 @@ public class AddPozoFragment3 extends Fragment {
 
         return view;
     }
+
+    public ArrayList<Componente> getComponentList(){
+        return comps;
+    }
+
 }

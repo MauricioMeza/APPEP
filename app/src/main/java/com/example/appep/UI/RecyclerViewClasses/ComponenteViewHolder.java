@@ -15,9 +15,11 @@ public class ComponenteViewHolder extends RecyclerView.ViewHolder {
     TextView compTitle, compResVol, compResCap;
     EditText compEditLong, compEditOD, compEditID;
     ImageView compImage;
+    int componentId;
 
     public ComponenteViewHolder(View itemView) {
         super(itemView);
+
 
         compTitle = (TextView) itemView.findViewById(R.id.textViewCompTitle);
         compResVol = (TextView) itemView.findViewById(R.id.textViewNumVol);

@@ -6,11 +6,8 @@ public class EventoAnular {
     //TODO: see if components work better on an Arraylist
     private String id;
     private Evento evento;
-    private double volAnular;
-    private double longAnular;
-    private Componente revestimiento1;
-    private Componente revestimiento2;
-    private Componente hueco;
+    private double volAnular, longAnular;
+    private Componente revestimiento1, revestimiento2, hueco;
 
     public EventoAnular(Evento evento){
         this.evento = evento;
@@ -77,4 +74,19 @@ public class EventoAnular {
         return componentes;
     }
 
+    public void fillComponentesAnular(ArrayList<Componente> componentes){
+        for (Componente comp : componentes) {
+            switch (comp.getType()){
+                case "Hueco":
+                    this.hueco = comp;
+                    break;
+                case "Revestimiento 1":
+                    this.revestimiento1 = comp;
+                    break;
+                case "Revestimiento 2":
+                    this.revestimiento2 = comp;
+                    break;
+            }
+        }
+    }
 }

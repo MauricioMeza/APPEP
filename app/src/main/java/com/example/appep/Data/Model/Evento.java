@@ -18,6 +18,7 @@ public class Evento {
         this.fechaCreacion = new Date();
         this.eventoInterno = new EventoInterno(this);
         this.eventoAnular = new EventoAnular(this);
+        this.eventoAmago = new EventoAmago(this);
 
         //TODO: Arreglar este machetazo
         this.eventoInterno.setBroca(new Componente(R.drawable.f_broca,"Broca", this));
@@ -54,4 +55,7 @@ public class Evento {
 
     public EventoAnular getEventoAnular() { return eventoAnular; }
     public void setEventoAnular(EventoAnular eventoAnular) { this.eventoAnular = eventoAnular; }
+
+    public EventoAmago getEventoAmago() { return eventoAmago; }
+    public void setEventoAmago(EventoAmago eventoAmago) { this.eventoAmago = eventoAmago; }
 }

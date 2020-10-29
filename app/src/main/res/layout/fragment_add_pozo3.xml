@@ -34,7 +34,8 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerViewCompAnlr"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:layout_marginBottom="8dp" />
 
             <View
                 android:id="@+id/divider11"

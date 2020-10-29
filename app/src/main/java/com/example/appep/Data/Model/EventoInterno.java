@@ -6,14 +6,8 @@ public class EventoInterno {
     //TODO: see if components work better on an Arraylist (specially here)
     private String id;
     private Evento evento;
-    private double volInterno;
-    private double longSarta;
-    private Componente drillPipe1;
-    private Componente drillPipe2;
-    private Componente hwdp;
-    private Componente drillColar;
-    private Componente broca;
-    private Componente estabilizador;
+    private double volInterno, longSarta;
+    private Componente drillPipe1, drillPipe2, hwdp, drillColar, broca, estabilizador;
 
     public EventoInterno(Evento evento){
         this.evento = evento;
@@ -71,5 +65,30 @@ public class EventoInterno {
         componentes.add(this.broca);
 
         return componentes;
+    }
+
+    public void fillComponentesInterno(ArrayList<Componente> internalComponents) {
+        for (Componente comp : internalComponents) {
+            switch(comp.getType()){
+                case "Broca":
+                    this.broca = comp;
+                    break;
+                case "Estabilizador":
+                    this.estabilizador = comp;
+                    break;
+                case "Drill Colar":
+                    this.drillColar = comp;
+                    break;
+                case "HeavyWeight Drill Pipe":
+                    this.hwdp = comp;
+                    break;
+                case "Drill Pipe 1":
+                    this.drillPipe1 = comp;
+                    break;
+                case "Drill Pipe 2":
+                    this.drillPipe2 = comp;
+                    break;
+            }
+        }
     }
 }

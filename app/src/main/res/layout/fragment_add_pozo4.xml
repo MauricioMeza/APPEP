@@ -30,6 +30,54 @@
                 android:background="?android:attr/listDivider"
                 android:textAlignment="center"
                 android:textDirection="inherit" />
+
+            <TextView
+                android:id="@+id/textViewPsoOrgLdo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/fnl_pol" />
+
+            <TextView
+                android:id="@+id/textViewPrfVrtVrd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/fnl_pvv" />
+
+            <TextView
+                android:id="@+id/textViewPrfTtlMdi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/fnl_ptm" />
+
+            <TextView
+                android:id="@+id/textViewPrsRedBmb"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/fnl_prb" />
+
+            <TextView
+                android:id="@+id/textViewDspBmb"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/fnl_dsb" />
+
+            <TextView
+                android:id="@+id/textViewPrsCrrTbo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/fnl_pctp" />
+
+            <TextView
+                android:id="@+id/textViewPrsCrrRev"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/fnl_pcrv" />
+
+            <TextView
+                android:id="@+id/textViewGncSup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/fnl_gnsp" />
         </LinearLayout>
     </ScrollView>
 </FrameLayout>
