@@ -31,53 +31,490 @@
                 android:textAlignment="center"
                 android:textDirection="inherit" />
 
-            <TextView
-                android:id="@+id/textViewPsoOrgLdo"
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/fnl_pol" />
+                android:layout_height="match_parent"
+                android:layout_margin="8dp">
 
-            <TextView
-                android:id="@+id/textViewPrfVrtVrd"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/fnl_pvv" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="8dp"
+                    android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/textViewPrfTtlMdi"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/fnl_ptm" />
+                    <TextView
+                        android:id="@+id/textViewPrsCrrTbo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/fnl_pctp" />
 
-            <TextView
-                android:id="@+id/textViewPrsRedBmb"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/fnl_prb" />
+                    <EditText
+                        android:id="@+id/editTextPrsCrrTbo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:inputType="numberDecimal" />
 
-            <TextView
-                android:id="@+id/textViewDspBmb"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/fnl_dsb" />
+                    <TextView
+                        android:id="@+id/textViewPrsCrrRev"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/fnl_pcrv" />
 
-            <TextView
-                android:id="@+id/textViewPrsCrrTbo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/fnl_pctp" />
+                    <EditText
+                        android:id="@+id/editTextPrsCrrRev"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:inputType="numberDecimal" />
 
-            <TextView
-                android:id="@+id/textViewPrsCrrRev"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/fnl_pcrv" />
+                    <TextView
+                        android:id="@+id/textViewGncSup"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/fnl_gnsp" />
 
-            <TextView
-                android:id="@+id/textViewGncSup"
+                    <EditText
+                        android:id="@+id/editTextGncSup"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:inputType="numberDecimal" />
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/fnl_gnsp" />
+                android:layout_height="match_parent"
+                android:layout_margin="8dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="8dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textViewPrsRedBmb"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/fnl_prb" />
+
+                    <EditText
+                        android:id="@+id/editTextPrsRedBmb"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:inputType="numberDecimal" />
+
+                    <TextView
+                        android:id="@+id/textViewDspBmb"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/fnl_dsb" />
+
+                    <EditText
+                        android:id="@+id/editTextDspBmb"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:inputType="numberDecimal" />
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="8dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="8dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textViewPsoOrgLdo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/fnl_pol" />
+
+                    <EditText
+                        android:id="@+id/editTextPsoOrgLdo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:inputType="numberDecimal" />
+
+                    <TextView
+                        android:id="@+id/textViewPrfVrtVrd"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/fnl_pvv" />
+
+                    <EditText
+                        android:id="@+id/editTextPrfVrtVrd"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:inputType="numberDecimal" />
+
+                    <TextView
+                        android:id="@+id/textViewPrfTtlMdi"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/fnl_ptm" />
+
+                    <EditText
+                        android:id="@+id/editTextPrfTtlMdi"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:inputType="numberDecimal" />
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="8dp" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="8dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView34"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/fnl_ppcr"
+                        android:textAlignment="center"
+                        android:textSize="18sp" />
+
+                    <TableLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="center">
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            android:textAlignment="center">
+
+                            <TextView
+                                android:id="@+id/textViewEstTittle"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:background="#DADADA"
+                                android:text="@string/fnl_estr"
+                                android:textAlignment="center" />
+
+                            <TextView
+                                android:id="@+id/textViewPrsTittle"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:background="#DADADA"
+                                android:text="@string/fnl_prcr"
+                                android:textAlignment="center"
+                                android:textSize="14sp" />
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginBottom="8dp">
+
+                            <TextView
+                                android:id="@+id/textViewEst1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@string/temp_real"
+                                android:textAlignment="center" />
+
+                            <TextView
+                                android:id="@+id/textViewPrs1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@string/temp_real"
+                                android:textAlignment="center" />
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginBottom="8dp">
+
+                            <TextView
+                                android:id="@+id/textViewEst2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@string/temp_real"
+                                android:textAlignment="center" />
+
+                            <TextView
+                                android:id="@+id/textViewPrs2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@string/temp_real"
+                                android:textAlignment="center" />
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginBottom="8dp">
+
+                            <TextView
+                                android:id="@+id/textViewEst3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@string/temp_real"
+                                android:textAlignment="center" />
+
+                            <TextView
+                                android:id="@+id/textViewPrs3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@string/temp_real"
+                                android:textAlignment="center" />
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginBottom="8dp">
+
+                            <TextView
+                                android:id="@+id/textViewEst4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@string/temp_real"
+                                android:textAlignment="center" />
+
+                            <TextView
+                                android:id="@+id/textViewPrs4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@string/temp_real"
+                                android:textAlignment="center" />
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginBottom="8dp">
+
+                            <TextView
+                                android:id="@+id/textViewEst5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@string/temp_real"
+                                android:textAlignment="center" />
+
+                            <TextView
+                                android:id="@+id/textViewPrs5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@string/temp_real"
+                                android:textAlignment="center" />
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginBottom="8dp">
+
+                            <TextView
+                                android:id="@+id/textViewEst6"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@string/temp_real"
+                                android:textAlignment="center" />
+
+                            <TextView
+                                android:id="@+id/textViewPrs6"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@string/temp_real"
+                                android:textAlignment="center" />
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginBottom="8dp">
+
+                            <TextView
+                                android:id="@+id/textViewEst7"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@string/temp_real"
+                                android:textAlignment="center" />
+
+                            <TextView
+                                android:id="@+id/textViewPrs7"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@string/temp_real"
+                                android:textAlignment="center" />
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginBottom="8dp">
+
+                            <TextView
+                                android:id="@+id/textViewEst8"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@string/temp_real"
+                                android:textAlignment="center" />
+
+                            <TextView
+                                android:id="@+id/textViewPrs8"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@string/temp_real"
+                                android:textAlignment="center" />
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginBottom="8dp">
+
+                            <TextView
+                                android:id="@+id/textViewEst9"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@string/temp_real"
+                                android:textAlignment="center" />
+
+                            <TextView
+                                android:id="@+id/textViewPrs9"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@string/temp_real"
+                                android:textAlignment="center" />
+
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginBottom="8dp">
+
+                            <TextView
+                                android:id="@+id/textViewEst10"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@string/temp_real"
+                                android:textAlignment="center" />
+
+                            <TextView
+                                android:id="@+id/textViewPrs10"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@string/temp_real"
+                                android:textAlignment="center" />
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginBottom="8dp">
+
+                            <TextView
+                                android:id="@+id/textViewEst11"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@string/temp_real"
+                                android:textAlignment="center" />
+
+                            <TextView
+                                android:id="@+id/textViewPres11"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@string/temp_real"
+                                android:textAlignment="center" />
+                        </TableRow>
+
+                    </TableLayout>
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <View
+                android:id="@+id/divider12"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="?android:attr/listDivider" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="8dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/fnl_psld"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/temp_real"
+                    android:textAlignment="center"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/temp_double"
+                    android:textAlignment="center"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
         </LinearLayout>
     </ScrollView>
 </FrameLayout>

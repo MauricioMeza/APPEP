@@ -14,6 +14,7 @@
 
     <string name="temp_date">dd/mm/aaaa</string>
     <string name="temp_real">0.0</string>
+    <string name="temp_double">(0.00)</string>
 
     <string name="todo_name">Nombre</string>
     <string name="todo_desc">Campo</string>
@@ -38,6 +39,10 @@
     <string name="fnl_pctp">Presion Cierre Tubo Perforacion</string>
     <string name="fnl_pcrv">Presion Cierre Revestimiento</string>
     <string name="fnl_gnsp">Ganancia en Superficie</string>
+    <string name="fnl_ppcr">Programa de Presion de Circulacion</string>
+    <string name="fnl_estr">Estroques</string>
+    <string name="fnl_prcr">Presion Circulacion</string>
+    <string name="fnl_psld">Peso del Lodo para Matar</string>
 
 
 
