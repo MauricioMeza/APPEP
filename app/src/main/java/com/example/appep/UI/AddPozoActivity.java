@@ -33,10 +33,10 @@ public class AddPozoActivity extends AppCompatActivity{
 
     FragmentManager fragmentManager;
 
-    AddPozoFragment1 fragment1;
-    AddPozoFragment2 fragment2;
-    AddPozoFragment3 fragment3;
-    AddPozoFragment4 fragment4;
+    public AddPozoFragment1 fragment1;
+    public AddPozoFragment2 fragment2;
+    public AddPozoFragment3 fragment3;
+    public AddPozoFragment4 fragment4;
 
     Button buttonNxt, buttonBfr;
 
@@ -67,11 +67,7 @@ public class AddPozoActivity extends AppCompatActivity{
         addNew = true;
         buttonConfiguration();
 
-
-
-
         int n = getIntent().getIntExtra("indexTask", -1);
-
 
         //if an index is passed as extra change layout to accomodate Update Rather than Add
         if(n != -1){
@@ -81,6 +77,8 @@ public class AddPozoActivity extends AppCompatActivity{
 
     }
 
+    //Configure ->Next and <-Before buttons so that different fragments are presented depending on their actions
+    //Fill information in Pozo object from the event information filled in each fragment
     private void buttonConfiguration() {
         buttonNxt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,7 +88,6 @@ public class AddPozoActivity extends AppCompatActivity{
                     case 1:
                         String[] infoPozo = fragment1.getInfoPozo();
                         Evento evento = new Evento(fragment1.getComponentSelected());
-
                         pozo = new Pozo(infoPozo[0], infoPozo[1]);
                         pozo.setNewEvento(evento);
                         transaction.replace(R.id.addFragmentContainer, fragment2).commit();
@@ -191,7 +188,9 @@ public class AddPozoActivity extends AppCompatActivity{
         return pozo;
     }
 
-/*
+    public int getCurrentFragment() { return currentFragment; }
+
+    /*
     //Update DB register that matches current Id with new pozo information
     public void updatePozo(){
         MainActivity.mainActivity.finish();

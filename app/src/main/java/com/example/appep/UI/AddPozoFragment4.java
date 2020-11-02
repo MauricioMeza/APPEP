@@ -4,9 +4,12 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 
 import com.example.appep.R;
 
@@ -25,6 +28,9 @@ public class AddPozoFragment4 extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    private EditText prsCrrTbo, prsCrrRev, gncSpr, prsRedBmb, dspBmb, psoOrgLdo, prfVrtVrd, prfTtlMed;
+
 
     public AddPozoFragment4() {
         // Required empty public constructor
@@ -61,6 +67,20 @@ public class AddPozoFragment4 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_add_pozo4, container, false);
+        View v = inflater.inflate(R.layout.fragment_add_pozo4, container, false);
+
+        prsCrrTbo = v.findViewById(R.id.editTextPrsCrrTbo);
+        prsCrrRev = v.findViewById(R.id.editTextPrsCrrRev);
+        gncSpr = v.findViewById(R.id.editTextGncSup);
+
+        prsRedBmb = v.findViewById(R.id.editTextPrsRedBmb);
+        dspBmb = v.findViewById(R.id.editTextDspBmb);
+
+        psoOrgLdo = v.findViewById(R.id.editTextPsoOrgLdo);
+        prfVrtVrd = v.findViewById(R.id.editTextPrfVrtVrd);
+        prfTtlMed = v.findViewById(R.id.editTextPrfTtlMdi);
+
+        return  v;
     }
+
 }

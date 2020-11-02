@@ -9,35 +9,7 @@ public class EventoAnular {
     private double volAnular, longAnular;
     private Componente revestimiento1, revestimiento2, hueco;
 
-    public EventoAnular(Evento evento){
-        this.evento = evento;
-    }
-
-    public void sumVolumenComp(){
-        double suma = 0;
-        if(!revestimiento1.equals(null)){
-            suma += revestimiento1.getVolumen();
-        }
-        if(!revestimiento2.equals(null)){
-            suma+= revestimiento2.getVolumen();
-        }
-        suma += hueco.getVolumen();
-
-        this.volAnular = suma;
-    }
-
-    public void sumLongitudComp(){
-        double suma = 0;
-        if(!revestimiento1.equals(null)){
-            suma += revestimiento1.getLongitud();
-        }
-        if(!revestimiento2.equals(null)){
-            suma+= revestimiento2.getLongitud();
-        }
-        suma += hueco.getLongitud();
-
-        this.volAnular = suma;
-    }
+    public EventoAnular(Evento evento){ this.evento = evento; }
 
     public String getId() { return id; }
 
@@ -59,6 +31,7 @@ public class EventoAnular {
     public Componente getHueco() { return hueco; }
     public void setHueco(Componente hueco) { this.hueco = hueco; }
 
+    //Get an Arraylist of Componentes with all the components of this EventoAnular
     public ArrayList<Componente> getComponentesAnular(){
         ArrayList<Componente> componentes = new ArrayList<>();
 
@@ -74,8 +47,13 @@ public class EventoAnular {
         return componentes;
     }
 
+    //From an ArrayList of components fill the components and calculations of this EventoAnular
     public void fillComponentesAnular(ArrayList<Componente> componentes){
+        this.volAnular = 0.0;
+        this.longAnular = 0.0;
         for (Componente comp : componentes) {
+            this.volAnular += comp.getVolumen();
+            this.longAnular += comp.getLongitud();
             switch (comp.getType()){
                 case "Hueco":
                     this.hueco = comp;

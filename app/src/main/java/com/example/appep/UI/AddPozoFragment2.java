@@ -1,5 +1,6 @@
 package com.example.appep.UI;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -33,7 +34,8 @@ public class AddPozoFragment2 extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    private TextView volInt, capInt;
+    private TextView volInt, longInt;
+    private double volTotal, longTotal;
     private RecyclerView intComponentRecyclerView;
     private ArrayList<Componente> comps;
 
@@ -76,6 +78,8 @@ public class AddPozoFragment2 extends Fragment {
         comps = AddPozoActivity.pozo.getEventos().get(0).getEventoInterno().getComponentesInterno();
 
         View view = inflater.inflate(R.layout.fragment_add_pozo2, container, false);
+        volInt = view.findViewById(R.id.textNumVolInt);
+        longInt = view.findViewById(R.id.textNumLongInt);
 
         intComponentRecyclerView = view.findViewById(R.id.recyclerViewCompIntr);
         intComponentRecyclerView.setLayoutManager(new LinearLayoutManager(view.getContext(), LinearLayoutManager.VERTICAL, false));
@@ -90,5 +94,17 @@ public class AddPozoFragment2 extends Fragment {
 
     public ArrayList<Componente> getComponentList(){
         return comps;
+    }
+
+    //Get the sum of the vol and long of all components and show it in the textViews of the fragment
+    public void sumTotales(){
+        volTotal = 0.0;
+        longTotal = 0.0;
+        for (Componente comp: comps) {
+            longTotal += comp.getLongitud();
+            volTotal += comp.getVolumen();
+        }
+        volInt.setText(String.valueOf(volTotal));
+        longInt.setText(String.valueOf(longTotal));
     }
 }

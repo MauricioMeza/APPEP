@@ -62,7 +62,7 @@
                     android:textAlignment="center">
 
                     <TextView
-                        android:id="@+id/textInfoVolAnlr"
+                        android:id="@+id/textInfoVolInt"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/comps_vol_intrn"
@@ -70,7 +70,7 @@
                         android:textSize="18sp" />
 
                     <TextView
-                        android:id="@+id/textNumVolAnlr"
+                        android:id="@+id/textNumVolInt"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/temp_real"
@@ -88,7 +88,7 @@
                     android:textAlignment="center">
 
                     <TextView
-                        android:id="@+id/textInfoLongAnlr"
+                        android:id="@+id/textInfoLongInt"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/comps_lon_sarta"
@@ -96,12 +96,13 @@
                         android:textSize="18sp" />
 
                     <TextView
-                        android:id="@+id/textNumLongAnlr"
+                        android:id="@+id/textNumLongInt"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/temp_real"
                         android:textAlignment="center"
                         android:textSize="18sp" />
+
                 </LinearLayout>
 
             </LinearLayout>

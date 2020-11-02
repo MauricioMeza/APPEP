@@ -42,7 +42,7 @@ public class EventoInterno {
     public Componente getEstabilizador() { return estabilizador; }
     public void setEstabilizador(Componente estabilizador) { this.estabilizador = estabilizador; }
 
-
+    //Get an ArrayList of Componentes with all the components of this EventoInterno
     public ArrayList<Componente> getComponentesInterno(){
         ArrayList<Componente> componentes = new ArrayList<>();
 
@@ -64,11 +64,19 @@ public class EventoInterno {
 
         componentes.add(this.broca);
 
+
+
         return componentes;
     }
 
+    //From an ArrayList of components fill the components and calculations of this EventoInterno
     public void fillComponentesInterno(ArrayList<Componente> internalComponents) {
+        this.volInterno = 0.0;
+        this.longSarta = 0.0;
         for (Componente comp : internalComponents) {
+            this.volInterno += comp.getVolumen();
+            this.longSarta += comp.getLongitud();
+
             switch(comp.getType()){
                 case "Broca":
                     this.broca = comp;

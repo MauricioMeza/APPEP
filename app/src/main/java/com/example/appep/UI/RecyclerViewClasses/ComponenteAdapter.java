@@ -13,6 +13,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.appep.Data.Model.Componente;
 import com.example.appep.R;
+import com.example.appep.UI.AddPozoActivity;
+import com.example.appep.UI.AddPozoFragment2;
 
 import java.util.ArrayList;
 
@@ -33,7 +35,7 @@ public class ComponenteAdapter extends RecyclerView.Adapter<ComponenteViewHolder
     }
 
     @Override
-    public void onBindViewHolder(ComponenteViewHolder holder, final int position) {
+    public void onBindViewHolder(final ComponenteViewHolder holder, final int position) {
         //Set component title and image depending on type
         holder.compTitle.setText(componentes.get(position).getType());
         holder.compImage.setImageResource(componentes.get(position).getImg());
@@ -51,6 +53,11 @@ public class ComponenteAdapter extends RecyclerView.Adapter<ComponenteViewHolder
                 if(num.matches("[+-]?([0-9]*[.])?[0-9]+")){
                     double longitud = Double.parseDouble(num);
                     componentes.get(position).setLongitud(longitud);
+                    componentCalculations(holder, position);
+                }else if(num.isEmpty()){
+                    double longitud = 0;
+                    componentes.get(position).setLongitud(longitud);
+                    componentCalculations(holder, position);
                 }
             }
         });
@@ -66,8 +73,12 @@ public class ComponenteAdapter extends RecyclerView.Adapter<ComponenteViewHolder
                 if(num.matches("[+-]?([0-9]*[.])?[0-9]+")){
                     double id = Double.parseDouble(num);
                     componentes.get(position).setDiamID(id);
+                    componentCalculations(holder, position);
+                }else if(num.isEmpty()){
+                    double id = 0;
+                    componentes.get(position).setDiamID(id);
+                    componentCalculations(holder, position);
                 }
-
             }
         });
         holder.compEditOD.addTextChangedListener(new TextWatcher() {
@@ -82,6 +93,12 @@ public class ComponenteAdapter extends RecyclerView.Adapter<ComponenteViewHolder
                 if(num.matches("[+-]?([0-9]*[.])?[0-9]+")){
                     double od = Double.parseDouble(num);
                     componentes.get(position).setDiamOD(od);
+                    componentCalculations(holder, position);
+
+                }else if(num.isEmpty()){
+                    double od = 0;
+                    componentes.get(position).setDiamOD(od);
+                    componentCalculations(holder, position);
                 }
             }
         });
@@ -91,4 +108,27 @@ public class ComponenteAdapter extends RecyclerView.Adapter<ComponenteViewHolder
     public int getItemCount() {
         return componentes.size();
     }
+
+    //Calculate Capacity and Volume from the info of the Componente and show it in the textViews of each componente
+    public void componentCalculations(ComponenteViewHolder holder, int position){
+        double cap = componentes.get(position).calcCapacidad();
+        double vol = componentes.get(position).calcVolumen();
+
+        holder.compResCap.setText(String.valueOf(cap));
+        holder.compResVol.setText(String.valueOf(vol));
+
+        if(context instanceof AddPozoActivity){
+            int fragment = ((AddPozoActivity) context).getCurrentFragment();
+            switch (fragment){
+                case 2:
+                    ((AddPozoActivity) context).fragment2.sumTotales();
+                    break;
+                case 3:
+                    ((AddPozoActivity) context).fragment3.sumTotales();
+                    break;
+            }
+        }
+
+    }
+
 }

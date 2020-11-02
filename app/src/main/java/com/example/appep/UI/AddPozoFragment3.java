@@ -33,7 +33,8 @@ public class AddPozoFragment3 extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    private TextView volAnl, capAnl;
+    private TextView volAnl, longAnl;
+    private double volTotal, longTotal;
     private RecyclerView anlComponentRecyclerView;
     private ArrayList<Componente> comps;
 
@@ -76,6 +77,8 @@ public class AddPozoFragment3 extends Fragment {
 
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_add_pozo3, container, false);
+        volAnl = view.findViewById(R.id.textNumVolAnlr);
+        longAnl = view.findViewById(R.id.textNumLongAnlr);
 
         anlComponentRecyclerView = view.findViewById(R.id.recyclerViewCompAnlr);
         anlComponentRecyclerView.setLayoutManager(new LinearLayoutManager(view.getContext(), LinearLayoutManager.VERTICAL, false));
@@ -86,6 +89,18 @@ public class AddPozoFragment3 extends Fragment {
 
     public ArrayList<Componente> getComponentList(){
         return comps;
+    }
+
+    //Get the sum of the vol and long of all components and show it in the textViews of the fragment
+    public void sumTotales(){
+        volTotal = 0.0;
+        longTotal = 0.0;
+        for (Componente comp: comps) {
+            longTotal += comp.getLongitud();
+            volTotal += comp.getVolumen();
+        }
+        volAnl.setText(String.valueOf(volTotal));
+        longAnl.setText(String.valueOf(longTotal));
     }
 
 }

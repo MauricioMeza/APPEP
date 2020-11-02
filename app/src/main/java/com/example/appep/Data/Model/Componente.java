@@ -23,10 +23,15 @@ public class Componente {
         this.capacidad = 0.0;
     }
 
-    public void calcCapacidad(){
+    public double calcCapacidad(){
+        double capacidad = this.diamID + this.diamOD;
+        this.capacidad = capacidad;
+        return capacidad;
     }
-    public void calcVolumen(){
-
+    public double calcVolumen(){
+        double volumen = this.capacidad * this.longitud;
+        this.volumen = volumen;
+        return volumen;
     }
 
     public double getLongitud() { return longitud; }
@@ -52,4 +57,7 @@ public class Componente {
 
     public Evento getEvento() { return evento; }
     public void setEvento(Evento evento) { this.evento = evento; }
+
+
+
 }
