@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.appep.Data.Model.Componente;
+import com.example.appep.Data.Model.EventoAnular;
 import com.example.appep.R;
 import com.example.appep.UI.RecyclerViewClasses.ComponenteAdapter;
 
@@ -36,6 +37,7 @@ public class AddPozoFragment3 extends Fragment {
     private TextView volAnl, longAnl;
     private double volTotal, longTotal;
     private RecyclerView anlComponentRecyclerView;
+    private EventoAnular eventoAnular;
     private ArrayList<Componente> comps;
 
     public AddPozoFragment3() {
@@ -73,12 +75,17 @@ public class AddPozoFragment3 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        comps = AddPozoActivity.pozo.getEventos().get(0).getEventoAnular().getComponentesAnular();
+        eventoAnular = AddPozoActivity.pozo.getEventos().get(0).getEventoAnular();
+        comps = eventoAnular.getComponentesAnular();
 
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_add_pozo3, container, false);
         volAnl = view.findViewById(R.id.textNumVolAnlr);
         longAnl = view.findViewById(R.id.textNumLongAnlr);
+        
+        volAnl.setText(String.valueOf(eventoAnular.getVolAnular()));
+        longAnl.setText(String.valueOf(eventoAnular.getLongAnular()));
+
 
         anlComponentRecyclerView = view.findViewById(R.id.recyclerViewCompAnlr);
         anlComponentRecyclerView.setLayoutManager(new LinearLayoutManager(view.getContext(), LinearLayoutManager.VERTICAL, false));

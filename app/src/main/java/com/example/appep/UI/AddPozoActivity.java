@@ -80,6 +80,7 @@ public class AddPozoActivity extends AppCompatActivity{
     //Configure ->Next and <-Before buttons so that different fragments are presented depending on their actions
     //Fill information in Pozo object from the event information filled in each fragment
     private void buttonConfiguration() {
+        //TODO: Make sure that information from Pozo in the activity is retrieved when a form fragment is created (Specially in fragment 2 and 3)
         buttonNxt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -36,9 +36,27 @@ public class ComponenteAdapter extends RecyclerView.Adapter<ComponenteViewHolder
 
     @Override
     public void onBindViewHolder(final ComponenteViewHolder holder, final int position) {
+        Componente componente = componentes.get(position);
+
         //Set component title and image depending on type
-        holder.compTitle.setText(componentes.get(position).getType());
-        holder.compImage.setImageResource(componentes.get(position).getImg());
+        holder.compTitle.setText(componente.getType());
+        holder.compImage.setImageResource(componente.getImg());
+
+        //If there is information from components set it into text inside the forms
+        if(componente.getLongitud() != 0.0){
+            holder.compEditLong.setText(String.valueOf(componente.getLongitud()));
+        }
+        if(componente.getDiamOD() != 0.0){
+            holder.compEditOD.setText(String.valueOf(componente.getDiamOD()));
+        }
+        if(componente.getDiamID() != 0.0){
+            holder.compEditID.setText(String.valueOf(componente.getDiamID()));
+        }
+
+
+        holder.compResVol.setText(String.valueOf(componente.getVolumen()));
+        holder.compResCap.setText(String.valueOf(componente.getCapacidad()));
+
 
         //set listener on text change for all editText listeners
         holder.compEditLong.addTextChangedListener(new TextWatcher() {
