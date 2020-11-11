@@ -10,6 +10,7 @@ public class Pozo implements Serializable {
     private String campo;
     private Date fecha_creacion;
     private boolean abierto;
+    private boolean vertical;
     private ArrayList<Evento> eventos;
 
     public Pozo(int id) {
@@ -39,6 +40,10 @@ public class Pozo implements Serializable {
 
     public Date getFecha_creacion() { return fecha_creacion; }
     public void setFecha_creacion(Date fecha_creacion) { this.fecha_creacion = fecha_creacion;}
+
+    public boolean isVertical() { return vertical; }
+    public void setVertical(boolean vertical) { this.vertical = vertical; }
+
 
     public ArrayList<Evento> getEventos() { return eventos; }
     public void setEventos(ArrayList<Evento> eventos) { this.eventos = eventos; }

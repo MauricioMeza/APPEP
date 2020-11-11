@@ -15,9 +15,15 @@
     <string name="temp_date">dd/mm/aaaa</string>
     <string name="temp_real">0.0</string>
     <string name="temp_double">(0.00)</string>
+    <string name="temp_lrmipsm">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</string>
+    <string name="temp_lrmipsm2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</string>
+
 
     <string name="todo_name">Nombre</string>
     <string name="todo_desc">Campo</string>
+    <string name="todo_tppz">Tipo de Pozo</string>
+        <string name="todo_tpvr">Vertical</string>
+        <string name="todo_tphz">Horizontal</string>
     <string name="todo_date">Fecha Creacion</string>
     <string name="todo_actv">Abierto</string>
     <string name="todo_idts">Numero</string>
@@ -31,31 +37,38 @@
     <string name="comp_rev1">Revestimiento 1</string>
     <string name="comp_rev2">Revestimiento 2</string>
 
-    <string name="fnl_pol">Peso Original del Lodo</string>
-    <string name="fnl_pvv">Profundidad Vertical Verdadera</string>
-    <string name="fnl_ptm">Profundidad Total Medida</string>
-    <string name="fnl_prb">Presion Reducida de Bomba</string>
-    <string name="fnl_dsb">Desplazamiento de Bomba</string>
-    <string name="fnl_pctp">Presion Cierre Tubo Perforacion</string>
-    <string name="fnl_pcrv">Presion Cierre Revestimiento</string>
-    <string name="fnl_gnsp">Ganancia en Superficie</string>
+    <string name="fnl_pol">Peso Original del Lodo (ppg)</string>
+    <string name="fnl_pvv">Profundidad Vertical Verdadera (ft)</string>
+    <string name="fnl_ptm">Profundidad Total Medida (ft)</string>
+    <string name="fnl_prb">Presion Reducida de Bomba (psi)</string>
+    <string name="fnl_dsb">Desplazamiento de Bomba (bbl/str)</string>
+    <string name="fnl_pctp">Presion Cierre Tubo Perforacion (psi)</string>
+    <string name="fnl_pcrv">Presion Cierre Revestimiento (psi)</string>
+    <string name="fnl_gnsp">Ganancia en Superficie (bbl)</string>
     <string name="fnl_ppcr">Programa de Presion de Circulacion</string>
     <string name="fnl_estr">Estroques</string>
-    <string name="fnl_prcr">Presion Circulacion</string>
-    <string name="fnl_psld">Peso del Lodo para Matar</string>
+    <string name="fnl_prcr">Presion Circulacion (psi)</string>
+    <string name="fnl_psld">Peso del Lodo para Matar (ppg)</string>
+    <string name="fnl_esfa">Estroques Fondo Arriba (stk)</string>
+    <string name="fnl_esbr">Estroques Hasta Broca (stk)</string>
+    <string name="fnl_crmp">Circulacion para Matar el Pozo (bbl)</string>
+    <string name="fnl_prfr">Presion de Fractura (psi)</string>
+    <string name="fnl_prpr">Presion de Poros (psi)</string>
 
 
 
 
-    <string name="comps_lon">Longitud</string>
-    <string name="comps_lon_sarta">Longitud de Sarta</string>
-    <string name="comps_lon_anulr">Longitud Anular</string>
-    <string name="comps_od">Diametro Externo (OD)</string>
-    <string name="comps_id">Diametro Interno (ID)</string>
-    <string name="comps_cap">Capacidad</string>
-    <string name="comps_vol">Volumen</string>
-    <string name="comps_vol_intrn">Volumen Interno</string>
-    <string name="comps_vol_anulr">Volumen Anular</string>
+
+
+    <string name="comps_lon">Longitud (ft)</string>
+    <string name="comps_lon_sarta">Longitud de Sarta (ft)</string>
+    <string name="comps_lon_anulr">Longitud Anular (ft)</string>
+    <string name="comps_od">Diametro Externo - OD (in)</string>
+    <string name="comps_id">Diametro Interno - ID (in)</string>
+    <string name="comps_cap">Capacidad (bbl/ft)</string>
+    <string name="comps_vol">Volumen (bbl)</string>
+    <string name="comps_vol_intrn">Volumen Interno (bbl)</string>
+    <string name="comps_vol_anulr">Volumen Anular (bbl)</string>
 
 
 

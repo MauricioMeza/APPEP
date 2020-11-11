@@ -4,12 +4,11 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.example.appep.R;
 
@@ -30,6 +29,7 @@ public class AddPozoFragment4 extends Fragment {
     private String mParam2;
 
     private EditText prsCrrTbo, prsCrrRev, gncSpr, prsRedBmb, dspBmb, psoOrgLdo, prfVrtVrd, prfTtlMed;
+    private TextView estrFndArrba, estrHstBrca, circPrMtrPozo;
 
 
     public AddPozoFragment4() {
@@ -79,6 +79,10 @@ public class AddPozoFragment4 extends Fragment {
         psoOrgLdo = v.findViewById(R.id.editTextPsoOrgLdo);
         prfVrtVrd = v.findViewById(R.id.editTextPrfVrtVrd);
         prfTtlMed = v.findViewById(R.id.editTextPrfTtlMdi);
+
+        estrFndArrba = v.findViewById(R.id.textViewEs);
+        estrHstBrca = v.findViewById(R.id.textViewEsB);
+        circPrMtrPozo = v.findViewById(R.id.textViewMtrPzo);
 
         return  v;
     }

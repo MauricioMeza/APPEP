@@ -12,6 +12,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
 import com.example.appep.R;
@@ -31,6 +32,7 @@ public class AddPozoFragment1 extends Fragment {
 
     //UI Declarations
     private CheckBox rev1, rev2, dp1, dp2, hwdp, dc,broc, estb;
+    private RadioButton vert, hztl;
     private ImageView imgAn1, imgAn2, imgIntD, imgIntB, imgIntC1, imgIntC2;
     private EditText nameText, descText;
     private TextView textTitle;
@@ -85,6 +87,8 @@ public class AddPozoFragment1 extends Fragment {
         textTitle = vista.findViewById(R.id.textTitleAdd);
         nameText = vista.findViewById(R.id.editTextToDoName);
         descText = vista.findViewById(R.id.editTextToDoDesc);
+        vert = vista.findViewById(R.id.radioButtonVert);
+        hztl = vista.findViewById(R.id.radioButtonHztl);
 
         dp1 = vista.findViewById(R.id.checkBoxDP1);
         dp2 = vista.findViewById(R.id.checkBoxDP2);

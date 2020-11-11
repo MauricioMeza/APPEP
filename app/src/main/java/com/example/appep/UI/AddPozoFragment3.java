@@ -82,7 +82,7 @@ public class AddPozoFragment3 extends Fragment {
         View view = inflater.inflate(R.layout.fragment_add_pozo3, container, false);
         volAnl = view.findViewById(R.id.textNumVolAnlr);
         longAnl = view.findViewById(R.id.textNumLongAnlr);
-        
+
         volAnl.setText(String.valueOf(eventoAnular.getVolAnular()));
         longAnl.setText(String.valueOf(eventoAnular.getLongAnular()));
 

@@ -72,6 +72,37 @@
                 android:importantForAutofill="no"
                 android:inputType="textMultiLine" />
 
+            <TextView
+                android:id="@+id/textViewTpoPzo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/todo_tppz" />
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="8dp"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/radioButtonVert"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:checked="true"
+                    android:enabled="true"
+                    android:text="@string/todo_tpvr"
+                    android:textColor="?android:attr/textColorSecondary" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonHztl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/todo_tphz"
+                    android:textColor="?android:attr/textColorSecondary" />
+            </RadioGroup>
+
             <View
                 android:id="@+id/divider4"
                 android:layout_width="match_parent"
@@ -79,6 +110,15 @@
                 android:background="?android:attr/listDivider"
                 android:textAlignment="center"
                 android:textDirection="inherit" />
+
+            <TextView
+                android:id="@+id/textViewWarning1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:text="@string/temp_lrmipsm"
+                android:textAlignment="center"
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/textTitleAdd2"
