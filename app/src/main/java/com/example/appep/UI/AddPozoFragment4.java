@@ -28,7 +28,7 @@ public class AddPozoFragment4 extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    private EditText prsCrrTbo, prsCrrRev, gncSpr, prsRedBmb, dspBmb, psoOrgLdo, prfVrtVrd, prfTtlMed;
+    private EditText prsCrrTbo, prsCrrRev, gncSpr, prsRedBmb, dspBmb, psoOrgLdo, prfVrtVrd, prfTtlMed, prFr, prPr;
     private TextView estrFndArrba, estrHstBrca, circPrMtrPozo;
 
 
@@ -79,6 +79,9 @@ public class AddPozoFragment4 extends Fragment {
         psoOrgLdo = v.findViewById(R.id.editTextPsoOrgLdo);
         prfVrtVrd = v.findViewById(R.id.editTextPrfVrtVrd);
         prfTtlMed = v.findViewById(R.id.editTextPrfTtlMdi);
+
+        prFr = v.findViewById(R.id.editTextPrFr);
+        prPr = v.findViewById(R.id.editTextPrPr);
 
         estrFndArrba = v.findViewById(R.id.textViewEs);
         estrHstBrca = v.findViewById(R.id.textViewEsB);

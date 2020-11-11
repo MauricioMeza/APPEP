@@ -13,7 +13,9 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.appep.R;
 
@@ -32,11 +34,11 @@ public class AddPozoFragment1 extends Fragment {
 
     //UI Declarations
     private CheckBox rev1, rev2, dp1, dp2, hwdp, dc,broc, estb;
-    private RadioButton vert, hztl;
+    private RadioGroup type;
     private ImageView imgAn1, imgAn2, imgIntD, imgIntB, imgIntC1, imgIntC2;
     private EditText nameText, descText;
     private TextView textTitle;
-    private boolean componentSelected[];
+    private boolean componentSelected[], vertical;
 
 
     // TODO: Rename and change types of parameters
@@ -82,13 +84,13 @@ public class AddPozoFragment1 extends Fragment {
         // Inflate the layout for this fragment
         vista = inflater.inflate(R.layout.fragment_add_pozo1, container, false);
         componentSelected = new boolean[7];
+        vertical = true;
 
 
         textTitle = vista.findViewById(R.id.textTitleAdd);
         nameText = vista.findViewById(R.id.editTextToDoName);
         descText = vista.findViewById(R.id.editTextToDoDesc);
-        vert = vista.findViewById(R.id.radioButtonVert);
-        hztl = vista.findViewById(R.id.radioButtonHztl);
+        type = vista.findViewById(R.id.radioGroupType);
 
         dp1 = vista.findViewById(R.id.checkBoxDP1);
         dp2 = vista.findViewById(R.id.checkBoxDP2);
@@ -107,6 +109,7 @@ public class AddPozoFragment1 extends Fragment {
         imgIntB = vista.findViewById(R.id.imageViewIn3);
 
         configureSelectionGraphic();
+        configureTypeSelection();
 
         if(!AddPozoActivity.addNew){
             textTitle.setText(R.string.updateTitle);
@@ -118,6 +121,24 @@ public class AddPozoFragment1 extends Fragment {
 
         return vista;
 
+    }
+
+    //Change type propertie from radiobuttons
+    private void configureTypeSelection() {
+        type.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                switch (checkedId){
+                    case R.id.radioButtonVert:
+                        vertical = true;
+                        break;
+                    case R.id.radioButtonHztl:
+                        vertical = false;
+                        break;
+                }
+
+            }
+        });
     }
 
     //On each checkbox action change color of figure on the bottom
@@ -232,7 +253,7 @@ public class AddPozoFragment1 extends Fragment {
 
     //Get the information of the EditTexts in the pozo as a String Array
     public String[] getInfoPozo(){
-        String[] infoPozo = {nameText.getText().toString(), descText.getText().toString()};
+        String[] infoPozo = {nameText.getText().toString(), descText.getText().toString(), String.valueOf(type)};
         return infoPozo;
     }
 

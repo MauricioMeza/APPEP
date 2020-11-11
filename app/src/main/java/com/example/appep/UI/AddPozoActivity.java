@@ -89,7 +89,7 @@ public class AddPozoActivity extends AppCompatActivity{
                     case 1:
                         String[] infoPozo = fragment1.getInfoPozo();
                         Evento evento = new Evento(fragment1.getComponentSelected());
-                        pozo = new Pozo(infoPozo[0], infoPozo[1]);
+                        pozo = new Pozo(infoPozo[0], infoPozo[1], infoPozo[2]);
                         pozo.setNewEvento(evento);
                         transaction.replace(R.id.addFragmentContainer, fragment2).commit();
                         currentFragment++;
