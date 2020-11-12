@@ -16,6 +16,7 @@ import com.example.appep.Data.Model.EventoAnular;
 import com.example.appep.R;
 import com.example.appep.UI.RecyclerViewClasses.ComponenteAdapter;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 /**
@@ -39,6 +40,7 @@ public class AddPozoFragment3 extends Fragment {
     private RecyclerView anlComponentRecyclerView;
     private EventoAnular eventoAnular;
     private ArrayList<Componente> comps;
+    private static DecimalFormat df = new DecimalFormat("#.#####");
 
     public AddPozoFragment3() {
         // Required empty public constructor
@@ -83,8 +85,8 @@ public class AddPozoFragment3 extends Fragment {
         volAnl = view.findViewById(R.id.textNumVolAnlr);
         longAnl = view.findViewById(R.id.textNumLongAnlr);
 
-        volAnl.setText(String.valueOf(eventoAnular.getVolAnular()));
-        longAnl.setText(String.valueOf(eventoAnular.getLongAnular()));
+        volAnl.setText(df.format(eventoAnular.getVolAnular()));
+        longAnl.setText(df.format(eventoAnular.getLongAnular()));
 
 
         anlComponentRecyclerView = view.findViewById(R.id.recyclerViewCompAnlr);
@@ -106,8 +108,8 @@ public class AddPozoFragment3 extends Fragment {
             longTotal += comp.getLongitud();
             volTotal += comp.getVolumen();
         }
-        volAnl.setText(String.valueOf(volTotal));
-        longAnl.setText(String.valueOf(longTotal));
+        volAnl.setText(df.format(volTotal));
+        longAnl.setText(df.format(longTotal));
     }
 
 }

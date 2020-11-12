@@ -24,7 +24,7 @@ public class Componente {
     }
 
     public double calcCapacidad(){
-        double capacidad = this.diamID + this.diamOD;
+        double capacidad = this.diamID * this.diamID / 1029.4;
         this.capacidad = capacidad;
         return capacidad;
     }

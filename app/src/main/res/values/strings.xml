@@ -55,6 +55,8 @@
     <string name="fnl_prfr">Presion de Fractura (psi)</string>
     <string name="fnl_prpr">Presion de Poros (psi)</string>
 
+    <string name="num_frm">#.#####</string>
+
 
 
 

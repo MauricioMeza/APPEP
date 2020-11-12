@@ -16,12 +16,15 @@ import com.example.appep.R;
 import com.example.appep.UI.AddPozoActivity;
 import com.example.appep.UI.AddPozoFragment2;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class ComponenteAdapter extends RecyclerView.Adapter<ComponenteViewHolder> {
 
     private Context context;
     private  ArrayList<Componente> componentes;
+    private static DecimalFormat df = new DecimalFormat("#.#####");
+
 
     public ComponenteAdapter(Context context, ArrayList<Componente> componentes){
         this.context = context;
@@ -54,8 +57,8 @@ public class ComponenteAdapter extends RecyclerView.Adapter<ComponenteViewHolder
         }
 
 
-        holder.compResVol.setText(String.valueOf(componente.getVolumen()));
-        holder.compResCap.setText(String.valueOf(componente.getCapacidad()));
+        holder.compResVol.setText(df.format(componente.getVolumen()));
+        holder.compResCap.setText(df.format(componente.getCapacidad()));
 
 
         //set listener on text change for all editText listeners
@@ -132,8 +135,8 @@ public class ComponenteAdapter extends RecyclerView.Adapter<ComponenteViewHolder
         double cap = componentes.get(position).calcCapacidad();
         double vol = componentes.get(position).calcVolumen();
 
-        holder.compResCap.setText(String.valueOf(cap));
-        holder.compResVol.setText(String.valueOf(vol));
+        holder.compResCap.setText(df.format(cap));
+        holder.compResVol.setText(df.format(vol));
 
         if(context instanceof AddPozoActivity){
             int fragment = ((AddPozoActivity) context).getCurrentFragment();
