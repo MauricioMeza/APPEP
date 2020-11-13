@@ -71,15 +71,14 @@ public class ComponenteAdapter extends RecyclerView.Adapter<ComponenteViewHolder
             @Override
             public void afterTextChanged(Editable s) {
                 String num = s.toString();
+                double longitud = 0;
                 if(num.matches("[+-]?([0-9]*[.])?[0-9]+")){
-                    double longitud = Double.parseDouble(num);
-                    componentes.get(position).setLongitud(longitud);
-                    componentCalculations(holder, position);
+                    longitud = Double.parseDouble(num);
                 }else if(num.isEmpty()){
-                    double longitud = 0;
-                    componentes.get(position).setLongitud(longitud);
-                    componentCalculations(holder, position);
+                    longitud = 0;
                 }
+                componentes.get(position).setLongitud(longitud);
+                componentCalculations(holder, position);
             }
         });
         holder.compEditID.addTextChangedListener(new TextWatcher() {
@@ -91,15 +90,14 @@ public class ComponenteAdapter extends RecyclerView.Adapter<ComponenteViewHolder
             @Override
             public void afterTextChanged(Editable s) {
                 String num = s.toString();
+                double id = 0;
                 if(num.matches("[+-]?([0-9]*[.])?[0-9]+")){
-                    double id = Double.parseDouble(num);
-                    componentes.get(position).setDiamID(id);
-                    componentCalculations(holder, position);
+                    id = Double.parseDouble(num);
                 }else if(num.isEmpty()){
-                    double id = 0;
-                    componentes.get(position).setDiamID(id);
-                    componentCalculations(holder, position);
+                    id = 0;
                 }
+                componentes.get(position).setDiamID(id);
+                componentCalculations(holder, position);
             }
         });
         holder.compEditOD.addTextChangedListener(new TextWatcher() {
@@ -111,16 +109,14 @@ public class ComponenteAdapter extends RecyclerView.Adapter<ComponenteViewHolder
             @Override
             public void afterTextChanged(Editable s) {
                 String num = s.toString();
+                double od = 0;
                 if(num.matches("[+-]?([0-9]*[.])?[0-9]+")){
-                    double od = Double.parseDouble(num);
-                    componentes.get(position).setDiamOD(od);
-                    componentCalculations(holder, position);
-
+                    od = Double.parseDouble(num);
                 }else if(num.isEmpty()){
-                    double od = 0;
-                    componentes.get(position).setDiamOD(od);
-                    componentCalculations(holder, position);
+                    od = 0;
                 }
+                componentes.get(position).setDiamOD(od);
+                componentCalculations(holder, position);
             }
         });
     }

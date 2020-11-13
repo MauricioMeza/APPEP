@@ -58,4 +58,7 @@ public class Evento {
 
     public EventoAmago getEventoAmago() { return eventoAmago; }
     public void setEventoAmago(EventoAmago eventoAmago) { this.eventoAmago = eventoAmago; }
+
+    public double getPesoLodo() { return pesoLodo; }
+    public void setPesoLodo(double pesoLodo) { this.pesoLodo = pesoLodo; }
 }

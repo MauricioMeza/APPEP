@@ -9,10 +9,14 @@ public class EventoAmago {
 
     public EventoAmago(Evento evento) { this.evento = evento; }
 
+    public double calcPesoLodoPaMatar(){
+        double res = this.pesoOrglLodo + this.profVertical + this.presCierreTubo;
+        this.evento.setPesoLodo(res);
+        return res;
+    }
+
     public Evento getEvento() { return evento; }
     public void setEvento(Evento evento) { this.evento = evento; }
-
-
 
     public double getPesoOrglLodo() { return pesoOrglLodo; }
     public void setPesoOrglLodo(double pesoOrglLodo) { this.pesoOrglLodo = pesoOrglLodo; }

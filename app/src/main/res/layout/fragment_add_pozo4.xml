@@ -624,7 +624,7 @@
                     android:textSize="18sp" />
 
                 <TextView
-                    android:id="@+id/textView3"
+                    android:id="@+id/textViewPesoLodoAprx"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -633,7 +633,7 @@
                     android:textSize="18sp" />
 
                 <TextView
-                    android:id="@+id/textView4"
+                    android:id="@+id/textViewPesoLodoTotal"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"

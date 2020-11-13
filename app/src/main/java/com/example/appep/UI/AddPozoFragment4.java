@@ -4,13 +4,18 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.appep.Data.Model.EventoAmago;
 import com.example.appep.R;
+
+import java.text.DecimalFormat;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -28,8 +33,11 @@ public class AddPozoFragment4 extends Fragment {
     private String mParam1;
     private String mParam2;
 
+    private EventoAmago eventoAmago;
     private EditText prsCrrTbo, prsCrrRev, gncSpr, prsRedBmb, dspBmb, psoOrgLdo, prfVrtVrd, prfTtlMed, prFr, prPr;
-    private TextView estrFndArrba, estrHstBrca, circPrMtrPozo;
+    private TextView estrFndArrba, estrHstBrca, circPrMtrPozo, pesoLodoAprox, pesoLodoTotal;
+    private static DecimalFormat df = new DecimalFormat("#.#####");
+
 
 
     public AddPozoFragment4() {
@@ -66,6 +74,9 @@ public class AddPozoFragment4 extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        eventoAmago = AddPozoActivity.pozo.getEventos().get(0).getEventoAmago();
+
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_add_pozo4, container, false);
 
@@ -87,7 +98,84 @@ public class AddPozoFragment4 extends Fragment {
         estrHstBrca = v.findViewById(R.id.textViewEsB);
         circPrMtrPozo = v.findViewById(R.id.textViewMtrPzo);
 
+        pesoLodoAprox = v.findViewById(R.id.textViewPesoLodoAprx);
+        pesoLodoTotal = v.findViewById(R.id.textViewPesoLodoTotal);
+
+        configurePesoLodoEdits();
+
         return  v;
+    }
+
+    private void configurePesoLodoEdits() {
+        psoOrgLdo.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) { }
+
+            @Override public void afterTextChanged(Editable s) {
+                String num = s.toString();
+                double psoOrg = 0;
+                if(num.matches("[+-]?([0-9]*[.])?[0-9]+")){
+                    psoOrg = Double.parseDouble(num);
+                }else if(num.isEmpty()){
+                    psoOrg = 0;
+                }
+                eventoAmago.setPesoOrglLodo(psoOrg);
+                pesoLodoCalculations();
+            }
+        });
+
+        prfVrtVrd.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) { }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                String num = s.toString();
+                double profVrt = 0;
+                if(num.matches("[+-]?([0-9]*[.])?[0-9]+")){
+                    profVrt = Double.parseDouble(num);
+                }else if(num.isEmpty()){
+                    profVrt = 0;
+                }
+                eventoAmago.setProfVertical(profVrt);
+                pesoLodoCalculations();
+            }
+        });
+
+        prsCrrTbo.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) { }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                String num = s.toString();
+                double psoCrr = 0;
+                if(num.matches("[+-]?([0-9]*[.])?[0-9]+")){
+                    psoCrr = Double.parseDouble(num);
+                }else if(num.isEmpty()){
+                    psoCrr = 0;
+                }
+                eventoAmago.setPresCierreTubo(psoCrr);
+                pesoLodoCalculations();
+            }
+        });
+
+
+    }
+
+    private void pesoLodoCalculations() {
+        double psoLodoT = eventoAmago.calcPesoLodoPaMatar();
+        int scale = (int) Math.pow(10, 1);
+        double psoLodoA = (double) Math.round(psoLodoT * scale) / scale;
+
+        pesoLodoAprox.setText(String.valueOf(psoLodoA));
+        pesoLodoTotal.setText("(" + df.format(psoLodoT) + ")");
     }
 
 }
