@@ -77,4 +77,44 @@ public class EventoAnular {
             }
         }
     }
+
+    //Validate no Ceros, Negatives, ID>OD, blanks and equal long returning error String if found
+    public String anularEventValidation(){
+        ArrayList<Componente> comps = this.getComponentesAnular();
+        String componente = "";
+        String error = "OK";
+        boolean errorChecker = false;
+
+        for (Componente comp : comps) {
+            if(comp.getLongitud() == 0 || comp.getDiamID() == 0 || comp.getDiamOD() == 0){
+                componente = comp.getType();
+                error = "Valor no puede ser vacio o cero en ";
+                errorChecker = true;
+                break;
+            }
+            if(comp.getLongitud() < 0 || comp.getDiamID() < 0 || comp.getDiamOD() < 0){
+                componente = comp.getType();
+                error = "Valor no puede ser negativo en ";
+                errorChecker = true;
+                break;
+            }
+            if(comp.getDiamOD() < comp.getDiamID()){
+                componente = comp.getType();
+                error = "ID no puede ser mayor que OD en ";
+                errorChecker = true;
+                break;
+            }
+        }
+        if(this.longAnular != this.evento.getEventoInterno().getLongSarta()){
+            componente = "";
+            error = "Las longitudes deben ser iguales";
+            errorChecker = true;
+        }
+
+        if(errorChecker){
+            return error + componente;
+        }else{
+            return "OK";
+        }
+    }
 }

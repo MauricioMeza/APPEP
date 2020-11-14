@@ -117,6 +117,7 @@ public class EventoInterno {
         }
     }
 
+    //Validate no Ceros, Negatives, ID>OD and blanks returning error String if found
     public String internalEventValidation(){
         ArrayList<Componente> comps = this.getComponentesInterno();
         String componente = "";

@@ -106,14 +106,19 @@ public class AddPozoActivity extends AppCompatActivity{
                         }else{
                             Toast.makeText(getApplicationContext(), val, Toast.LENGTH_LONG).show();
                         }
-
                         break;
                     case 3:
-                        transaction.replace(R.id.addFragmentContainer, fragment4).commit();
                         ArrayList<Componente> anularComponents = fragment3.getComponentList();
                         pozo.getEventos().get(0).getEventoAnular().fillComponentesAnular(anularComponents);
-                        buttonNxt.setText(R.string.out);
-                        currentFragment++;
+                        String valA = pozo.getEventos().get(0).getEventoAnular().anularEventValidation();
+
+                        if(valA.equals("OK")){
+                            transaction.replace(R.id.addFragmentContainer, fragment4).commit();
+                            buttonNxt.setText(R.string.out);
+                            currentFragment++;
+                        }else{
+                            Toast.makeText(getApplicationContext(), valA, Toast.LENGTH_LONG).show();
+                        }
                         break;
                     case 4:
                         if(addNew){
