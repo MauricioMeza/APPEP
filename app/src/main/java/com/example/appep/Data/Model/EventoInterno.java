@@ -7,7 +7,8 @@ public class EventoInterno {
     private String id;
     private Evento evento;
     private double volInterno, longSarta;
-    private Componente drillPipe1, drillPipe2, hwdp, drillColar, broca, estabilizador;
+    private Componente drillPipe1, drillPipe2, drillPipe3, hwdp,
+                        drillCollar, drillCollar2, broca, estabilizador;
 
     public EventoInterno(Evento evento){
         this.evento = evento;
@@ -30,11 +31,17 @@ public class EventoInterno {
     public Componente getDrillPipe2() { return drillPipe2; }
     public void setDrillPipe2(Componente drillPipe2) { this.drillPipe2 = drillPipe2; }
 
+    public Componente getDrillPipe3() { return drillPipe3; }
+    public void setDrillPipe3(Componente drillPipe3) { this.drillPipe3 = drillPipe3; }
+
     public Componente getHwdp() { return hwdp; }
     public void setHwdp(Componente hwdp) { this.hwdp = hwdp; }
 
-    public Componente getDrillColar() { return drillColar; }
-    public void setDrillColar(Componente drillColar) { this.drillColar = drillColar; }
+    public Componente getDrillCollar() { return drillCollar; }
+    public void setDrillCollar(Componente drillCollar) { this.drillCollar = drillCollar; }
+
+    public Componente getDrillCollar2() { return drillCollar2; }
+    public void setDrillCollar2(Componente drillCollar2) { this.drillCollar2 = drillCollar2; }
 
     public Componente getBroca() { return broca; }
     public void setBroca(Componente broca) { this.broca = broca; }
@@ -52,19 +59,23 @@ public class EventoInterno {
         if(this.drillPipe2 != null){
             componentes.add(drillPipe2);
         }
+        if(this.drillPipe3 != null){
+            componentes.add(drillPipe3);
+        }
         if(this.hwdp != null){
             componentes.add(hwdp);
         }
-        if(this.drillColar != null){
-            componentes.add(drillColar);
+        if(this.drillCollar != null){
+            componentes.add(drillCollar);
+        }
+        if(this.drillCollar2 != null){
+            componentes.add(drillCollar2);
         }
         if(this.estabilizador != null){
             componentes.add(estabilizador);
         }
 
         componentes.add(this.broca);
-
-
 
         return componentes;
     }
@@ -85,7 +96,10 @@ public class EventoInterno {
                     this.estabilizador = comp;
                     break;
                 case "Drill Colar":
-                    this.drillColar = comp;
+                    this.drillCollar = comp;
+                    break;
+                case "Drill Colar 2":
+                    this.drillCollar2 = comp;
                     break;
                 case "HeavyWeight Drill Pipe":
                     this.hwdp = comp;
@@ -95,6 +109,9 @@ public class EventoInterno {
                     break;
                 case "Drill Pipe 2":
                     this.drillPipe2 = comp;
+                    break;
+                case "Drill Pipe 3":
+                    this.drillPipe3 = comp;
                     break;
             }
         }

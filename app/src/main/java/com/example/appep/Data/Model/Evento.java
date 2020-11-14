@@ -2,7 +2,6 @@ package com.example.appep.Data.Model;
 
 import com.example.appep.R;
 
-import java.util.ArrayList;
 import java.util.Date;
 
 public class Evento {
@@ -31,18 +30,27 @@ public class Evento {
             this.eventoAnular.setRevestimiento2(new Componente(R.drawable.f_rev2 ,"Resvestimiento 2", this));
         }
         if(arregloComponentes[2]){
-            this.eventoInterno.setDrillPipe1(new Componente(R.drawable.f_dp1, "Drill Pipe 1", this));
+            this.eventoAnular.setRevestimiento3(new Componente(R.drawable.f_rev3 ,"Resvestimiento 3", this));
         }
         if(arregloComponentes[3]){
-            this.eventoInterno.setDrillPipe2(new Componente(R.drawable.f_dp2, "Drill Pipe 2", this));
+            this.eventoInterno.setDrillPipe1(new Componente(R.drawable.f_dp1, "Drill Pipe 1", this));
         }
         if(arregloComponentes[4]){
-            this.eventoInterno.setHwdp(new Componente(R.drawable.f_hwdc, "HeavyWeight Drill Pipe", this));
+            this.eventoInterno.setDrillPipe2(new Componente(R.drawable.f_dp2, "Drill Pipe 2", this));
         }
         if(arregloComponentes[5]){
-            this.eventoInterno.setDrillColar(new Componente(R.drawable.f_drillcollar, "Drill Colar",this));
+            this.eventoInterno.setDrillPipe3(new Componente(R.drawable.f_dp3, "Drill Pipe 3", this));
         }
         if(arregloComponentes[6]){
+            this.eventoInterno.setHwdp(new Componente(R.drawable.f_hwdc, "HeavyWeight Drill Pipe", this));
+        }
+        if(arregloComponentes[7]){
+            this.eventoInterno.setDrillCollar(new Componente(R.drawable.f_drillcollar, "Drill Colar",this));
+        }
+        if(arregloComponentes[8]){
+            this.eventoInterno.setDrillCollar2(new Componente(R.drawable.f_drillcollar2, "Drill Colar 2",this));
+        }
+        if(arregloComponentes[9]){
             this.eventoInterno.setEstabilizador(new Componente(R.drawable.f_estabilizador, "Estabilizador", this));
         }
     }

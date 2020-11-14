@@ -7,7 +7,7 @@ public class EventoAnular {
     private String id;
     private Evento evento;
     private double volAnular, longAnular;
-    private Componente revestimiento1, revestimiento2, hueco;
+    private Componente revestimiento1, revestimiento2, revestimiento3, hueco;
 
     public EventoAnular(Evento evento){ this.evento = evento; }
 
@@ -28,6 +28,9 @@ public class EventoAnular {
     public Componente getRevestimiento2() { return revestimiento2; }
     public void setRevestimiento2(Componente revestimiento2) { this.revestimiento2 = revestimiento2; }
 
+    public Componente getRevestimiento3() { return revestimiento3; }
+    public void setRevestimiento3(Componente revestimiento3) { this.revestimiento3 = revestimiento3; }
+
     public Componente getHueco() { return hueco; }
     public void setHueco(Componente hueco) { this.hueco = hueco; }
 
@@ -41,6 +44,10 @@ public class EventoAnular {
         if(this.revestimiento2 != null){
             componentes.add(revestimiento2);
         }
+        if(this.revestimiento3 != null){
+            componentes.add(revestimiento3);
+        }
+
 
         componentes.add(this.hueco);
 
@@ -63,6 +70,9 @@ public class EventoAnular {
                     break;
                 case "Revestimiento 2":
                     this.revestimiento2 = comp;
+                    break;
+                case "Revestimiento 3":
+                    this.revestimiento3 = comp;
                     break;
             }
         }

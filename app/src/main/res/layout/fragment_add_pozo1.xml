@@ -154,6 +154,15 @@
                     android:textSize="16sp" />
 
                 <CheckBox
+                    android:id="@+id/checkBoxRev3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    android:text="@string/comp_rev3"
+                    android:textColor="?android:attr/textColorSecondary"
+                    android:textSize="16sp" />
+
+                <CheckBox
                     android:id="@+id/checkBoxDP1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -172,6 +181,15 @@
                     android:textSize="16sp" />
 
                 <CheckBox
+                    android:id="@+id/checkBoxDP3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    android:text="@string/comp_dp3"
+                    android:textColor="?android:attr/textColorSecondary"
+                    android:textSize="16sp" />
+
+                <CheckBox
                     android:id="@+id/checkBoxHWDP"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -186,6 +204,15 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="4dp"
                     android:text="@string/comp_dc"
+                    android:textColor="?android:attr/textColorSecondary"
+                    android:textSize="16sp" />
+
+                <CheckBox
+                    android:id="@+id/checkBoxDC2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    android:text="@string/comp_dc2"
                     android:textColor="?android:attr/textColorSecondary"
                     android:textSize="16sp" />
 

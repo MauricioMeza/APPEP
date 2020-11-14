@@ -106,6 +106,7 @@ public class AddPozoFragment4 extends Fragment {
         return  v;
     }
 
+    //Configure the EditTexts that calculate PesoDLodoPaMatar
     private void configurePesoLodoEdits() {
         psoOrgLdo.addTextChangedListener(new TextWatcher() {
             @Override
@@ -168,7 +169,7 @@ public class AddPozoFragment4 extends Fragment {
 
 
     }
-
+    //Calculation of aproximate and full version of PesoDLodoPaMatar
     private void pesoLodoCalculations() {
         double psoLodoT = eventoAmago.calcPesoLodoPaMatar();
         int scale = (int) Math.pow(10, 1);

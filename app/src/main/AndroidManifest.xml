@@ -10,11 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".UI.ViewPozoActivity"></activity>
-        <activity android:name=".UI.AddPozoActivity" />
+        <activity android:name=".UI.AddPozoActivity" android:screenOrientation="portrait" />
         <activity android:name=".UI.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

@@ -30,12 +30,15 @@
 
     <string name="comp_dp1">Drill Pipe 1</string>
     <string name="comp_dp2">Drill Pipe 2</string>
+    <string name="comp_dp3">Drill Pipe 3</string>
     <string name="comp_dc">Drill Collar</string>
+    <string name="comp_dc2">Drill Collar 2</string>
     <string name="comp_hwdp">HeavyWeight Drill Pipe</string>
     <string name="comp_broca">Broca</string>
     <string name="comp_estab">Estabilizador</string>
     <string name="comp_rev1">Revestimiento 1</string>
     <string name="comp_rev2">Revestimiento 2</string>
+    <string name="comp_rev3">Revestimiento 3</string>
 
     <string name="fnl_pol">Peso Original del Lodo (ppg)</string>
     <string name="fnl_pvv">Profundidad Vertical Verdadera (ft)</string>
