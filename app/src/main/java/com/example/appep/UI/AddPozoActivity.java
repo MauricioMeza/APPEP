@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import android.app.Fragment;
+import android.widget.Toast;
 
 import com.example.appep.Data.Local.DBSQLiteHelper;
 import com.example.appep.Data.Local.DBUtilities;
@@ -95,10 +96,17 @@ public class AddPozoActivity extends AppCompatActivity{
                         currentFragment++;
                         break;
                     case 2:
-                        transaction.replace(R.id.addFragmentContainer, fragment3).commit();
                         ArrayList<Componente> internalComponents = fragment2.getComponentList();
                         pozo.getEventos().get(0).getEventoInterno().fillComponentesInterno(internalComponents);
-                        currentFragment++;
+                        String val = pozo.getEventos().get(0).getEventoInterno().internalEventValidation();
+
+                        if(val.equals("OK")){
+                            transaction.replace(R.id.addFragmentContainer, fragment3).commit();
+                            currentFragment++;
+                        }else{
+                            Toast.makeText(getApplicationContext(), val, Toast.LENGTH_LONG).show();
+                        }
+
                         break;
                     case 3:
                         transaction.replace(R.id.addFragmentContainer, fragment4).commit();
