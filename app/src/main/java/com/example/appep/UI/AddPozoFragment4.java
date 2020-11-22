@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.example.appep.Data.Model.EventoAmago;
 import com.example.appep.R;
 
+import java.math.RoundingMode;
 import java.text.DecimalFormat;
 
 /**
@@ -36,7 +37,12 @@ public class AddPozoFragment4 extends Fragment {
     private EventoAmago eventoAmago;
     private EditText prsCrrTbo, prsCrrRev, gncSpr, prsRedBmb, dspBmb, psoOrgLdo, prfVrtVrd, prfTtlMed, prFr, prPr;
     private TextView estrFndArrba, estrHstBrca, circPrMtrPozo, pesoLodoAprox, pesoLodoTotal;
+    private int[][] names = {{R.id.textViewEst1,R.id.textViewPrs1},{R.id.textViewEst2,R.id.textViewPrs2},{R.id.textViewEst3,R.id.textViewPrs3},{R.id.textViewEst4,R.id.textViewPrs4},{R.id.textViewEst5,R.id.textViewPrs5},
+                             {R.id.textViewEst6,R.id.textViewPrs6},{R.id.textViewEst7,R.id.textViewPrs7},{R.id.textViewEst8,R.id.textViewPrs8},{R.id.textViewEst9,R.id.textViewPrs9},{R.id.textViewEst10,R.id.textViewPrs10},{R.id.textViewEst11,R.id.textViewPrs11}};
+    private TextView[][] estroques = new TextView[11][2];
     private static DecimalFormat df = new DecimalFormat("#.#####");
+    private static DecimalFormat af = new DecimalFormat("#.#");
+
 
 
 
@@ -94,20 +100,25 @@ public class AddPozoFragment4 extends Fragment {
         prFr = v.findViewById(R.id.editTextPrFr);
         prPr = v.findViewById(R.id.editTextPrPr);
 
-        estrFndArrba = v.findViewById(R.id.textViewEs);
-        estrHstBrca = v.findViewById(R.id.textViewEsB);
+        estrFndArrba = v.findViewById(R.id.textViewEsFa);
+        estrHstBrca = v.findViewById(R.id.textViewEsBr);
         circPrMtrPozo = v.findViewById(R.id.textViewMtrPzo);
 
         pesoLodoAprox = v.findViewById(R.id.textViewPesoLodoAprx);
         pesoLodoTotal = v.findViewById(R.id.textViewPesoLodoTotal);
 
-        configurePesoLodoEdits();
+        for(int i=0; i<names.length; i++){
+            estroques[i][0] = v.findViewById(names[i][0]);
+            estroques[i][1] = v.findViewById(names[i][1]);
+        }
+
+        configureEdits();
 
         return  v;
     }
 
     //Configure the EditTexts that calculate PesoDLodoPaMatar
-    private void configurePesoLodoEdits() {
+    private void configureEdits() {
         psoOrgLdo.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
@@ -139,11 +150,11 @@ public class AddPozoFragment4 extends Fragment {
                 double profVrt = 0;
                 if(num.matches("[+-]?([0-9]*[.])?[0-9]+")){
                     profVrt = Double.parseDouble(num);
+                    eventoAmago.setProfVertical(profVrt);
+                    pesoLodoCalculations();
                 }else if(num.isEmpty()){
                     profVrt = 0;
                 }
-                eventoAmago.setProfVertical(profVrt);
-                pesoLodoCalculations();
             }
         });
 
@@ -164,19 +175,83 @@ public class AddPozoFragment4 extends Fragment {
                 }
                 eventoAmago.setPresCierreTubo(psoCrr);
                 pesoLodoCalculations();
+                programaMatrixCalculations();
             }
         });
 
+        dspBmb.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {  }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {  }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                String num = s.toString();
+                double dsplBm = 0;
+                if(num.matches("[+-]?([0-9]*[.])?[0-9]+")){
+                    dsplBm = Double.parseDouble(num);
+                }else if(num.isEmpty()){
+                    dsplBm = 0;
+                }
+                eventoAmago.setDesplBomba(dsplBm);
+                estroquesHastaCalculations();
+            }
+        });
+
+        prsRedBmb.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {  }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {  }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                String num = s.toString();
+                double prsBmb = 0;
+                if(num.matches("[+-]?([0-9]*[.])?[0-9]+")){
+                    prsBmb = Double.parseDouble(num);
+                }else if(num.isEmpty()){
+                    prsBmb = 0;
+                }
+                eventoAmago.setPresReducidaBomba(prsBmb);
+                programaMatrixCalculations();
+            }
+        });
 
     }
+
+    //Calculations of programa matrix
+    private void programaMatrixCalculations() {
+        double[][] matrix = eventoAmago.calcPrgrmCircMtrix();
+
+        for(int i=0; i<matrix.length; i++) {
+            estroques[i][0].setText(df.format(matrix[i][0]));
+            estroques[i][1].setText(df.format(matrix[i][1]));
+        }
+    }
+
+    //Calculations of EstroquesHastaBroca/FondoArriba and CirculacionTotal
+    private void estroquesHastaCalculations() {
+        double hstaBroca = eventoAmago.calcEstroquesABroca();
+        double fndoArrba = eventoAmago.calcEstroquesFndArriba();
+        double circlTotl = eventoAmago.calcCircTotalPaMatarPozo();
+
+        estrHstBrca.setText(df.format(hstaBroca));
+        estrFndArrba.setText(df.format(fndoArrba));
+        circPrMtrPozo.setText(df.format(circlTotl));
+    }
+
     //Calculation of aproximate and full version of PesoDLodoPaMatar
     private void pesoLodoCalculations() {
         double psoLodoT = eventoAmago.calcPesoLodoPaMatar();
-        int scale = (int) Math.pow(10, 1);
-        double psoLodoA = (double) Math.round(psoLodoT * scale) / scale;
+        af.setRoundingMode(RoundingMode.CEILING);
 
-        pesoLodoAprox.setText(String.valueOf(psoLodoA));
+        pesoLodoAprox.setText(af.format(psoLodoT));
         pesoLodoTotal.setText("(" + df.format(psoLodoT) + ")");
+        programaMatrixCalculations();
     }
+
+
 
 }

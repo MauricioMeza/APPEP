@@ -1,6 +1,7 @@
 package com.example.appep.Data.Model;
 
 import android.graphics.drawable.Drawable;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -21,6 +22,48 @@ public class Componente {
         this.evento = evento;
         this.volumen = 0.0;
         this.capacidad = 0.0;
+        this.longitud = 0.0;
+    }
+
+    public ArrayList<Componente> calculosAnulares(ArrayList<Componente> anularComps){
+        ArrayList<Componente> internalComps = this.evento.getEventoInterno().getComponentesInterno();
+
+        int currentCompInternal = 0;
+        int currentCompAnular = 0;
+        double restoAn = 0.0;
+        double restoIn = 0.0;
+        int i = 0;
+
+        while(currentCompAnular < anularComps.size() && currentCompInternal < internalComps.size()){
+            if(restoAn == 0.0){
+                anularComps.get(currentCompAnular).setVolumen(0.0);
+            }
+            double actualInterno =  internalComps.get(currentCompInternal).getLongitud() - restoIn;
+            double actualAnular = anularComps.get(currentCompAnular).getLongitud() - restoAn;
+            double diferencia = actualAnular-actualInterno;
+
+            double cap = (Math.pow(anularComps.get(currentCompAnular).getDiamID(), 2)  - Math.pow(internalComps.get(currentCompInternal).getDiamOD(), 2)) / 1029.4;
+            anularComps.get(currentCompAnular).setCapacidad(cap);
+
+            if( diferencia < 0){
+                anularComps.get(currentCompAnular).addVolumen(actualAnular);
+                restoIn += actualAnular;
+                restoAn = 0.0;
+                currentCompAnular++;
+            }else if(diferencia == 0){
+                anularComps.get(currentCompAnular).addVolumen(actualAnular);
+                restoAn = 0.0;
+                restoIn = 0.0;
+                currentCompAnular++;
+                currentCompInternal++;
+            }else if(diferencia > 0){
+                anularComps.get(currentCompAnular).addVolumen(actualInterno);
+                restoAn += actualInterno;
+                restoIn = 0.0;
+                currentCompInternal++;
+            }
+        }
+        return anularComps;
     }
 
     public double calcCapacidad(){
@@ -30,6 +73,11 @@ public class Componente {
     }
     public double calcVolumen(){
         double volumen = this.capacidad * this.longitud;
+        this.volumen = volumen;
+        return volumen;
+    }
+    public double addVolumen(double currentLongitud){
+        double volumen = this.volumen + (this.capacidad * currentLongitud);
         this.volumen = volumen;
         return volumen;
     }

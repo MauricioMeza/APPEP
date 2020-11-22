@@ -588,7 +588,7 @@
                                 android:textAlignment="center" />
 
                             <TextView
-                                android:id="@+id/textViewPres11"
+                                android:id="@+id/textViewPrs11"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"

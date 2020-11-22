@@ -45,7 +45,7 @@
     <string name="fnl_ptm">Profundidad Total Medida (ft)</string>
     <string name="fnl_prb">Presion Reducida de Bomba (psi)</string>
     <string name="fnl_dsb">Desplazamiento de Bomba (bbl/str)</string>
-    <string name="fnl_pctp">Presion Cierre Tubo Perforacion (psi)</string>
+    <string name="fnl_pctp">Presion Cierre Tuberia de Perforacion (psi)</string>
     <string name="fnl_pcrv">Presion Cierre Revestimiento (psi)</string>
     <string name="fnl_gnsp">Ganancia en Superficie (bbl)</string>
     <string name="fnl_ppcr">Programa de Presion de Circulacion</string>
@@ -56,7 +56,7 @@
     <string name="fnl_esbr">Estroques Hasta Broca (stk)</string>
     <string name="fnl_crmp">Circulacion para Matar el Pozo (bbl)</string>
     <string name="fnl_prfr">Presion de Fractura (psi)</string>
-    <string name="fnl_prpr">Presion de Poros (psi)</string>
+    <string name="fnl_prpr">Presion de Poro (psi)</string>
 
     <string name="num_frm">#.#####</string>
 

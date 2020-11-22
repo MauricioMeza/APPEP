@@ -56,6 +56,10 @@ public class ComponenteAdapter extends RecyclerView.Adapter<ComponenteViewHolder
             holder.compEditID.setText(String.valueOf(componente.getDiamID()));
         }
 
+        //Anular components will not have External components
+        if(AddPozoActivity.currentFragment == 3){
+            holder.compEditOD.setEnabled(false);
+        }
 
         holder.compResVol.setText(df.format(componente.getVolumen()));
         holder.compResCap.setText(df.format(componente.getCapacidad()));
@@ -128,19 +132,29 @@ public class ComponenteAdapter extends RecyclerView.Adapter<ComponenteViewHolder
 
     //Calculate Capacity and Volume from the info of the Componente and show it in the textViews of each componente
     public void componentCalculations(ComponenteViewHolder holder, int position){
-        double cap = componentes.get(position).calcCapacidad();
-        double vol = componentes.get(position).calcVolumen();
-
-        holder.compResCap.setText(df.format(cap));
-        holder.compResVol.setText(df.format(vol));
+        double cap;
+        double vol;
 
         if(context instanceof AddPozoActivity){
             int fragment = ((AddPozoActivity) context).getCurrentFragment();
             switch (fragment){
                 case 2:
+                    cap = componentes.get(position).calcCapacidad();
+                    vol = componentes.get(position).calcVolumen();
+
+                    holder.compResCap.setText(df.format(cap));
+                    holder.compResVol.setText(df.format(vol));
+
                     ((AddPozoActivity) context).fragment2.sumTotales();
                     break;
                 case 3:
+                    this.componentes = componentes.get(position).calculosAnulares(componentes);
+                    cap = componentes.get(position).getCapacidad();
+                    vol = componentes.get(position).getVolumen();
+
+                    holder.compResCap.setText(df.format(cap));
+                    holder.compResVol.setText(df.format(vol));
+
                     ((AddPozoActivity) context).fragment3.sumTotales();
                     break;
             }

@@ -9,6 +9,7 @@ public class Evento {
     private Date fechaCreacion;
     private double pesoLodo;
     private double tablaEstr[][];
+    private double volTotal, longTotal;
     private EventoInterno eventoInterno;
     private EventoAnular eventoAnular;
     private EventoAmago eventoAmago;
@@ -55,6 +56,14 @@ public class Evento {
         }
     }
 
+    //Clacuations for total long and total volume
+    public void calcsTotales(){
+        this.volTotal = this.eventoAnular.getVolAnular() + this.eventoInterno.getVolInterno();
+        if(this.eventoAnular.getLongAnular() == this.eventoInterno.getLongSarta()){
+            this.longTotal = this.eventoAnular.getLongAnular();
+        }
+    }
+
     public Date getFechaCreacion() { return fechaCreacion; }
     public void setFechaCreacion(Date fechaCreacion) { this.fechaCreacion = fechaCreacion; }
 
@@ -69,4 +78,13 @@ public class Evento {
 
     public double getPesoLodo() { return pesoLodo; }
     public void setPesoLodo(double pesoLodo) { this.pesoLodo = pesoLodo; }
+
+    public double[][] getTablaEstr() { return tablaEstr; }
+    public void setTablaEstr(double[][] tablaEstr) { this.tablaEstr = tablaEstr; }
+
+    public double getVolTotal() { return volTotal; }
+    public void setVolTotal(double volTotal) { this.volTotal = volTotal; }
+
+    public double getLongTotal() { return longTotal; }
+    public void setLongTotal(double longTotal) { this.longTotal = longTotal; }
 }

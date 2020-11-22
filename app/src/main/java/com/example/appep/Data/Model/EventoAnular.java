@@ -86,7 +86,7 @@ public class EventoAnular {
         boolean errorChecker = false;
 
         for (Componente comp : comps) {
-            if(comp.getLongitud() == 0 || comp.getDiamID() == 0 || comp.getDiamOD() == 0){
+            if(comp.getLongitud() == 0 || comp.getDiamID() == 0){
                 componente = comp.getType();
                 error = "Valor no puede ser vacio o cero en ";
                 errorChecker = true;

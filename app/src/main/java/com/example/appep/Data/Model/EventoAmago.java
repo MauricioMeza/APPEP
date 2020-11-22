@@ -7,11 +7,47 @@ public class EventoAmago {
     private double pesoOrglLodo, profVertical, profTotal, presReducidaBomba, desplBomba, presCierreTubo, presCierreRev, gananciaSuperficie;
     private double estrHastaBroca, estrFondoArrb, circTotalMatarPozo;
 
-    public EventoAmago(Evento evento) { this.evento = evento; }
+    public EventoAmago(Evento evento) {
+        this.evento = evento;
+        this.pesoOrglLodo = 0.0;
+        this.presCierreTubo = 0.0;
+        this.profVertical = 0.000001;
+    }
 
     public double calcPesoLodoPaMatar(){
-        double res = this.pesoOrglLodo + this.profVertical + this.presCierreTubo;
+        double res = this.pesoOrglLodo + (this.presCierreTubo/(this.profVertical*0.052));
         this.evento.setPesoLodo(res);
+        return res;
+    }
+
+    public double calcEstroquesABroca(){
+        double res = this.evento.getEventoInterno().getVolInterno() / this.desplBomba;
+        this.setEstrHastaBroca(res);
+        return res;
+    }
+
+    public double[][] calcPrgrmCircMtrix(){
+        int size = 11;
+        double tablaEstr[][] = new double[size][2];
+        double icp = this.presReducidaBomba + presCierreTubo;
+        double fcp = this.presReducidaBomba * (evento.getPesoLodo()/this.getPesoOrglLodo());
+
+         for(int i=0; i<11; i++){
+             tablaEstr[i][0] = this.estrHastaBroca * (i* 0.1);
+             tablaEstr[i][1] = ((fcp-icp)*(0.1*i))+icp;
+        }
+        return tablaEstr;
+    }
+
+    public double calcEstroquesFndArriba(){
+        double res = this.evento.getEventoAnular().getVolAnular() / this.desplBomba;
+        this.setEstrFondoArrb(res);
+        return res;
+    }
+
+    public double calcCircTotalPaMatarPozo(){
+        double res = this.estrFondoArrb + this.estrHastaBroca;
+        this.setCircTotalMatarPozo(res);
         return res;
     }
 
