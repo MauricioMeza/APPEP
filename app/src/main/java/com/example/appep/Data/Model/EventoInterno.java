@@ -49,6 +49,9 @@ public class EventoInterno {
     public Componente getEstabilizador() { return estabilizador; }
     public void setEstabilizador(Componente estabilizador) { this.estabilizador = estabilizador; }
 
+    public Componente getHrrAdc() { return hrrAdc; }
+    public void setHrrAdc(Componente hrrAdc) { this.hrrAdc = hrrAdc; }
+
     //Get an ArrayList of Componentes with all the components of this EventoInterno
     public ArrayList<Componente> getComponentesInterno(){
         ArrayList<Componente> componentes = new ArrayList<>();

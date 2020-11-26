@@ -19,14 +19,10 @@ public class Pozo implements Serializable {
         this.abierto = true;
         this.eventos = new ArrayList<>();
     }
-    public Pozo(String nombre, String campo, String type) {
+    public Pozo(String nombre, String campo, boolean type) {
         this.nombre = nombre;
         this.campo = campo;
-        if(type == "true"){
-            this.vertical = true;
-        }else{
-            this.vertical = false;
-        }
+        this.vertical = type;
         this.fecha_creacion = new Date();
         this.abierto = true;
         this.eventos = new ArrayList<>();

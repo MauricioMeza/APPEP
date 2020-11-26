@@ -328,7 +328,7 @@ public class AddPozoFragment1 extends Fragment {
 
     //Get the information of the EditTexts in the pozo as a String Array
     public String[] getInfoPozo(){
-        String[] infoPozo = {nameText.getText().toString(), descText.getText().toString(), String.valueOf(type)};
+        String[] infoPozo = {nameText.getText().toString(), descText.getText().toString(), String.valueOf(vertical)};
         return infoPozo;
     }
 
