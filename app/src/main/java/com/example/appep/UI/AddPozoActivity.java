@@ -113,6 +113,7 @@ public class AddPozoActivity extends AppCompatActivity{
                         String valA = pozo.getEventos().get(0).getEventoAnular().anularEventValidation();
 
                         if(valA.equals("OK")){
+                            pozo.getEventos().get(0).calcsTotales();
                             transaction.replace(R.id.addFragmentContainer, fragment4).commit();
                             buttonNxt.setText(R.string.out);
                             currentFragment++;
