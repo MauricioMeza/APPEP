@@ -151,7 +151,6 @@ public class ComponenteAdapter extends RecyclerView.Adapter<ComponenteViewHolder
                     this.componentes = componentes.get(position).calculosAnulares(componentes);
                     cap = componentes.get(position).getCapacidad();
                     vol = componentes.get(position).getVolumen();
-
                     holder.compResCap.setText(df.format(cap));
                     holder.compResVol.setText(df.format(vol));
 

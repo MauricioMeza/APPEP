@@ -86,6 +86,7 @@
     <string name="no">No</string>
 
     <string name="out">Finalizar</string>
+    <string name="rzc">Realizar Calculos Anulares</string>
     <string name="nxt">Siguiente</string>
     <string name="bfr">Anterior</string>
     <string name="bck">Volver</string>

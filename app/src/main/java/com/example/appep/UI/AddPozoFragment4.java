@@ -40,9 +40,10 @@ public class AddPozoFragment4 extends Fragment {
     private int[][] names = {{R.id.textViewEst1,R.id.textViewPrs1},{R.id.textViewEst2,R.id.textViewPrs2},{R.id.textViewEst3,R.id.textViewPrs3},{R.id.textViewEst4,R.id.textViewPrs4},{R.id.textViewEst5,R.id.textViewPrs5},
                              {R.id.textViewEst6,R.id.textViewPrs6},{R.id.textViewEst7,R.id.textViewPrs7},{R.id.textViewEst8,R.id.textViewPrs8},{R.id.textViewEst9,R.id.textViewPrs9},{R.id.textViewEst10,R.id.textViewPrs10},{R.id.textViewEst11,R.id.textViewPrs11}};
     private TextView[][] estroques = new TextView[11][2];
-    private static DecimalFormat df = new DecimalFormat("#.#####");
-    private static DecimalFormat af = new DecimalFormat("#.#");
 
+    private static DecimalFormat nf = new DecimalFormat("#");
+    private static DecimalFormat af = new DecimalFormat("#.#");
+    private static DecimalFormat df = new DecimalFormat("#.#####");
 
 
 
@@ -226,8 +227,8 @@ public class AddPozoFragment4 extends Fragment {
         double[][] matrix = eventoAmago.calcPrgrmCircMtrix();
 
         for(int i=0; i<matrix.length; i++) {
-            estroques[i][0].setText(df.format(matrix[i][0]));
-            estroques[i][1].setText(df.format(matrix[i][1]));
+            estroques[i][0].setText(nf.format(matrix[i][0]));
+            estroques[i][1].setText(af.format(matrix[i][1]));
         }
     }
 
@@ -237,9 +238,9 @@ public class AddPozoFragment4 extends Fragment {
         double fndoArrba = eventoAmago.calcEstroquesFndArriba();
         double circlTotl = eventoAmago.calcCircTotalPaMatarPozo();
 
-        estrHstBrca.setText(df.format(hstaBroca));
-        estrFndArrba.setText(df.format(fndoArrba));
-        circPrMtrPozo.setText(df.format(circlTotl));
+        estrHstBrca.setText(nf.format(hstaBroca));
+        estrFndArrba.setText(nf.format(fndoArrba));
+        circPrMtrPozo.setText(nf.format(circlTotl));
     }
 
     //Calculation of aproximate and full version of PesoDLodoPaMatar

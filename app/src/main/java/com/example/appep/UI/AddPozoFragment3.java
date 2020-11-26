@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.appep.Data.Model.Componente;
@@ -36,6 +37,7 @@ public class AddPozoFragment3 extends Fragment {
     private String mParam2;
 
     private TextView volAnl, longAnl;
+    private Button btnRecalcular;
     private double volTotal, longTotal;
     private RecyclerView anlComponentRecyclerView;
     private EventoAnular eventoAnular;
@@ -79,15 +81,21 @@ public class AddPozoFragment3 extends Fragment {
 
         eventoAnular = AddPozoActivity.pozo.getEventos().get(0).getEventoAnular();
         comps = eventoAnular.getComponentesAnular();
+        comps.get(0).calculosAnulares(comps);
 
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_add_pozo3, container, false);
         volAnl = view.findViewById(R.id.textNumVolAnlr);
         longAnl = view.findViewById(R.id.textNumLongAnlr);
+        btnRecalcular = view.findViewById(R.id.buttonRecalcular);
 
-        volAnl.setText(df.format(eventoAnular.getVolAnular()));
-        longAnl.setText(df.format(eventoAnular.getLongAnular()));
-
+        btnRecalcular.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getComponentList();
+            }
+        });
+        sumTotales();
 
         anlComponentRecyclerView = view.findViewById(R.id.recyclerViewCompAnlr);
         anlComponentRecyclerView.setLayoutManager(new LinearLayoutManager(view.getContext(), LinearLayoutManager.VERTICAL, false));
@@ -97,6 +105,7 @@ public class AddPozoFragment3 extends Fragment {
     }
 
     public ArrayList<Componente> getComponentList(){
+        anlComponentRecyclerView.setAdapter(anlComponentRecyclerView.getAdapter());
         return comps;
     }
 
@@ -111,5 +120,6 @@ public class AddPozoFragment3 extends Fragment {
         volAnl.setText(df.format(volTotal));
         longAnl.setText(df.format(longTotal));
     }
+
 
 }

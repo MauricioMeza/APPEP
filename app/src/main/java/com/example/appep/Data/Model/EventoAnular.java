@@ -98,10 +98,11 @@ public class EventoAnular {
                 errorChecker = true;
                 break;
             }
+            //TODO: HACER RESTRICCION CON EL OD DE LOS INTERNOS
             if(comp.getDiamOD() < comp.getDiamID()){
-                componente = comp.getType();
-                error = "ID no puede ser mayor que OD en ";
-                errorChecker = true;
+                //componente = comp.getType();
+                //error = "ID no puede ser mayor que OD en ";
+                //errorChecker = true;
                 break;
             }
         }
