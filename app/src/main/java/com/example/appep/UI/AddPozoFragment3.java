@@ -105,6 +105,7 @@ public class AddPozoFragment3 extends Fragment {
     }
 
     public ArrayList<Componente> getComponentList(){
+        eventoAnular.getEvento().calcsTotales();
         anlComponentRecyclerView.setAdapter(anlComponentRecyclerView.getAdapter());
         return comps;
     }

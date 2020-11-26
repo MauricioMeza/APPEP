@@ -33,7 +33,7 @@ public class AddPozoFragment1 extends Fragment {
     private View vista;
 
     //UI Declarations
-    private CheckBox rev1, rev2, rev3, dp1, dp2, dp3, hwdp, dc, dc2, broc, estb;
+    private CheckBox rev1, rev2, rev3, dp1, dp2, dp3, hwdp, dc, dc2, broc, estb, hrrA;
     private RadioGroup type;
     private ImageView imgAn1, imgAn2, imgIntD, imgIntB, imgIntC1, imgIntC2;
     private EditText nameText, descText;
@@ -83,7 +83,7 @@ public class AddPozoFragment1 extends Fragment {
 
         // Inflate the layout for this fragment
         vista = inflater.inflate(R.layout.fragment_add_pozo1, container, false);
-        componentSelected = new boolean[10];
+        componentSelected = new boolean[11];
         vertical = true;
 
 
@@ -100,6 +100,7 @@ public class AddPozoFragment1 extends Fragment {
         hwdp = vista.findViewById(R.id.checkBoxHWDP);
         broc = vista.findViewById(R.id.checkBoxBroca);
         estb = vista.findViewById(R.id.checkBoxEstabilizador);
+        hrrA = vista.findViewById(R.id.checkBoxHrrAdc);
         rev1 = vista.findViewById(R.id.checkBoxRev1);
         rev2 = vista.findViewById(R.id.checkBoxRev2);
         rev3 = vista.findViewById(R.id.checkBoxRev3);
@@ -287,14 +288,24 @@ public class AddPozoFragment1 extends Fragment {
                 }
             }
         });
+        hrrA.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(hrrA.isChecked()){
+                    componentSelected[9] = true;
+                }else{
+                    componentSelected[9] = false;
+                }
+            }
+        });
         estb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(estb.isChecked()){
-                    componentSelected[9] = true;
+                    componentSelected[10] = true;
                     imgIntB.setImageResource(R.drawable.in_b2);
                 }else{
-                    componentSelected[9] = false;
+                    componentSelected[10] = false;
                     imgIntB.setImageResource(R.drawable.in_b1);
                 }
             }

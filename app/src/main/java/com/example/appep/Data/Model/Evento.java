@@ -52,6 +52,9 @@ public class Evento {
             this.eventoInterno.setDrillCollar2(new Componente(R.drawable.f_drillcollar2, "Drill Colar 2",this));
         }
         if(arregloComponentes[9]){
+            this.eventoInterno.setDrillCollar2(new Componente(R.drawable.f_hrradicionales, "Herramientas Adicionales",this));
+        }
+        if(arregloComponentes[10]){
             this.eventoInterno.setEstabilizador(new Componente(R.drawable.f_estabilizador, "Estabilizador", this));
         }
     }

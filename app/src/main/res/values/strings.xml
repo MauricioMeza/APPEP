@@ -36,6 +36,7 @@
     <string name="comp_hwdp">HeavyWeight Drill Pipe</string>
     <string name="comp_broca">Broca</string>
     <string name="comp_estab">Estabilizador</string>
+    <string name="comp_hrrAd">Herramientas Adicionales</string>
     <string name="comp_rev1">Revestimiento 1</string>
     <string name="comp_rev2">Revestimiento 2</string>
     <string name="comp_rev3">Revestimiento 3</string>
@@ -59,10 +60,6 @@
     <string name="fnl_prpr">Presion de Poro (psi)</string>
 
     <string name="num_frm">#.#####</string>
-
-
-
-
 
 
     <string name="comps_lon">Longitud (ft)</string>

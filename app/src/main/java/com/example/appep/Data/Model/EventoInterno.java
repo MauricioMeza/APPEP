@@ -7,7 +7,7 @@ public class EventoInterno {
     private String id;
     private Evento evento;
     private double volInterno, longSarta;
-    private Componente drillPipe1, drillPipe2, drillPipe3, hwdp,
+    private Componente drillPipe1, drillPipe2, drillPipe3, hwdp, hrrAdc,
                         drillCollar, drillCollar2, broca, estabilizador;
 
     public EventoInterno(Evento evento){
@@ -71,6 +71,9 @@ public class EventoInterno {
         if(this.drillCollar2 != null){
             componentes.add(drillCollar2);
         }
+        if(this.hrrAdc != null){
+            componentes.add(hrrAdc);
+        }
         if(this.estabilizador != null){
             componentes.add(estabilizador);
         }
@@ -91,6 +94,9 @@ public class EventoInterno {
             switch(comp.getType()){
                 case "Broca":
                     this.broca = comp;
+                    break;
+                case "Herramientas Adicionales":
+                    this.hrrAdc = comp;
                     break;
                 case "Estabilizador":
                     this.estabilizador = comp;

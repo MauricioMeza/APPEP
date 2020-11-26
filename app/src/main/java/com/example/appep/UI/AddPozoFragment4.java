@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.appep.Data.Model.EventoAmago;
+import com.example.appep.Data.Model.Pozo;
 import com.example.appep.R;
 
 import java.math.RoundingMode;
@@ -111,6 +112,15 @@ public class AddPozoFragment4 extends Fragment {
         for(int i=0; i<names.length; i++){
             estroques[i][0] = v.findViewById(names[i][0]);
             estroques[i][1] = v.findViewById(names[i][1]);
+        }
+
+        //Actions for when the Pozo is Vertical or Horizontal
+        Pozo pozo = AddPozoActivity.pozo;
+        if(pozo.isVertical()){
+            prfVrtVrd.setText(df.format(eventoAmago.getEvento().getLongTotal()));
+            prfTtlMed.setText(df.format(eventoAmago.getEvento().getLongTotal()));
+            prfTtlMed.setEnabled(false);
+            prfVrtVrd.setEnabled(false);
         }
 
         configureEdits();

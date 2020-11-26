@@ -217,6 +217,15 @@
                     android:textSize="16sp" />
 
                 <CheckBox
+                    android:id="@+id/checkBoxHrrAdc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    android:text="@string/comp_hrrAd"
+                    android:textColor="?android:attr/textColorSecondary"
+                    android:textSize="16sp" />
+
+                <CheckBox
                     android:id="@+id/checkBoxEstabilizador"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
