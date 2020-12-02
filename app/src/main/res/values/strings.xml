@@ -10,6 +10,7 @@
         <string name="anularInfo">Informacion Anular</string>
         <string name="finalInfo">Informacion Final del Pozo</string>
     <string name="viewTitle">Informacion del Pozo</string>
+        <string name="viewEvnt">Informacion de Ultimo Evento</string>
     <string name="mainTitle">Mis Pozos</string>
 
     <string name="temp_date">dd/mm/aaaa</string>
@@ -93,9 +94,5 @@
     <string name="an1">Anular1</string>
     <string name="an2">Anular2</string>
     <string name="In1">Interno1</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-
 
 </resources>
