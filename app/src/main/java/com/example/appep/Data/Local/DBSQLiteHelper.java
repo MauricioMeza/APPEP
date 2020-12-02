@@ -14,7 +14,8 @@ public class DBSQLiteHelper extends SQLiteOpenHelper {
     //Create new Database from SQL code
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL(DBUtilities.TABLE_CREATE_SQL);
+        db.execSQL(DBUtilities.TABLE_CREATE_POZO_SQL);
+        db.execSQL(DBUtilities.TABLE_CREATE_EVENTO_SQL);
 
     }
 
