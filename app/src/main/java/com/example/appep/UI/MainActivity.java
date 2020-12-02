@@ -99,7 +99,9 @@ public class MainActivity extends AppCompatActivity {
             Date fecha = dateFormat.parse(cursor.getString(3));
             pozo.setFecha_creacion(fecha);
             boolean active = (cursor.getInt(4) != 0);
+            boolean type = (cursor.getInt(5) != 0);
             pozo.setAbierto(active);
+            pozo.setVertical(type);
 
             listaPozos.add(pozo);
         }

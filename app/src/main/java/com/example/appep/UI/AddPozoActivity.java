@@ -172,6 +172,7 @@ public class AddPozoActivity extends AppCompatActivity{
         values.put(DBUtilities.TABLA_CAMPO, pozo.getCampo());
         values.put(DBUtilities.TABLA_FECHA_AP, pozo.getFecha_creacion().toString());
         values.put(DBUtilities.TABLA_ABIERTO, pozo.isAbierto());
+        values.put(DBUtilities.TABLA_VERTICAL, pozo.isVertical());
 
         Long confirmationNum = db.insert(DBUtilities.TABLA_POZO, null, values);
         db.close();

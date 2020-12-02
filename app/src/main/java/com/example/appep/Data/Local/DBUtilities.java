@@ -30,12 +30,13 @@ public class DBUtilities {
                                                                                             TABLA_VERTICAL + " INTEGER)";
 
     public static final  String TABLE_CREATE_EVENTO_SQL = "CREATE TABLE "+ TABLA_EVENTO +" ("+TABLA_ID +" INTEGER PRIMARY KEY AUTOINCREMENT, "+
-                                                                                           "FOREIGN KEY (" + EVENTO_POZO + ") REFERENCES " + TABLA_POZO + "("+ TABLA_ID +")"+
-                                                                                            EVENTO_FECHA_CR +" TEXT, "+
-                                                                                            EVENTO_TABLA_ESTR +" TEXT, "+
+                                                                                            EVENTO_POZO +" INTEGER, " +
+                                                                                            EVENTO_FECHA_CR +" TEXT, " +
+                                                                                            EVENTO_TABLA_ESTR +" TEXT, " +
                                                                                             EVENTO_PESO_LODO + " REAL, " +
                                                                                             EVENTO_LNG_TOTAL + " REAL, " +
-                                                                                            EVENTO_VOL_TOTAL + " REAL)";
+                                                                                            EVENTO_VOL_TOTAL + " REAL, " +
+                                                                                            "FOREIGN KEY (" + EVENTO_POZO + ") REFERENCES " + TABLA_POZO + "("+ TABLA_ID +"))";
 
     public static final  String TABLE_DELETE_SQL = "DROP TABLE IF EXISTS " + TABLA_POZO;
     public static final  String TABLE_GET_SQL = "SELECT * FROM " + TABLA_POZO;

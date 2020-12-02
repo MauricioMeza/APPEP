@@ -19,7 +19,7 @@ import com.example.appep.R;
 
 public class ViewPozoActivity extends AppCompatActivity {
 
-    private TextView textViewNombre, textViewDesc, textViewFecha, textViewNumr, textViewAct;
+    private TextView textViewNombre, textViewDesc, textViewFecha, textViewNumr, textViewAct, textViewVer;
     private Button  buttonDelete, buttonUpdate, buttonComplete;
     public static Activity viewActivity;
     private Pozo pozoInfo;
@@ -39,6 +39,7 @@ public class ViewPozoActivity extends AppCompatActivity {
         textViewFecha = findViewById(R.id.textViewFechaBlank);
         textViewNumr = findViewById(R.id.textViewIdBlank);
         textViewAct = findViewById(R.id.textViewAbiertoBlank);
+        textViewVer = findViewById(R.id.textViewTipoBlank);
 
         buttonDelete = findViewById(R.id.buttonViewDel);
         buttonUpdate = findViewById(R.id.buttonViewUpd);
@@ -50,10 +51,15 @@ public class ViewPozoActivity extends AppCompatActivity {
         textViewDesc.setText(pozoInfo.getCampo());
         textViewFecha.setText(pozoInfo.getFecha_creacion().toString());
         textViewNumr.setText(String.valueOf(pozoInfo.getId()));
+        if(pozoInfo.isVertical()){
+            textViewVer.setText(R.string.todo_tpvr);
+        }else{
+            textViewVer.setText(R.string.todo_tphz);
+        }
 
         // Change button options to disabled if pozo is not open
         if(pozoInfo.isAbierto()){
-            textViewAct.setText("Si");
+            textViewAct.setText(R.string.yes);
             buttonUpdate.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) { updatePozo(pozoInfo.getId());
@@ -65,7 +71,7 @@ public class ViewPozoActivity extends AppCompatActivity {
                 }
             });
         }else{
-            textViewAct.setText("No");
+            textViewAct.setText(R.string.no);
             buttonUpdate.setEnabled(false);
             buttonComplete.setEnabled(false);
         }
