@@ -117,8 +117,11 @@ public class AddPozoFragment4 extends Fragment {
         //Actions for when the Pozo is Vertical or Horizontal
         Pozo pozo = AddPozoActivity.pozo;
         if(pozo.isVertical()){
-            prfVrtVrd.setText(df.format(eventoAmago.getEvento().getLongTotal()));
-            prfTtlMed.setText(df.format(eventoAmago.getEvento().getLongTotal()));
+            double longitud = eventoAmago.getEvento().getLongTotal();
+            prfVrtVrd.setText(df.format(longitud));
+            prfTtlMed.setText(df.format(longitud));
+            eventoAmago.setProfVertical(longitud);
+            eventoAmago.setProfTotal(longitud);
             prfTtlMed.setEnabled(false);
             prfVrtVrd.setEnabled(false);
         }
