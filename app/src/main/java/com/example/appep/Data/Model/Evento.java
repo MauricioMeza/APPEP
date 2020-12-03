@@ -5,7 +5,8 @@ import com.example.appep.R;
 import java.util.Date;
 
 public class Evento {
-    private String id;
+    private int id;
+    private Pozo pozo;
     private Date fechaCreacion;
     private double pesoLodo;
     private double tablaEstr[][];
@@ -59,6 +60,10 @@ public class Evento {
         }
     }
 
+    public Evento(int id){
+        this.id = id;
+    }
+
     //Clacuations for total long and total volume
     public void calcsTotales(){
         this.volTotal = this.eventoAnular.getVolAnular() + this.eventoInterno.getVolInterno();
@@ -90,4 +95,7 @@ public class Evento {
 
     public double getLongTotal() { return longTotal; }
     public void setLongTotal(double longTotal) { this.longTotal = longTotal; }
+
+    public Pozo getPozo() { return pozo; }
+    public void setPozo(Pozo pozo) { this.pozo = pozo; }
 }

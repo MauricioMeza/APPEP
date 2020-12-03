@@ -48,5 +48,8 @@ public class Pozo implements Serializable {
 
     public ArrayList<Evento> getEventos() { return eventos; }
     public void setEventos(ArrayList<Evento> eventos) { this.eventos = eventos; }
-    public void setNewEvento(Evento evento){ this.eventos.add(evento); }
+    public void setNewEvento(Evento evento){
+        evento.setPozo(this);
+        this.eventos.add(evento);
+    }
 }

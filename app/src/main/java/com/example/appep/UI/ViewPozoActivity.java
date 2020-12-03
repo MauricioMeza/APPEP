@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
@@ -13,17 +14,28 @@ import android.widget.TextView;
 
 import com.example.appep.Data.Local.DBSQLiteHelper;
 import com.example.appep.Data.Local.DBUtilities;
+import com.example.appep.Data.Model.Evento;
 import com.example.appep.Data.Model.Pozo;
 import com.example.appep.R;
+
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 
 public class ViewPozoActivity extends AppCompatActivity {
 
     private TextView textViewNombre, textViewDesc, textViewFecha, textViewNumr, textViewAct, textViewVer;
+    private TextView textViewEventPsoldo1, textViewEventPsoldo2, textViewEventVol, textViewEventLng;
     private Button  buttonDelete, buttonUpdate, buttonComplete;
     public static Activity viewActivity;
     private Pozo pozoInfo;
     DBSQLiteHelper connect;
+    private static DecimalFormat df = new DecimalFormat("#.#####");
+    private static DecimalFormat af = new DecimalFormat("#.#");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,12 +53,23 @@ public class ViewPozoActivity extends AppCompatActivity {
         textViewAct = findViewById(R.id.textViewAbiertoBlank);
         textViewVer = findViewById(R.id.textViewTipoBlank);
 
+        textViewEventPsoldo1 = findViewById(R.id.textViewPesolodoBlank1);
+        textViewEventPsoldo2 = findViewById(R.id.textViewPesolodoBlank2);
+        textViewEventVol = findViewById(R.id.textViewVolBlank);
+        textViewEventLng = findViewById(R.id.textViewLngBlank);
+
         buttonDelete = findViewById(R.id.buttonViewDel);
         buttonUpdate = findViewById(R.id.buttonViewUpd);
         buttonComplete = findViewById(R.id.buttonViewCmp);
 
         //Get info from selectedPozo and present it in layout TextViews
         pozoInfo = (Pozo) getIntent().getSerializableExtra("pozo");
+        try {
+            pozoInfo = getEventsFromPozo(pozoInfo);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
         textViewNombre.setText(pozoInfo.getNombre());
         textViewDesc.setText(pozoInfo.getCampo());
         textViewFecha.setText(pozoInfo.getFecha_creacion().toString());
@@ -75,6 +98,13 @@ public class ViewPozoActivity extends AppCompatActivity {
             buttonUpdate.setEnabled(false);
             buttonComplete.setEnabled(false);
         }
+
+        Evento ultimoEvento = pozoInfo.getEventos().get(0);
+        af.setRoundingMode(RoundingMode.CEILING);
+        textViewEventPsoldo1.setText(af.format(ultimoEvento.getPesoLodo()));
+        textViewEventPsoldo2.setText("(" + df.format(ultimoEvento.getPesoLodo()) + ")");
+        textViewEventVol.setText(df.format(ultimoEvento.getVolTotal()));
+        textViewEventLng.setText(df.format(ultimoEvento.getLongTotal()));
 
         buttonDelete.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -120,5 +150,23 @@ public class ViewPozoActivity extends AppCompatActivity {
         final Intent i = new Intent(this, MainActivity.class);
         startActivity(i);
         finish();
+    }
+
+    public Pozo getEventsFromPozo(Pozo pozo) throws ParseException {
+        SQLiteDatabase db = connect.getReadableDatabase();
+        Cursor c = db.rawQuery(DBUtilities.getEventosFromPozo(pozo.getId()), null);
+        while (c.moveToNext()){
+            Evento evento = new Evento(c.getInt(0));
+            SimpleDateFormat dateFormat = new SimpleDateFormat("EEE MMM dd hh:mm:ss zzz yyyy", Locale.ENGLISH);
+            Date fecha = dateFormat.parse(c.getString(2));
+            evento.setFechaCreacion(fecha);
+            evento.setTablaEstr(new double[2][10]);
+            evento.setPesoLodo(c.getDouble(4));
+            evento.setLongTotal(c.getDouble(5));
+            evento.setVolTotal(c.getDouble(6));
+            pozo.setNewEvento(evento);
+        }
+
+        return pozo;
     }
 }

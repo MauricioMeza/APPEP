@@ -166,7 +166,6 @@ public class AddPozoActivity extends AppCompatActivity{
         connect = new DBSQLiteHelper(this, null);
         SQLiteDatabase db = connect.getWritableDatabase();
 
-
         ContentValues values = new ContentValues();
         values.put(DBUtilities.TABLA_NOMBRE, pozo.getNombre());
         values.put(DBUtilities.TABLA_CAMPO, pozo.getCampo());
@@ -175,6 +174,19 @@ public class AddPozoActivity extends AppCompatActivity{
         values.put(DBUtilities.TABLA_VERTICAL, pozo.isVertical());
 
         Long confirmationNum = db.insert(DBUtilities.TABLA_POZO, null, values);
+
+        ContentValues valuesEvent = new ContentValues();
+        Evento evento = pozo.getEventos().get(0);
+        valuesEvent.put(DBUtilities.EVENTO_POZO, confirmationNum.intValue());
+        valuesEvent.put(DBUtilities.EVENTO_FECHA_CR, evento.getFechaCreacion().toString());
+        valuesEvent.put(DBUtilities.EVENTO_PESO_LODO, evento.getPesoLodo());
+        valuesEvent.put(DBUtilities.EVENTO_TABLA_ESTR, "A Json is supposed to be here");
+        valuesEvent.put(DBUtilities.EVENTO_VOL_TOTAL, evento.getVolTotal());
+        valuesEvent.put(DBUtilities.EVENTO_LNG_TOTAL, evento.getLongTotal());
+
+
+        Long confirmationNum2 = db.insert(DBUtilities.TABLA_EVENTO, null, valuesEvent);
+
         db.close();
 
         final Intent i = new Intent(this, MainActivity.class);

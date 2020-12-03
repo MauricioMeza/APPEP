@@ -40,4 +40,10 @@ public class DBUtilities {
 
     public static final  String TABLE_DELETE_SQL = "DROP TABLE IF EXISTS " + TABLA_POZO;
     public static final  String TABLE_GET_SQL = "SELECT * FROM " + TABLA_POZO;
+
+    public static final String getEventosFromPozo(int id){
+        String EVENT_GET_SQL =  "SELECT * FROM " + TABLA_EVENTO + " WHERE " + EVENTO_POZO + " = " + id;
+        return EVENT_GET_SQL;
+    }
+
 }
