@@ -13,12 +13,14 @@ public class Pozo implements Serializable {
     private boolean vertical;
     private ArrayList<Evento> eventos;
 
+    //For Update Pozo
     public Pozo(int id) {
         this.id = id;
         this.fecha_creacion = new Date();
         this.abierto = true;
         this.eventos = new ArrayList<>();
     }
+    //For Create new Pozo
     public Pozo(String nombre, String campo, boolean type) {
         this.nombre = nombre;
         this.campo = campo;

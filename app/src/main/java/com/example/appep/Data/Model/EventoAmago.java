@@ -14,38 +14,44 @@ public class EventoAmago {
         this.profVertical = 0.000001;
     }
 
+    //Calculations fo this Peso de lodo para matar
     public double calcPesoLodoPaMatar(){
         double res = this.pesoOrglLodo + (this.presCierreTubo/(this.profVertical*0.052));
         this.evento.setPesoLodo(res);
         return res;
     }
 
-    public double calcEstroquesABroca(){
-        double res = this.evento.getEventoInterno().getVolInterno() / this.desplBomba;
-        this.setEstrHastaBroca(res);
-        return res;
-    }
-
+    //Calculations fo this Programa de Circulacion Matrix
     public double[][] calcPrgrmCircMtrix(){
         int size = 11;
         double tablaEstr[][] = new double[size][2];
         double icp = this.presReducidaBomba + presCierreTubo;
         double fcp = this.presReducidaBomba * (evento.getPesoLodo()/this.getPesoOrglLodo());
 
-         for(int i=0; i<11; i++){
-             tablaEstr[i][0] = this.estrHastaBroca * (i* 0.1);
-             tablaEstr[i][1] = ((fcp-icp)*(0.1*i))+icp;
+        for(int i=0; i<11; i++){
+            tablaEstr[i][0] = this.estrHastaBroca * (i* 0.1);
+            tablaEstr[i][1] = ((fcp-icp)*(0.1*i))+icp;
         }
         this.evento.setTablaEstr(tablaEstr);
         return tablaEstr;
     }
 
+    //Calculations fo this Estroques hasta broca
+    public double calcEstroquesABroca(){
+        double res = this.evento.getEventoInterno().getVolInterno() / this.desplBomba;
+        this.setEstrHastaBroca(res);
+        return res;
+    }
+
+
+    //Calculations fo this Estroques fondo Arriba
     public double calcEstroquesFndArriba(){
         double res = this.evento.getEventoAnular().getVolAnular() / this.desplBomba;
         this.setEstrFondoArrb(res);
         return res;
     }
 
+    //Calculations fo this Circulacion Total para matar
     public double calcCircTotalPaMatarPozo(){
         double res = this.estrFondoArrb + this.estrHastaBroca;
         this.setCircTotalMatarPozo(res);
@@ -93,4 +99,5 @@ public class EventoAmago {
 
     public double getCircTotalMatarPozo() { return circTotalMatarPozo; }
     public void setCircTotalMatarPozo(double circTotalMatarPozo) { this.circTotalMatarPozo = circTotalMatarPozo; }
+
 }

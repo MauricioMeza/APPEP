@@ -3,7 +3,7 @@ package com.example.appep.Data.Model;
 import java.util.ArrayList;
 
 public class EventoInterno {
-    //TODO: see if components work better on an Arraylist (specially here)
+    //TODO: see if components work better on an Arraylist (They dont PS:FuckSqlite)
     private String id;
     private Evento evento;
     private double volInterno, longSarta;

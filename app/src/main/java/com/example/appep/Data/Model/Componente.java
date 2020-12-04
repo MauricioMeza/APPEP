@@ -25,6 +25,7 @@ public class Componente {
         this.longitud = 0.0;
     }
 
+    //Takes a list all Internal Components and all Anular Components and uses and algorithm to calculate volume of each anular
     public ArrayList<Componente> calculosAnulares(ArrayList<Componente> anularComps){
         ArrayList<Componente> internalComps = this.evento.getEventoInterno().getComponentesInterno();
 
@@ -34,6 +35,7 @@ public class Componente {
         double restoIn = 0.0;
         int i = 0;
 
+        //While there are components make three diffente calculations in case  Anl<Int , Anl>Int, Anl==Int
         while(currentCompAnular < anularComps.size() && currentCompInternal < internalComps.size()){
             if(restoAn == 0.0){
                 anularComps.get(currentCompAnular).setVolumen(0.0);
@@ -66,16 +68,19 @@ public class Componente {
         return anularComps;
     }
 
+    //Calculation of this components capacity
     public double calcCapacidad(){
         double capacidad = Math.pow(this.diamID, 2) / 1029.4;
         this.capacidad = capacidad;
         return capacidad;
     }
+    //Calculation of this components volume
     public double calcVolumen(){
         double volumen = this.capacidad * this.longitud;
         this.volumen = volumen;
         return volumen;
     }
+    //Calculate and add to this components volume (in case anulars have many capacities)
     public double addVolumen(double currentLongitud){
         double volumen = this.volumen + (this.capacidad * currentLongitud);
         this.volumen = volumen;

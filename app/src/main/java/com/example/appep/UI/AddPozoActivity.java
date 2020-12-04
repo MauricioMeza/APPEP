@@ -168,6 +168,7 @@ public class AddPozoActivity extends AppCompatActivity{
         connect = new DBSQLiteHelper(this, null);
         SQLiteDatabase db = connect.getWritableDatabase();
 
+        //Set info of new Pozo in BD table
         ContentValues values = new ContentValues();
         values.put(DBUtilities.TABLA_NOMBRE, pozo.getNombre());
         values.put(DBUtilities.TABLA_CAMPO, pozo.getCampo());
@@ -177,6 +178,7 @@ public class AddPozoActivity extends AppCompatActivity{
 
         Long confirmationNum = db.insert(DBUtilities.TABLA_POZO, null, values);
 
+        //Set info of new event in BD table
         ContentValues valuesEvent = new ContentValues();
         Evento evento = pozo.getEventos().get(0);
         String x = Arrays.deepToString(evento.getTablaEstr());

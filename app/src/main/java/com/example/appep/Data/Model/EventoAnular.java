@@ -92,17 +92,17 @@ public class EventoAnular {
                 errorChecker = true;
                 break;
             }
-            if(comp.getLongitud() < 0 || comp.getDiamID() < 0 || comp.getDiamOD() < 0){
+            if(comp.getLongitud() < 0 || comp.getDiamID() < 0 || comp.getDiamOD() < 0) {
                 componente = comp.getType();
                 error = "Valor no puede ser negativo en ";
                 errorChecker = true;
                 break;
             }
-            //TODO: HACER RESTRICCION CON EL OD DE LOS INTERNOS
-            if(comp.getDiamOD() < comp.getDiamID()){
-                //componente = comp.getType();
-                //error = "ID no puede ser mayor que OD en ";
-                //errorChecker = true;
+            //TODO: SOMEHOW CHECK IF ALL OF THE CALCULATIONS ARE VALID
+            if(comp.getVolumen() < 0){
+                componente = comp.getType();
+                error = "ID no puede ser mayor que OD en ";
+                errorChecker = true;
                 break;
             }
         }

@@ -21,7 +21,7 @@ public class Evento {
         this.eventoAnular = new EventoAnular(this);
         this.eventoAmago = new EventoAmago(this);
 
-        //TODO: Arreglar este machetazo
+        //TODO: Arreglar este machetazo (crear objetos para el tipo de componente???)
         this.eventoInterno.setBroca(new Componente(R.drawable.f_broca,"Broca", this));
         this.eventoAnular.setHueco(new Componente(R.drawable.f_hueto, "Hueco", this));
 
@@ -64,7 +64,7 @@ public class Evento {
         this.id = id;
     }
 
-    //Clacuations for total long and total volume
+    //Clacuations for total long and total volume to be saved in the event
     public void calcsTotales(){
         this.volTotal = this.eventoAnular.getVolAnular() + this.eventoInterno.getVolInterno();
         if(this.eventoAnular.getLongAnular() == this.eventoInterno.getLongSarta()){
