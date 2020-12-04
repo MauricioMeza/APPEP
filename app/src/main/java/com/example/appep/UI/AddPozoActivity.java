@@ -26,6 +26,8 @@ import com.example.appep.R;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Arrays.*;
 import java.util.Date;
 import java.util.Locale;
 
@@ -177,10 +179,11 @@ public class AddPozoActivity extends AppCompatActivity{
 
         ContentValues valuesEvent = new ContentValues();
         Evento evento = pozo.getEventos().get(0);
+        String x = Arrays.deepToString(evento.getTablaEstr());
         valuesEvent.put(DBUtilities.EVENTO_POZO, confirmationNum.intValue());
         valuesEvent.put(DBUtilities.EVENTO_FECHA_CR, evento.getFechaCreacion().toString());
         valuesEvent.put(DBUtilities.EVENTO_PESO_LODO, evento.getPesoLodo());
-        valuesEvent.put(DBUtilities.EVENTO_TABLA_ESTR, "A Json is supposed to be here");
+        valuesEvent.put(DBUtilities.EVENTO_TABLA_ESTR, x);
         valuesEvent.put(DBUtilities.EVENTO_VOL_TOTAL, evento.getVolTotal());
         valuesEvent.put(DBUtilities.EVENTO_LNG_TOTAL, evento.getLongTotal());
 

@@ -36,6 +36,7 @@ public class EventoAmago {
              tablaEstr[i][0] = this.estrHastaBroca * (i* 0.1);
              tablaEstr[i][1] = ((fcp-icp)*(0.1*i))+icp;
         }
+        this.evento.setTablaEstr(tablaEstr);
         return tablaEstr;
     }
 

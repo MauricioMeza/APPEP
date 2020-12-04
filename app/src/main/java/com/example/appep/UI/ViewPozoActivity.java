@@ -30,12 +30,16 @@ public class ViewPozoActivity extends AppCompatActivity {
 
     private TextView textViewNombre, textViewDesc, textViewFecha, textViewNumr, textViewAct, textViewVer;
     private TextView textViewEventPsoldo1, textViewEventPsoldo2, textViewEventVol, textViewEventLng;
+    private int[][] names = {{R.id.textViewEst1,R.id.textViewPrs1},{R.id.textViewEst2,R.id.textViewPrs2},{R.id.textViewEst3,R.id.textViewPrs3},{R.id.textViewEst4,R.id.textViewPrs4},{R.id.textViewEst5,R.id.textViewPrs5},
+                             {R.id.textViewEst6,R.id.textViewPrs6},{R.id.textViewEst7,R.id.textViewPrs7},{R.id.textViewEst8,R.id.textViewPrs8},{R.id.textViewEst9,R.id.textViewPrs9},{R.id.textViewEst10,R.id.textViewPrs10},{R.id.textViewEst11,R.id.textViewPrs11}};
+    private TextView[][] estroques = new TextView[11][2];
     private Button  buttonDelete, buttonUpdate, buttonComplete;
     public static Activity viewActivity;
     private Pozo pozoInfo;
     DBSQLiteHelper connect;
     private static DecimalFormat df = new DecimalFormat("#.#####");
     private static DecimalFormat af = new DecimalFormat("#.#");
+    private static DecimalFormat nf = new DecimalFormat("#");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +61,11 @@ public class ViewPozoActivity extends AppCompatActivity {
         textViewEventPsoldo2 = findViewById(R.id.textViewPesolodoBlank2);
         textViewEventVol = findViewById(R.id.textViewVolBlank);
         textViewEventLng = findViewById(R.id.textViewLngBlank);
+
+        for(int i=0; i<names.length; i++){
+            estroques[i][0] = findViewById(names[i][0]);
+            estroques[i][1] = findViewById(names[i][1]);
+        }
 
         buttonDelete = findViewById(R.id.buttonViewDel);
         buttonUpdate = findViewById(R.id.buttonViewUpd);
@@ -106,6 +115,12 @@ public class ViewPozoActivity extends AppCompatActivity {
         textViewEventVol.setText(df.format(ultimoEvento.getVolTotal()));
         textViewEventLng.setText(df.format(ultimoEvento.getLongTotal()));
 
+        double[][] matrix = ultimoEvento.getTablaEstr();
+        for(int i=0; i<matrix.length; i++) {
+            estroques[i][0].setText(nf.format(matrix[i][0]));
+            estroques[i][1].setText(af.format(matrix[i][1]));
+        }
+
         buttonDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) { deletePozo(pozoInfo.getId());
@@ -118,6 +133,7 @@ public class ViewPozoActivity extends AppCompatActivity {
         SQLiteDatabase db = connect.getWritableDatabase();
         String[] paramts = {String.valueOf(n)};
         db.delete(DBUtilities.TABLA_POZO, DBUtilities.TABLA_ID + "=?", paramts);
+        db.delete(DBUtilities.TABLA_EVENTO, DBUtilities.EVENTO_POZO + "=?", paramts);
 
         MainActivity.mainActivity.finish();
         Intent i = new Intent(this, MainActivity.class);
@@ -160,7 +176,7 @@ public class ViewPozoActivity extends AppCompatActivity {
             SimpleDateFormat dateFormat = new SimpleDateFormat("EEE MMM dd hh:mm:ss zzz yyyy", Locale.ENGLISH);
             Date fecha = dateFormat.parse(c.getString(2));
             evento.setFechaCreacion(fecha);
-            evento.setTablaEstr(new double[2][10]);
+            evento.setTablaEstr(getMatrixFromToString(c.getString(3), 10));
             evento.setPesoLodo(c.getDouble(4));
             evento.setLongTotal(c.getDouble(5));
             evento.setVolTotal(c.getDouble(6));
@@ -168,5 +184,22 @@ public class ViewPozoActivity extends AppCompatActivity {
         }
 
         return pozo;
+    }
+
+    public double[][] getMatrixFromToString(String matrixString, int rows){
+        int cols = 2;
+        double[][] matrix = new double[rows][cols];
+        matrixString = matrixString.replaceAll("\\[", "").replaceAll("\\]", "");
+        String[] filaString = matrixString.split(",");
+
+        int iterator = 0;
+        for(int i=0; i<rows; i++){
+            for(int j=0; j<cols; j++){
+                matrix[i][j] = Double.parseDouble(filaString[iterator]);
+                iterator++;
+            }
+        }
+
+        return matrix;
     }
 }

@@ -239,6 +239,7 @@ public class AddPozoFragment4 extends Fragment {
     private void programaMatrixCalculations() {
         double[][] matrix = eventoAmago.calcPrgrmCircMtrix();
 
+
         for(int i=0; i<matrix.length; i++) {
             estroques[i][0].setText(nf.format(matrix[i][0]));
             estroques[i][1].setText(af.format(matrix[i][1]));
