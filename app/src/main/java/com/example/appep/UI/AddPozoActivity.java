@@ -212,17 +212,17 @@ public class AddPozoActivity extends AppCompatActivity{
         cursor.moveToFirst();
 
         pozo = new Pozo(n);
-        pozo.setNombre(cursor.getString(0));
-        pozo.setCampo(cursor.getString(1));
+        pozo.setNombre(cursor.getString(1));
+        pozo.setCampo(cursor.getString(2));
         SimpleDateFormat dateFormat = new SimpleDateFormat("EEE MMM dd hh:mm:ss zzz yyyy", Locale.ENGLISH);
         try {
-            Date fecha = dateFormat.parse(cursor.getString(2));
+            Date fecha = dateFormat.parse(cursor.getString(3));
             pozo.setFecha_creacion(fecha);
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        pozo.setAbierto(cursor.getInt(3) != 0);
-        pozo.setVertical(cursor.getInt(4) != 0);
+        pozo.setAbierto(cursor.getInt(4) != 0);
+        pozo.setVertical(cursor.getInt(5) != 0);
 
         return pozo;
     }

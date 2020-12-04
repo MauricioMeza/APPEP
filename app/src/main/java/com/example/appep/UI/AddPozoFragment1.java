@@ -17,6 +17,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.appep.Data.Model.Pozo;
 import com.example.appep.R;
 
 /**
@@ -116,11 +117,21 @@ public class AddPozoFragment1 extends Fragment {
         configureTypeSelection();
 
         if(!AddPozoActivity.addNew){
+            Pozo thisPozo = AddPozoActivity.pozo;
             textTitle.setText(R.string.updateTitle);
-            nameText.setText(AddPozoActivity.pozo.getNombre());
+            nameText.setText(thisPozo.getNombre());
             nameText.setEnabled(false);
-            descText.setText(AddPozoActivity.pozo.getCampo());
+            descText.setText(thisPozo.getCampo());
             descText.setEnabled(false);
+            if(thisPozo.isVertical()){
+                type.check(R.id.radioButtonVert);
+            }else{
+                type.check(R.id.radioButtonHztl);
+                for (int i = 0; i < type.getChildCount(); i++) {
+                    type.getChildAt(i).setEnabled(false);
+                }
+            }
+
         }
 
         return vista;
