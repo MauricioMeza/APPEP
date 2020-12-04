@@ -46,4 +46,9 @@ public class DBUtilities {
         return EVENT_GET_SQL;
     }
 
+    public static final String getPozoFromId(int id){
+        String POZO_GET_SQL = "SELECT * FROM " + TABLA_POZO + " WHERE " + TABLA_ID + " = " + id;
+        return  POZO_GET_SQL;
+    }
+
 }

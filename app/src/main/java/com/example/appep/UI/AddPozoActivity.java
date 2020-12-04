@@ -82,8 +82,8 @@ public class AddPozoActivity extends AppCompatActivity{
 
     //Configure ->Next and <-Before buttons so that different fragments are presented depending on their actions
     //Fill information in Pozo object from the event information filled in each fragment
+    //Different cases from AddNew wich involve adding a new event to an already existing Pozo
     private void buttonConfiguration() {
-        //TODO: Make sure that information from Pozo in the activity is retrieved when a form fragment is created (Specially in fragment 2 and 3)
         buttonNxt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -92,7 +92,14 @@ public class AddPozoActivity extends AppCompatActivity{
                     case 1:
                         String[] infoPozo = fragment1.getInfoPozo();
                         Evento evento = new Evento(fragment1.getComponentSelected());
-                        pozo = new Pozo(infoPozo[0], infoPozo[1], Boolean.parseBoolean(infoPozo[2]));
+
+                        if(addNew){
+                            pozo = new Pozo(infoPozo[0], infoPozo[1], Boolean.parseBoolean(infoPozo[2]));
+
+                        }else{
+                           pozo.setVertical(Boolean.parseBoolean(infoPozo[2]));
+                        }
+
                         pozo.setNewEvento(evento);
                         transaction.replace(R.id.addFragmentContainer, fragment2).commit();
                         currentFragment++;
@@ -127,7 +134,7 @@ public class AddPozoActivity extends AppCompatActivity{
                         if(addNew){
                             addPozo();
                         }else{
-                            //updatePozo();
+                            updatePozo();
                         }
 
                         finish();
@@ -181,14 +188,12 @@ public class AddPozoActivity extends AppCompatActivity{
         //Set info of new event in BD table
         ContentValues valuesEvent = new ContentValues();
         Evento evento = pozo.getEventos().get(0);
-        String x = Arrays.deepToString(evento.getTablaEstr());
         valuesEvent.put(DBUtilities.EVENTO_POZO, confirmationNum.intValue());
         valuesEvent.put(DBUtilities.EVENTO_FECHA_CR, evento.getFechaCreacion().toString());
         valuesEvent.put(DBUtilities.EVENTO_PESO_LODO, evento.getPesoLodo());
-        valuesEvent.put(DBUtilities.EVENTO_TABLA_ESTR, x);
+        valuesEvent.put(DBUtilities.EVENTO_TABLA_ESTR, Arrays.deepToString(evento.getTablaEstr()));
         valuesEvent.put(DBUtilities.EVENTO_VOL_TOTAL, evento.getVolTotal());
         valuesEvent.put(DBUtilities.EVENTO_LNG_TOTAL, evento.getLongTotal());
-
 
         Long confirmationNum2 = db.insert(DBUtilities.TABLA_EVENTO, null, valuesEvent);
 
@@ -202,12 +207,11 @@ public class AddPozoActivity extends AppCompatActivity{
     public Pozo onUpdateGetInfoPozo(int n){
         connect = new DBSQLiteHelper(this, null);
         SQLiteDatabase db = connect.getReadableDatabase();
-        String[] whereId = {String.valueOf(n)};
-        String[] campos = {DBUtilities.TABLA_NOMBRE, DBUtilities.TABLA_CAMPO, DBUtilities.TABLA_FECHA_AP};
 
-        Cursor cursor = db.query(DBUtilities.TABLA_POZO, campos, DBUtilities.TABLA_ID + "=?" , whereId , null, null, null );
+        Cursor cursor = db.rawQuery(DBUtilities.getPozoFromId(n), null);
         cursor.moveToFirst();
 
+        pozo = new Pozo(n);
         pozo.setNombre(cursor.getString(0));
         pozo.setCampo(cursor.getString(1));
         SimpleDateFormat dateFormat = new SimpleDateFormat("EEE MMM dd hh:mm:ss zzz yyyy", Locale.ENGLISH);
@@ -217,13 +221,15 @@ public class AddPozoActivity extends AppCompatActivity{
         } catch (ParseException e) {
             e.printStackTrace();
         }
+        pozo.setAbierto(cursor.getInt(3) != 0);
+        pozo.setVertical(cursor.getInt(4) != 0);
 
         return pozo;
     }
 
     public int getCurrentFragment() { return currentFragment; }
 
-    /*
+
     //Update DB register that matches current Id with new pozo information
     public void updatePozo(){
         MainActivity.mainActivity.finish();
@@ -234,17 +240,28 @@ public class AddPozoActivity extends AppCompatActivity{
 
         ContentValues values = new ContentValues();
         String[] parametros = {String.valueOf(pozo.getId())};
-        values.put(DBUtilities.TABLA_NOMBRE, pozo.getNombre());
-        values.put(DBUtilities.TABLA_CAMPO, pozo.getCampo());
+        values.put(DBUtilities.TABLA_VERTICAL, pozo.isVertical());
 
         int confirmationNum = db.update(DBUtilities.TABLA_POZO, values, DBUtilities.TABLA_ID + "=?", parametros );
+
+        ContentValues valuesEvent = new ContentValues();
+        Evento evento = pozo.getEventos().get(0);
+        valuesEvent.put(DBUtilities.EVENTO_POZO, pozo.getId());
+        valuesEvent.put(DBUtilities.EVENTO_FECHA_CR, evento.getFechaCreacion().toString());
+        valuesEvent.put(DBUtilities.EVENTO_PESO_LODO, evento.getPesoLodo());
+        valuesEvent.put(DBUtilities.EVENTO_TABLA_ESTR, Arrays.deepToString(evento.getTablaEstr()));
+        valuesEvent.put(DBUtilities.EVENTO_VOL_TOTAL, evento.getVolTotal());
+        valuesEvent.put(DBUtilities.EVENTO_LNG_TOTAL, evento.getLongTotal());
+
+        Long confirmationNum2 = db.insert(DBUtilities.TABLA_EVENTO, null, valuesEvent);
+
         db.close();
 
         final Intent i = new Intent(this, MainActivity.class);
         startActivity(i);
         finish();
     }
- */
+
 
 
 }

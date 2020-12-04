@@ -2,6 +2,8 @@ package com.example.appep.Data.Model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 
 public class Pozo implements Serializable {
@@ -53,5 +55,11 @@ public class Pozo implements Serializable {
     public void setNewEvento(Evento evento){
         evento.setPozo(this);
         this.eventos.add(evento);
+        Collections.sort(this.eventos, new Comparator<Evento>() {
+            @Override
+            public int compare(Evento o1, Evento o2) {
+                return o2.getFechaCreacion().compareTo(o1.getFechaCreacion());
+            }
+        });
     }
 }

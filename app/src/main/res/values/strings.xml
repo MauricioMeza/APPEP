@@ -3,7 +3,7 @@
     <string name="app_name">APPEP</string>
 
     <string name="addTitle">Añadir Nuevo Pozo</string>
-        <string name="updateTitle">Actualizar Informacion de Pozo</string>
+        <string name="updateTitle">Añadir Nuevo Evento</string>
         <string name="addComponent">Seleccionar Componentes</string>
         <string name="addedComponents">Componentes Seleccionados</string>
         <string name="internalInfo">Informacion Interna</string>

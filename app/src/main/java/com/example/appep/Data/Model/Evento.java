@@ -72,6 +72,8 @@ public class Evento {
         }
     }
 
+    public int getId() { return id; }
+
     public Date getFechaCreacion() { return fechaCreacion; }
     public void setFechaCreacion(Date fechaCreacion) { this.fechaCreacion = fechaCreacion; }
 
@@ -98,4 +100,6 @@ public class Evento {
 
     public Pozo getPozo() { return pozo; }
     public void setPozo(Pozo pozo) { this.pozo = pozo; }
+
+
 }
