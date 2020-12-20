@@ -4,7 +4,7 @@ public class DBUtilities {
 
     //Names in database
     public static final String DB_NOMBRE = "DB_APPEP";
-    public static final int DB_VERSION = 3;
+    public static final int DB_VERSION = 4;
     public static final String TABLA_ID = "id";
     public static final String TABLA_POZO = "Pozo";
         public static final String TABLA_ABIERTO = "abierto";
@@ -20,8 +20,12 @@ public class DBUtilities {
         public static final String EVENTO_VOL_TOTAL = "vol_total";
         public static final String EVENTO_LNG_TOTAL = "lng_total";
 
-        public static final String AMAGO_PRS_TBO = "lng_total";
-        public static final String AMAGO_PRS_REV = "lng_total";
+        public static final String AMAGO_PRS_TBO = "prs_tubo";
+        public static final String AMAGO_PRS_REV = "prs_revst";
+        public static final String AMAGO_GNC_SUP = "gnc_superfc";
+        public static final String AMAGO_EST_BRC = "est_hst_broca";
+        public static final String AMAGO_EST_FNA = "est_fnd_arriba";
+        public static final String AMAGO_CRC_TOT = "crc_ttl_matar";
 
 
 
@@ -42,9 +46,16 @@ public class DBUtilities {
                                                                                             EVENTO_PESO_LODO + " REAL, " +
                                                                                             EVENTO_LNG_TOTAL + " REAL, " +
                                                                                             EVENTO_VOL_TOTAL + " REAL, " +
+                                                                                            AMAGO_PRS_TBO + " REAL, " +
+                                                                                            AMAGO_PRS_REV + " REAL, " +
+                                                                                            AMAGO_GNC_SUP + " REAL, " +
+                                                                                            AMAGO_EST_BRC + " REAL, " +
+                                                                                            AMAGO_EST_FNA + " REAL, " +
+                                                                                            AMAGO_CRC_TOT + " REAL, " +
                                                                                             "FOREIGN KEY (" + EVENTO_POZO + ") REFERENCES " + TABLA_POZO + "("+ TABLA_ID +"))";
 
     public static final  String TABLE_DELETE_SQL = "DROP TABLE IF EXISTS " + TABLA_POZO;
+    public static final  String TABLE_DELETE_SQL2 = "DROP TABLE IF EXISTS " + TABLA_EVENTO;
     public static final  String TABLE_GET_SQL = "SELECT * FROM " + TABLA_POZO;
 
     public static final String getEventosFromPozo(int id){

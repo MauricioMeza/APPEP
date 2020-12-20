@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.example.appep.Data.Local.DBSQLiteHelper;
 import com.example.appep.Data.Local.DBUtilities;
 import com.example.appep.Data.Model.Evento;
+import com.example.appep.Data.Model.EventoAmago;
 import com.example.appep.Data.Model.Pozo;
 import com.example.appep.R;
 
@@ -30,6 +31,7 @@ public class ViewPozoActivity extends AppCompatActivity {
 
     private TextView textViewNombre, textViewDesc, textViewFecha, textViewNumr, textViewAct, textViewVer;
     private TextView textViewEventPsoldo1, textViewEventPsoldo2, textViewEventVol, textViewEventLng;
+    private TextView textViewEventCircTtl, textViewEventEstFArriba, textViewEventEstHBroca, textViewEventGncSup, textViewEventPrsCrrTbo, textViewEventPrsCrrRev;
     private int[][] names = {{R.id.textViewEst1,R.id.textViewPrs1},{R.id.textViewEst2,R.id.textViewPrs2},{R.id.textViewEst3,R.id.textViewPrs3},{R.id.textViewEst4,R.id.textViewPrs4},{R.id.textViewEst5,R.id.textViewPrs5},
                              {R.id.textViewEst6,R.id.textViewPrs6},{R.id.textViewEst7,R.id.textViewPrs7},{R.id.textViewEst8,R.id.textViewPrs8},{R.id.textViewEst9,R.id.textViewPrs9},{R.id.textViewEst10,R.id.textViewPrs10},{R.id.textViewEst11,R.id.textViewPrs11}};
     private TextView[][] estroques = new TextView[11][2];
@@ -61,6 +63,13 @@ public class ViewPozoActivity extends AppCompatActivity {
         textViewEventPsoldo2 = findViewById(R.id.textViewPesolodoBlank2);
         textViewEventVol = findViewById(R.id.textViewVolBlank);
         textViewEventLng = findViewById(R.id.textViewLngBlank);
+
+        textViewEventCircTtl = findViewById(R.id.textViewCrcPaMatrBlank);
+        textViewEventEstFArriba = findViewById(R.id.textViewEstFABlank);
+        textViewEventEstHBroca = findViewById(R.id.textViewEstHBrcBlank);
+        textViewEventGncSup = findViewById(R.id.textViewGncSuprBlank);
+        textViewEventPrsCrrTbo = findViewById(R.id.textViewPrCrrTboBlank);
+        textViewEventPrsCrrRev= findViewById(R.id.textViewPrCrrRevBlank);
 
         for(int i=0; i<names.length; i++){
             estroques[i][0] = findViewById(names[i][0]);
@@ -109,11 +118,18 @@ public class ViewPozoActivity extends AppCompatActivity {
         }
 
         Evento ultimoEvento = pozoInfo.getEventos().get(0);
+        EventoAmago ultimoAmago = ultimoEvento.getEventoAmago();
         af.setRoundingMode(RoundingMode.CEILING);
         textViewEventPsoldo1.setText(af.format(ultimoEvento.getPesoLodo()));
         textViewEventPsoldo2.setText("(" + df.format(ultimoEvento.getPesoLodo()) + ")");
         textViewEventVol.setText(df.format(ultimoEvento.getVolTotal()));
         textViewEventLng.setText(df.format(ultimoEvento.getLongTotal()));
+        textViewEventPrsCrrTbo.setText(df.format(ultimoAmago.getPresCierreTubo()));
+        textViewEventPrsCrrRev.setText(df.format(ultimoAmago.getPresCierreRev()));
+        textViewEventGncSup.setText(df.format(ultimoAmago.getGananciaSuperficie()));
+        textViewEventEstHBroca.setText(nf.format(ultimoAmago.getEstrHastaBroca()));
+        textViewEventEstFArriba.setText(nf.format(ultimoAmago.getEstrFondoArrb()));
+        textViewEventCircTtl.setText(nf.format(ultimoAmago.getCircTotalMatarPozo()));
 
         double[][] matrix = ultimoEvento.getTablaEstr();
         for(int i=0; i<matrix.length; i++) {
@@ -176,10 +192,21 @@ public class ViewPozoActivity extends AppCompatActivity {
             SimpleDateFormat dateFormat = new SimpleDateFormat("EEE MMM dd hh:mm:ss zzz yyyy", Locale.ENGLISH);
             Date fecha = dateFormat.parse(c.getString(2));
             evento.setFechaCreacion(fecha);
-            evento.setTablaEstr(getMatrixFromToString(c.getString(3), 10));
+            evento.setTablaEstr(getMatrixFromToString(c.getString(3), 11));
             evento.setPesoLodo(c.getDouble(4));
             evento.setLongTotal(c.getDouble(5));
             evento.setVolTotal(c.getDouble(6));
+
+            EventoAmago eventoAmago = new EventoAmago(evento);
+            eventoAmago.setPresCierreTubo(c.getDouble(7));
+            eventoAmago.setPresCierreRev(c.getDouble(8));
+            eventoAmago.setGananciaSuperficie(c.getDouble(9));
+            eventoAmago.setEstrHastaBroca(c.getDouble(10));
+            eventoAmago.setEstrFondoArrb(c.getDouble(11));
+            eventoAmago.setCircTotalMatarPozo(c.getDouble(12));
+
+            evento.setEventoAmago(eventoAmago);
+
             pozo.setNewEvento(evento);
         }
 
