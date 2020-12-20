@@ -170,7 +170,8 @@
                     android:paddingStart="8dp"
                     android:paddingEnd="0dp"
                     android:text="@string/temp_real"
-                    android:textSize="18sp" />
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/textViewPesolodoBlank2"
@@ -183,37 +184,53 @@
                     android:textSize="18sp" />
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/textViewVolView"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="@string/comps_vol" />
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/textViewVolBlank"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingStart="8dp"
-                android:paddingEnd="0dp"
-                android:text="@string/temp_real"
-                android:textSize="18sp" />
+                <TextView
+                    android:id="@+id/textViewVolView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_weight="1"
+                    android:text="@string/comps_vol" />
 
-            <TextView
-                android:id="@+id/textViewLngView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="@string/comps_lon" />
+                <TextView
+                    android:id="@+id/textViewLngView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_weight="1"
+                    android:text="@string/comps_lon" />
+            </LinearLayout>
 
-            <TextView
-                android:id="@+id/textViewLngBlank"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingStart="8dp"
-                android:paddingEnd="0dp"
-                android:text="@string/temp_real"
-                android:textSize="18sp" />
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textViewVolBlank"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="0dp"
+                    android:text="@string/temp_real"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/textViewLngBlank"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="0dp"
+                    android:text="@string/temp_real"
+                    android:textSize="18sp" />
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"

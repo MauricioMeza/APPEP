@@ -1,5 +1,7 @@
 package com.example.appep.Data.Model;
 
+import com.example.appep.R;
+
 public class EventoAmago {
 
     private String id;
@@ -58,6 +60,7 @@ public class EventoAmago {
         return res;
     }
 
+
     public Evento getEvento() { return evento; }
     public void setEvento(Evento evento) { this.evento = evento; }
 
@@ -100,4 +103,17 @@ public class EventoAmago {
     public double getCircTotalMatarPozo() { return circTotalMatarPozo; }
     public void setCircTotalMatarPozo(double circTotalMatarPozo) { this.circTotalMatarPozo = circTotalMatarPozo; }
 
+
+    public String amagoEventValidation(){
+        double[] properties = {pesoOrglLodo, profVertical, profTotal, presReducidaBomba, desplBomba, presCierreTubo, presCierreRev, gananciaSuperficie};
+        int[] propIds = {R.string.fnl_pol, R.string.fnl_pvv, R.string.fnl_ptm, R.string.fnl_prb, R.string.fnl_dsb, R.string.fnl_pctp, R.string.fnl_pcrv, R.string.fnl_gnsp};
+
+        for (int i=0; i <= properties.length; i++) {
+            if(properties[i] <= 0.000001){
+                return "No se permiten valores negativos, vacio o cero";
+            }
+        }
+
+        return "OK";
+    }
 }

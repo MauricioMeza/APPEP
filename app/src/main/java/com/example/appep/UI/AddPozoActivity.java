@@ -131,13 +131,18 @@ public class AddPozoActivity extends AppCompatActivity{
                         }
                         break;
                     case 4:
-                        if(addNew){
-                            addPozo();
-                        }else{
-                            updatePozo();
-                        }
+                        String valB = pozo.getEventos().get(0).getEventoAmago().amagoEventValidation();
 
-                        finish();
+                        if(valB.equals("OK")){
+                            if(addNew){
+                                addPozo();
+                            }else{
+                                updatePozo();
+                            }
+                            finish();
+                        }else{
+                            Toast.makeText(getApplicationContext(), valB, Toast.LENGTH_LONG).show();
+                        }
                 }
             }
         });

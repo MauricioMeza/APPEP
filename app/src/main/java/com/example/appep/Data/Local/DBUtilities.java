@@ -20,6 +20,12 @@ public class DBUtilities {
         public static final String EVENTO_VOL_TOTAL = "vol_total";
         public static final String EVENTO_LNG_TOTAL = "lng_total";
 
+        public static final String AMAGO_PRS_TBO = "lng_total";
+        public static final String AMAGO_PRS_REV = "lng_total";
+
+
+
+
 
     //SQL sentences on database
     public static final  String TABLE_CREATE_POZO_SQL = "CREATE TABLE "+ TABLA_POZO +" (" + TABLA_ID +" INTEGER PRIMARY KEY AUTOINCREMENT, "+
