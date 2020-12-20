@@ -231,6 +231,7 @@ public class AddPozoFragment4 extends Fragment {
                 }
                 eventoAmago.setDesplBomba(dsplBm);
                 estroquesHastaCalculations();
+                programaMatrixCalculations();
             }
         });
 
@@ -251,6 +252,7 @@ public class AddPozoFragment4 extends Fragment {
                 }
                 eventoAmago.setPesoOrglLodo(psoOrg);
                 pesoLodoCalculations();
+                programaMatrixCalculations();
             }
         });
 
@@ -268,6 +270,7 @@ public class AddPozoFragment4 extends Fragment {
                     profVrt = Double.parseDouble(num);
                     eventoAmago.setProfVertical(profVrt);
                     pesoLodoCalculations();
+                    programaMatrixCalculations();
                 }else if(num.isEmpty()){
                     profVrt = 0;
                 }

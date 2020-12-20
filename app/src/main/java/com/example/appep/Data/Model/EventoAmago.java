@@ -27,8 +27,8 @@ public class EventoAmago {
     public double[][] calcPrgrmCircMtrix(){
         int size = 11;
         double tablaEstr[][] = new double[size][2];
-        double icp = this.presReducidaBomba + presCierreTubo;
-        double fcp = this.presReducidaBomba * (evento.getPesoLodo()/this.getPesoOrglLodo());
+        double icp = this.presReducidaBomba + this.presCierreTubo;
+        double fcp = this.presReducidaBomba * (evento.getPesoLodo()/this.pesoOrglLodo);
 
         for(int i=0; i<11; i++){
             tablaEstr[i][0] = this.estrHastaBroca * (i* 0.1);
@@ -108,7 +108,7 @@ public class EventoAmago {
         double[] properties = {pesoOrglLodo, profVertical, profTotal, presReducidaBomba, desplBomba, presCierreTubo, presCierreRev, gananciaSuperficie};
         int[] propIds = {R.string.fnl_pol, R.string.fnl_pvv, R.string.fnl_ptm, R.string.fnl_prb, R.string.fnl_dsb, R.string.fnl_pctp, R.string.fnl_pcrv, R.string.fnl_gnsp};
 
-        for (int i=0; i <= properties.length; i++) {
+        for (int i=0; i < properties.length; i++) {
             if(properties[i] <= 0.000001){
                 return "No se permiten valores negativos, vacio o cero";
             }
