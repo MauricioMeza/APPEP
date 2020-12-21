@@ -11,6 +11,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -22,10 +23,10 @@ import com.example.appep.Data.Model.Pozo;
 import com.example.appep.R;
 import com.example.appep.UI.RecyclerViewClasses.EventAdapter;
 
-import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 
@@ -34,7 +35,7 @@ public class ViewPozoActivity extends AppCompatActivity {
 
     private TextView textViewNombre, textViewDesc, textViewFecha, textViewNumr, textViewAct, textViewVer;
     private RecyclerView eventRecyclerView;
-    private Button  buttonDelete, buttonUpdate, buttonComplete;
+    private Button  buttonDelete, buttonUpdate, buttonComplete, buttonHistory;
     public static Activity viewActivity;
     private Pozo pozoInfo;
     DBSQLiteHelper connect;
@@ -62,6 +63,7 @@ public class ViewPozoActivity extends AppCompatActivity {
         buttonDelete = findViewById(R.id.buttonViewDel);
         buttonUpdate = findViewById(R.id.buttonViewUpd);
         buttonComplete = findViewById(R.id.buttonViewCmp);
+        buttonHistory = findViewById(R.id.buttonViewHis);
 
         //Get info from selectedPozo and present it in layout TextViews
         pozoInfo = (Pozo) getIntent().getSerializableExtra("pozo");
@@ -100,14 +102,24 @@ public class ViewPozoActivity extends AppCompatActivity {
             buttonComplete.setEnabled(false);
         }
 
-        eventRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        eventRecyclerView.setAdapter(new EventAdapter(pozoInfo.getEventos()));
-
         buttonDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) { deletePozo(pozoInfo.getId());
             }
         });
+
+        buttonHistory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EventHistoryDialog eventHistoryDialog = new EventHistoryDialog(pozoInfo.getEventos());
+                eventHistoryDialog.show(getSupportFragmentManager(), "HISTORY_DIALOG");
+            }
+        });
+
+        ArrayList ultimoEvento = new ArrayList<Evento>();
+        ultimoEvento.add(pozoInfo.getEventos().get(0));
+        eventRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        eventRecyclerView.setAdapter(new EventAdapter(ultimoEvento));
     }
 
     //Delete register from DB, finish and open MainActivity

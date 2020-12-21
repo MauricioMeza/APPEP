@@ -65,7 +65,6 @@
 
     <string name="num_frm">#.#####</string>
 
-
     <string name="comps_lon">Longitud (ft)</string>
     <string name="comps_lon_sarta">Longitud de Sarta (ft)</string>
     <string name="comps_lon_anulr">Longitud Anular (ft)</string>
@@ -76,13 +75,12 @@
     <string name="comps_vol_intrn">Volumen Interno (bbl)</string>
     <string name="comps_vol_anulr">Volumen Anular (bbl)</string>
 
-
-
     <string name="todo_add_button">Añadir Pozo</string>
     <string name="todo_add_event">Añadir Nuevo Evento</string>
     <string name="todo_del_button">Eliminar Pozo</string>
     <string name="todo_upd_button">Actualizar Pozo</string>
     <string name="todo_cmp_button">Finalizar Pozo</string>
+    <string name="todo_hst_button">Historial Completo de Eventos</string>
     <string name="yes">Si</string>
     <string name="no">No</string>
 
@@ -91,7 +89,6 @@
     <string name="nxt">Siguiente</string>
     <string name="bfr">Anterior</string>
     <string name="bck">Volver</string>
-
 
     <string name="splashimg">splashImg</string>
     <string name="an1">Anular1</string>
