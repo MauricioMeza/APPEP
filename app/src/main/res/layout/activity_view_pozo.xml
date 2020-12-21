@@ -133,14 +133,6 @@
                 android:text="@string/todo_tppz"
                 android:textSize="18sp" />
 
-            <View
-                android:id="@+id/divider9"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                android:background="?android:attr/listDivider" />
-
             <Button
                 android:id="@+id/buttonViewUpd"
                 style="@style/Widget.AppCompat.Button"
@@ -149,6 +141,14 @@
                 android:layout_marginTop="16dp"
                 android:layout_weight="1"
                 android:text="@string/todo_add_event" />
+
+            <View
+                android:id="@+id/divider9"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="?android:attr/listDivider" />
 
             <TextView
                 android:id="@+id/textView3"

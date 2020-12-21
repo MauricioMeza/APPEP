@@ -118,8 +118,15 @@ public class ViewPozoActivity extends AppCompatActivity {
 
         ArrayList ultimoEvento = new ArrayList<Evento>();
         ultimoEvento.add(pozoInfo.getEventos().get(0));
-        eventRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this){
+            @Override
+            public boolean canScrollVertically() {
+                return false;
+            }
+        };
+        eventRecyclerView.setLayoutManager(linearLayoutManager);
         eventRecyclerView.setAdapter(new EventAdapter(ultimoEvento));
+        eventRecyclerView.setFocusable(false);
     }
 
     //Delete register from DB, finish and open MainActivity
