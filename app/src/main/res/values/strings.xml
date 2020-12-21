@@ -26,6 +26,7 @@
         <string name="todo_tpvr">Vertical</string>
         <string name="todo_tphz">Horizontal</string>
     <string name="todo_date">Fecha Creacion</string>
+    <string name="envt_date">Fecha del Evento</string>
     <string name="todo_actv">Abierto</string>
     <string name="todo_idts">Numero</string>
 
