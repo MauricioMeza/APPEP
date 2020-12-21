@@ -264,6 +264,13 @@ public class AddPozoActivity extends AppCompatActivity{
         valuesEvent.put(DBUtilities.EVENTO_VOL_TOTAL, evento.getVolTotal());
         valuesEvent.put(DBUtilities.EVENTO_LNG_TOTAL, evento.getLongTotal());
 
+        valuesEvent.put(DBUtilities.AMAGO_PRS_TBO, evento.getEventoAmago().getPresCierreTubo());
+        valuesEvent.put(DBUtilities.AMAGO_PRS_REV, evento.getEventoAmago().getPresCierreRev());
+        valuesEvent.put(DBUtilities.AMAGO_GNC_SUP, evento.getEventoAmago().getGananciaSuperficie());
+        valuesEvent.put(DBUtilities.AMAGO_EST_BRC, evento.getEventoAmago().getEstrHastaBroca());
+        valuesEvent.put(DBUtilities.AMAGO_EST_FNA, evento.getEventoAmago().getEstrFondoArrb());
+        valuesEvent.put(DBUtilities.AMAGO_CRC_TOT, evento.getEventoAmago().getCircTotalMatarPozo());
+
         Long confirmationNum2 = db.insert(DBUtilities.TABLA_EVENTO, null, valuesEvent);
 
         db.close();

@@ -1,6 +1,8 @@
 package com.example.appep.UI;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
 import android.content.ContentValues;
@@ -18,6 +20,7 @@ import com.example.appep.Data.Model.Evento;
 import com.example.appep.Data.Model.EventoAmago;
 import com.example.appep.Data.Model.Pozo;
 import com.example.appep.R;
+import com.example.appep.UI.RecyclerViewClasses.EventAdapter;
 
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
@@ -30,11 +33,7 @@ import java.util.Locale;
 public class ViewPozoActivity extends AppCompatActivity {
 
     private TextView textViewNombre, textViewDesc, textViewFecha, textViewNumr, textViewAct, textViewVer;
-    private TextView textViewEventPsoldo1, textViewEventPsoldo2, textViewEventVol, textViewEventLng;
-    private TextView textViewEventCircTtl, textViewEventEstFArriba, textViewEventEstHBroca, textViewEventGncSup, textViewEventPrsCrrTbo, textViewEventPrsCrrRev;
-    private int[][] names = {{R.id.textViewEst1,R.id.textViewPrs1},{R.id.textViewEst2,R.id.textViewPrs2},{R.id.textViewEst3,R.id.textViewPrs3},{R.id.textViewEst4,R.id.textViewPrs4},{R.id.textViewEst5,R.id.textViewPrs5},
-                             {R.id.textViewEst6,R.id.textViewPrs6},{R.id.textViewEst7,R.id.textViewPrs7},{R.id.textViewEst8,R.id.textViewPrs8},{R.id.textViewEst9,R.id.textViewPrs9},{R.id.textViewEst10,R.id.textViewPrs10},{R.id.textViewEst11,R.id.textViewPrs11}};
-    private TextView[][] estroques = new TextView[11][2];
+    private RecyclerView eventRecyclerView;
     private Button  buttonDelete, buttonUpdate, buttonComplete;
     public static Activity viewActivity;
     private Pozo pozoInfo;
@@ -58,23 +57,7 @@ public class ViewPozoActivity extends AppCompatActivity {
         textViewNumr = findViewById(R.id.textViewIdBlank);
         textViewAct = findViewById(R.id.textViewAbiertoBlank);
         textViewVer = findViewById(R.id.textViewTipoBlank);
-
-        textViewEventPsoldo1 = findViewById(R.id.textViewPesolodoBlank1);
-        textViewEventPsoldo2 = findViewById(R.id.textViewPesolodoBlank2);
-        textViewEventVol = findViewById(R.id.textViewVolBlank);
-        textViewEventLng = findViewById(R.id.textViewLngBlank);
-
-        textViewEventCircTtl = findViewById(R.id.textViewCrcPaMatrBlank);
-        textViewEventEstFArriba = findViewById(R.id.textViewEstFABlank);
-        textViewEventEstHBroca = findViewById(R.id.textViewEstHBrcBlank);
-        textViewEventGncSup = findViewById(R.id.textViewGncSuprBlank);
-        textViewEventPrsCrrTbo = findViewById(R.id.textViewPrCrrTboBlank);
-        textViewEventPrsCrrRev= findViewById(R.id.textViewPrCrrRevBlank);
-
-        for(int i=0; i<names.length; i++){
-            estroques[i][0] = findViewById(names[i][0]);
-            estroques[i][1] = findViewById(names[i][1]);
-        }
+        eventRecyclerView = findViewById(R.id.recyclerViewEvents);
 
         buttonDelete = findViewById(R.id.buttonViewDel);
         buttonUpdate = findViewById(R.id.buttonViewUpd);
@@ -117,25 +100,8 @@ public class ViewPozoActivity extends AppCompatActivity {
             buttonComplete.setEnabled(false);
         }
 
-        Evento ultimoEvento = pozoInfo.getEventos().get(0);
-        EventoAmago ultimoAmago = ultimoEvento.getEventoAmago();
-        af.setRoundingMode(RoundingMode.CEILING);
-        textViewEventPsoldo1.setText(af.format(ultimoEvento.getPesoLodo()));
-        textViewEventPsoldo2.setText("(" + df.format(ultimoEvento.getPesoLodo()) + ")");
-        textViewEventVol.setText(df.format(ultimoEvento.getVolTotal()));
-        textViewEventLng.setText(df.format(ultimoEvento.getLongTotal()));
-        textViewEventPrsCrrTbo.setText(df.format(ultimoAmago.getPresCierreTubo()));
-        textViewEventPrsCrrRev.setText(df.format(ultimoAmago.getPresCierreRev()));
-        textViewEventGncSup.setText(df.format(ultimoAmago.getGananciaSuperficie()));
-        textViewEventEstHBroca.setText(nf.format(ultimoAmago.getEstrHastaBroca()));
-        textViewEventEstFArriba.setText(nf.format(ultimoAmago.getEstrFondoArrb()));
-        textViewEventCircTtl.setText(nf.format(ultimoAmago.getCircTotalMatarPozo()));
-
-        double[][] matrix = ultimoEvento.getTablaEstr();
-        for(int i=0; i<matrix.length; i++) {
-            estroques[i][0].setText(nf.format(matrix[i][0]));
-            estroques[i][1].setText(af.format(matrix[i][1]));
-        }
+        eventRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        eventRecyclerView.setAdapter(new EventAdapter(pozoInfo.getEventos()));
 
         buttonDelete.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -184,6 +150,7 @@ public class ViewPozoActivity extends AppCompatActivity {
         finish();
     }
 
+    //Run a SQL query that looks for every event in the DB with th ID of the Pozo and adds them to the pozo object
     public Pozo getEventsFromPozo(Pozo pozo) throws ParseException {
         SQLiteDatabase db = connect.getReadableDatabase();
         Cursor c = db.rawQuery(DBUtilities.getEventosFromPozo(pozo.getId()), null);
@@ -213,6 +180,7 @@ public class ViewPozoActivity extends AppCompatActivity {
         return pozo;
     }
 
+    //Receives a String version of a 2 dimension array and transforms it into a 2 dimension array
     public double[][] getMatrixFromToString(String matrixString, int rows){
         int cols = 2;
         double[][] matrix = new double[rows][cols];

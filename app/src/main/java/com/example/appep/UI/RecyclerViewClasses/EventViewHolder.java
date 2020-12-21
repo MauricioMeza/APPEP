@@ -25,7 +25,7 @@ public class EventViewHolder extends RecyclerView.ViewHolder {
         textViewEventVol = (TextView) itemView.findViewById(R.id.textViewVolBlank);
         textViewEventLng = (TextView) itemView.findViewById(R.id.textViewLngBlank);
 
-        textViewEventCircTtl = (TextView) itemView.findViewById(R.id.textViewCrcPaMatrBlank);
+        textViewEventCircTtl = (TextView) itemView.findViewById(R.id.textViewCrcPaMatrBlank3);
         textViewEventEstFArriba = (TextView) itemView.findViewById(R.id.textViewEstFABlank);
         textViewEventEstHBroca =  (TextView) itemView.findViewById(R.id.textViewEstHBrcBlank);
         textViewEventGncSup = (TextView) itemView.findViewById(R.id.textViewGncSuprBlank);
