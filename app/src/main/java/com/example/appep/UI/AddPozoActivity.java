@@ -20,6 +20,7 @@ import com.example.appep.Data.Local.DBSQLiteHelper;
 import com.example.appep.Data.Local.DBUtilities;
 import com.example.appep.Data.Model.Componente;
 import com.example.appep.Data.Model.Evento;
+import com.example.appep.Data.Model.EventoAmago;
 import com.example.appep.Data.Model.Pozo;
 import com.example.appep.R;
 
@@ -173,6 +174,7 @@ public class AddPozoActivity extends AppCompatActivity{
         });
     }
 
+    //TODO: Refactor the databse writting operation into one for addPozo and addEvent
     //Create new Pozo object and set information in DB, after that start a new main activity
     public void addPozo(){
         MainActivity.mainActivity.finish();
@@ -193,18 +195,21 @@ public class AddPozoActivity extends AppCompatActivity{
         //Set info of new event in BD table
         ContentValues valuesEvent = new ContentValues();
         Evento evento = pozo.getEventos().get(0);
+        EventoAmago amago = evento.getEventoAmago();
         valuesEvent.put(DBUtilities.EVENTO_POZO, confirmationNum.intValue());
         valuesEvent.put(DBUtilities.EVENTO_FECHA_CR, evento.getFechaCreacion().toString());
         valuesEvent.put(DBUtilities.EVENTO_PESO_LODO, evento.getPesoLodo());
         valuesEvent.put(DBUtilities.EVENTO_TABLA_ESTR, Arrays.deepToString(evento.getTablaEstr()));
         valuesEvent.put(DBUtilities.EVENTO_VOL_TOTAL, evento.getVolTotal());
         valuesEvent.put(DBUtilities.EVENTO_LNG_TOTAL, evento.getLongTotal());
-        valuesEvent.put(DBUtilities.AMAGO_PRS_TBO, evento.getEventoAmago().getPresCierreTubo());
-        valuesEvent.put(DBUtilities.AMAGO_PRS_REV, evento.getEventoAmago().getPresCierreRev());
-        valuesEvent.put(DBUtilities.AMAGO_GNC_SUP, evento.getEventoAmago().getGananciaSuperficie());
-        valuesEvent.put(DBUtilities.AMAGO_EST_BRC, evento.getEventoAmago().getEstrHastaBroca());
-        valuesEvent.put(DBUtilities.AMAGO_EST_FNA, evento.getEventoAmago().getEstrFondoArrb());
-        valuesEvent.put(DBUtilities.AMAGO_CRC_TOT, evento.getEventoAmago().getCircTotalMatarPozo());
+        valuesEvent.put(DBUtilities.AMAGO_PRS_TBO, amago.getPresCierreTubo());
+        valuesEvent.put(DBUtilities.AMAGO_PRS_REV, amago.getPresCierreRev());
+        valuesEvent.put(DBUtilities.AMAGO_GNC_SUP, amago.getGananciaSuperficie());
+        valuesEvent.put(DBUtilities.AMAGO_EST_BRC, amago.getEstrHastaBroca());
+        valuesEvent.put(DBUtilities.AMAGO_EST_FNA, amago.getEstrFondoArrb());
+        valuesEvent.put(DBUtilities.AMAGO_CRC_TOT, amago.getCircTotalMatarPozo());
+        valuesEvent.put(DBUtilities.AMAGO_PR_FRAC, amago.getPrFractura());
+        valuesEvent.put(DBUtilities.AMAGO_PR_PORO, amago.getPrPoro());
 
         Long confirmationNum2 = db.insert(DBUtilities.TABLA_EVENTO, null, valuesEvent);
 
@@ -251,12 +256,14 @@ public class AddPozoActivity extends AppCompatActivity{
 
         ContentValues values = new ContentValues();
         String[] parametros = {String.valueOf(pozo.getId())};
+
         values.put(DBUtilities.TABLA_VERTICAL, pozo.isVertical());
 
         int confirmationNum = db.update(DBUtilities.TABLA_POZO, values, DBUtilities.TABLA_ID + "=?", parametros );
 
         ContentValues valuesEvent = new ContentValues();
         Evento evento = pozo.getEventos().get(0);
+        EventoAmago amago = evento.getEventoAmago();
         valuesEvent.put(DBUtilities.EVENTO_POZO, pozo.getId());
         valuesEvent.put(DBUtilities.EVENTO_FECHA_CR, evento.getFechaCreacion().toString());
         valuesEvent.put(DBUtilities.EVENTO_PESO_LODO, evento.getPesoLodo());
@@ -264,12 +271,14 @@ public class AddPozoActivity extends AppCompatActivity{
         valuesEvent.put(DBUtilities.EVENTO_VOL_TOTAL, evento.getVolTotal());
         valuesEvent.put(DBUtilities.EVENTO_LNG_TOTAL, evento.getLongTotal());
 
-        valuesEvent.put(DBUtilities.AMAGO_PRS_TBO, evento.getEventoAmago().getPresCierreTubo());
-        valuesEvent.put(DBUtilities.AMAGO_PRS_REV, evento.getEventoAmago().getPresCierreRev());
-        valuesEvent.put(DBUtilities.AMAGO_GNC_SUP, evento.getEventoAmago().getGananciaSuperficie());
-        valuesEvent.put(DBUtilities.AMAGO_EST_BRC, evento.getEventoAmago().getEstrHastaBroca());
-        valuesEvent.put(DBUtilities.AMAGO_EST_FNA, evento.getEventoAmago().getEstrFondoArrb());
-        valuesEvent.put(DBUtilities.AMAGO_CRC_TOT, evento.getEventoAmago().getCircTotalMatarPozo());
+        valuesEvent.put(DBUtilities.AMAGO_PRS_TBO, amago.getPresCierreTubo());
+        valuesEvent.put(DBUtilities.AMAGO_PRS_REV, amago.getPresCierreRev());
+        valuesEvent.put(DBUtilities.AMAGO_GNC_SUP, amago.getGananciaSuperficie());
+        valuesEvent.put(DBUtilities.AMAGO_EST_BRC, amago.getEstrHastaBroca());
+        valuesEvent.put(DBUtilities.AMAGO_EST_FNA, amago.getEstrFondoArrb());
+        valuesEvent.put(DBUtilities.AMAGO_CRC_TOT, amago.getCircTotalMatarPozo());
+        valuesEvent.put(DBUtilities.AMAGO_PR_FRAC, amago.getPrFractura());
+        valuesEvent.put(DBUtilities.AMAGO_PR_PORO, amago.getPrPoro());
 
         Long confirmationNum2 = db.insert(DBUtilities.TABLA_EVENTO, null, valuesEvent);
 

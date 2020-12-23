@@ -4,7 +4,7 @@ public class DBUtilities {
 
     //Names in database
     public static final String DB_NOMBRE = "DB_APPEP";
-    public static final int DB_VERSION = 4;
+    public static final int DB_VERSION = 5;
     public static final String TABLA_ID = "id";
     public static final String TABLA_POZO = "Pozo";
         public static final String TABLA_ABIERTO = "abierto";
@@ -26,7 +26,8 @@ public class DBUtilities {
         public static final String AMAGO_EST_BRC = "est_hst_broca";
         public static final String AMAGO_EST_FNA = "est_fnd_arriba";
         public static final String AMAGO_CRC_TOT = "crc_ttl_matar";
-
+        public static final String AMAGO_PR_FRAC = "pr_frac";
+        public static final String AMAGO_PR_PORO = "pr_poro";
 
 
 
@@ -52,6 +53,8 @@ public class DBUtilities {
                                                                                             AMAGO_EST_BRC + " REAL, " +
                                                                                             AMAGO_EST_FNA + " REAL, " +
                                                                                             AMAGO_CRC_TOT + " REAL, " +
+                                                                                            AMAGO_PR_FRAC + " REAL, " +
+                                                                                            AMAGO_PR_PORO + " REAL, " +
                                                                                             "FOREIGN KEY (" + EVENTO_POZO + ") REFERENCES " + TABLA_POZO + "("+ TABLA_ID +"))";
 
     public static final  String TABLE_DELETE_SQL = "DROP TABLE IF EXISTS " + TABLA_POZO;

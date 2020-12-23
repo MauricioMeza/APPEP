@@ -6,7 +6,7 @@ public class EventoAmago {
 
     private String id;
     private Evento evento;
-    private double pesoOrglLodo, profVertical, profTotal, presReducidaBomba, desplBomba, presCierreTubo, presCierreRev, gananciaSuperficie;
+    private double pesoOrglLodo, profVertical, profTotal, presReducidaBomba, desplBomba, presCierreTubo, presCierreRev, gananciaSuperficie, prFractura, prPoro;
     private double estrHastaBroca, estrFondoArrb, circTotalMatarPozo;
 
     public EventoAmago(Evento evento) {
@@ -103,16 +103,32 @@ public class EventoAmago {
     public double getCircTotalMatarPozo() { return circTotalMatarPozo; }
     public void setCircTotalMatarPozo(double circTotalMatarPozo) { this.circTotalMatarPozo = circTotalMatarPozo; }
 
+    public double getPrFractura() { return prFractura; }
+    public void setPrFractura(double prFractura) { this.prFractura = prFractura; }
 
+    public double getPrPoro() { return prPoro; }
+    public void setPrPoro(double prPoro) { this.prPoro = prPoro; }
+
+    //TODO: See if i can aling the error with the textEdit it happened in
     public String amagoEventValidation(){
-        double[] properties = {pesoOrglLodo, profVertical, profTotal, presReducidaBomba, desplBomba, presCierreTubo, presCierreRev, gananciaSuperficie};
-        int[] propIds = {R.string.fnl_pol, R.string.fnl_pvv, R.string.fnl_ptm, R.string.fnl_prb, R.string.fnl_dsb, R.string.fnl_pctp, R.string.fnl_pcrv, R.string.fnl_gnsp};
+        double[] properties = {pesoOrglLodo, profVertical, profTotal, presReducidaBomba, desplBomba, presCierreTubo, presCierreRev, gananciaSuperficie, prFractura, prPoro};
+        int[] propIds = {R.string.fnl_pol, R.string.fnl_pvv, R.string.fnl_ptm, R.string.fnl_prb, R.string.fnl_dsb, R.string.fnl_pctp, R.string.fnl_pcrv, R.string.fnl_gnsp, R.string.fnl_prfr, R.string.fnl_prpr};
 
         for (int i=0; i < properties.length; i++) {
             if(properties[i] <= 0.000001){
                 return "No se permiten valores negativos, vacio o cero";
             }
         }
+
+        /*
+        if(prFractura < prPoro){
+            return "La presion de fractura debe ser mayor a la presion de poro";
+        }
+
+        if(!(prFractura > evento.getPesoLodo() && prPoro < evento.getPesoLodo())){
+            return "Los resultados no concuerdan con las presiones de fractura y poro";
+        }
+        */
 
         return "OK";
     }

@@ -190,6 +190,8 @@ public class ViewPozoActivity extends AppCompatActivity {
             eventoAmago.setEstrHastaBroca(c.getDouble(10));
             eventoAmago.setEstrFondoArrb(c.getDouble(11));
             eventoAmago.setCircTotalMatarPozo(c.getDouble(12));
+            eventoAmago.setPrFractura(c.getDouble(13));
+            eventoAmago.setPrPoro(c.getDouble(14));
 
             evento.setEventoAmago(eventoAmago);
 

@@ -50,6 +50,8 @@ public class EventAdapter extends RecyclerView.Adapter<EventViewHolder>{
         holder.textViewEventEstHBroca.setText(nf.format(ultimoAmago.getEstrHastaBroca()));
         holder.textViewEventEstFArriba.setText(nf.format(ultimoAmago.getEstrFondoArrb()));
         holder.textViewEventCircTtl.setText(nf.format(ultimoAmago.getCircTotalMatarPozo()));
+        holder.textViewEventFract.setText(df.format(ultimoAmago.getPrFractura()));
+        holder.textViewEventPoro.setText(df.format(ultimoAmago.getPrPoro()));
 
         double[][] matrix = evento.getTablaEstr();
         for(int i=0; i<matrix.length; i++) {

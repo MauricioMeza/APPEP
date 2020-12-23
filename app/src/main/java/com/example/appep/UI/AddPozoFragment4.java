@@ -36,7 +36,7 @@ public class AddPozoFragment4 extends Fragment {
     private String mParam2;
 
     private EventoAmago eventoAmago;
-    private EditText prsCrrTbo, prsCrrRev, gncSpr,    prsRedBmb, dspBmb,   psoOrgLdo, prfVrtVrd, prfTtlMed,   prFr, prPr;
+    private EditText prsCrrTbo, prsCrrRev, gncSpr,    prsRedBmb, dspBmb,   psoOrgLdo, prfVrtVrd, prfTtlMed, prFr, prPr;
     private TextView estrFndArrba, estrHstBrca, circPrMtrPozo, pesoLodoAprox, pesoLodoTotal;
     private int[][] names = {{R.id.textViewEst1,R.id.textViewPrs1},{R.id.textViewEst2,R.id.textViewPrs2},{R.id.textViewEst3,R.id.textViewPrs3},{R.id.textViewEst4,R.id.textViewPrs4},{R.id.textViewEst5,R.id.textViewPrs5},
                              {R.id.textViewEst6,R.id.textViewPrs6},{R.id.textViewEst7,R.id.textViewPrs7},{R.id.textViewEst8,R.id.textViewPrs8},{R.id.textViewEst9,R.id.textViewPrs9},{R.id.textViewEst10,R.id.textViewPrs10},{R.id.textViewEst11,R.id.textViewPrs11}};
@@ -131,6 +131,7 @@ public class AddPozoFragment4 extends Fragment {
         return  v;
     }
 
+    //TODO: Use formated textWatchers to refactor the textChanged Listeners
     //Configure the EditTexts that calculate PesoDLodoPaMatar
     private void configureEdits() {
 
@@ -293,6 +294,46 @@ public class AddPozoFragment4 extends Fragment {
                     prfTtlMed = 0;
                 }
                 eventoAmago.setProfTotal(prfTtlMed);
+            }
+        });
+
+        prFr.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) { }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                String num = s.toString();
+                double prFrac = 0;
+                if(num.matches("[+-]?([0-9]*[.])?[0-9]+")){
+                    prFrac = Double.parseDouble(num);
+                }else if(num.isEmpty()){
+                    prFrac = 0;
+                }
+                eventoAmago.setPrFractura(prFrac);
+            }
+        });
+
+        prPr.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) { }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                String num = s.toString();
+                double prPoro = 0;
+                if(num.matches("[+-]?([0-9]*[.])?[0-9]+")){
+                    prPoro = Double.parseDouble(num);
+                }else if(num.isEmpty()){
+                    prPoro = 0;
+                }
+                eventoAmago.setPrPoro(prPoro);
             }
         });
 
