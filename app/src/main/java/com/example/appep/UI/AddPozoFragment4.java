@@ -5,11 +5,14 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 
 import android.text.Editable;
+import android.text.Layout;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 
 import com.example.appep.Data.Model.EventoAmago;
@@ -37,10 +40,14 @@ public class AddPozoFragment4 extends Fragment {
 
     private EventoAmago eventoAmago;
     private EditText prsCrrTbo, prsCrrRev, gncSpr,    prsRedBmb, dspBmb,   psoOrgLdo, prfVrtVrd, prfTtlMed, prFr, prPr;
+    private LinearLayout koLayout, ebLayout, kopLayoutDiv, eobLayoutDiv;
+    private TextView estrKo, estrEb;
+    private TableRow extraTRow1, extraTRow2;
     private TextView estrFndArrba, estrHstBrca, circPrMtrPozo, pesoLodoAprox, pesoLodoTotal;
-    private int[][] names = {{R.id.textViewEst1,R.id.textViewPrs1},{R.id.textViewEst2,R.id.textViewPrs2},{R.id.textViewEst3,R.id.textViewPrs3},{R.id.textViewEst4,R.id.textViewPrs4},{R.id.textViewEst5,R.id.textViewPrs5},
-                             {R.id.textViewEst6,R.id.textViewPrs6},{R.id.textViewEst7,R.id.textViewPrs7},{R.id.textViewEst8,R.id.textViewPrs8},{R.id.textViewEst9,R.id.textViewPrs9},{R.id.textViewEst10,R.id.textViewPrs10},{R.id.textViewEst11,R.id.textViewPrs11}};
-    private TextView[][] estroques = new TextView[11][2];
+    private int[][] names = {{R.id.textViewEst1,R.id.textViewPrs1},{R.id.textViewEst2,R.id.textViewPrs2},{R.id.textViewEst3,R.id.textViewPrs3},{R.id.textViewEst4,R.id.textViewPrs4},
+                             {R.id.textViewEst5,R.id.textViewPrs5},{R.id.textViewEst6,R.id.textViewPrs6},{R.id.textViewEst7,R.id.textViewPrs7},{R.id.textViewEst8,R.id.textViewPrs8},
+                             {R.id.textViewEst9,R.id.textViewPrs9},{R.id.textViewEst10,R.id.textViewPrs10},{R.id.textViewEst11,R.id.textViewPrs11},{R.id.textViewEst12,R.id.textViewPrs12},{R.id.textViewEst13,R.id.textViewPrs13}};
+    private TextView[][] estroques = new TextView[13][2];
 
     private static DecimalFormat nf = new DecimalFormat("#");
     private static DecimalFormat af = new DecimalFormat("#.#");
@@ -102,6 +109,16 @@ public class AddPozoFragment4 extends Fragment {
         prFr = v.findViewById(R.id.editTextPrFr);
         prPr = v.findViewById(R.id.editTextPrPr);
 
+        koLayout = v.findViewById(R.id.kickOffEstrLayout);
+        ebLayout = v.findViewById(R.id.endBuildLayout);
+        estrKo = v.findViewById(R.id.textViewEsKoBlank);
+        estrEb = v.findViewById(R.id.textViewEsEbBlank);
+        kopLayoutDiv = v.findViewById(R.id.layoutDivKOP);
+        eobLayoutDiv = v.findViewById(R.id.layoutDivEOB);
+
+        extraTRow1 = v.findViewById(R.id.extraTableRowHztl1);
+        extraTRow2 = v.findViewById(R.id.extraTableRowHztl2);
+
         estrFndArrba = v.findViewById(R.id.textViewEsFa);
         estrHstBrca = v.findViewById(R.id.textViewEsBr);
         circPrMtrPozo = v.findViewById(R.id.textViewMtrPzo);
@@ -124,11 +141,23 @@ public class AddPozoFragment4 extends Fragment {
             eventoAmago.setProfTotal(longitud);
             prfTtlMed.setEnabled(false);
             prfVrtVrd.setEnabled(false);
+
+            koLayout.setVisibility(View.GONE);
+            ebLayout.setVisibility(View.GONE);
+            kopLayoutDiv.setVisibility(View.GONE);
+            eobLayoutDiv.setVisibility(View.GONE);
+            extraTRow1.setVisibility(View.GONE);
+            extraTRow2.setVisibility(View.GONE);
         }
 
         configureEdits();
 
+
         return  v;
+    }
+
+    //Configuration in case of the pozo being horizontal
+    private void configureHztl() {
     }
 
     //TODO: Use formated textWatchers to refactor the textChanged Listeners

@@ -2,6 +2,7 @@ package com.example.appep.UI;
 
 import android.os.Bundle;
 
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -35,9 +36,11 @@ public class AddPozoFragment1 extends Fragment {
 
     //UI Declarations
     private CheckBox rev1, rev2, rev3, dp1, dp2, dp3, hwdp, dc, dc2, broc, estb, hrrA;
+    private CardView horizontalInfo;
     private RadioGroup type;
     private ImageView imgAn1, imgAn2, imgIntD, imgIntB, imgIntC1, imgIntC2;
     private EditText nameText, descText;
+    private EditText kickOffProfMed, kickOffProfVert, endBuildProfMed, endBuildProfVert;
     private TextView textTitle;
     private boolean componentSelected[], vertical;
 
@@ -93,6 +96,12 @@ public class AddPozoFragment1 extends Fragment {
         descText = vista.findViewById(R.id.editTextToDoDesc);
         type = vista.findViewById(R.id.radioGroupType);
 
+        horizontalInfo = vista.findViewById(R.id.horizontalCard);
+        kickOffProfMed = vista.findViewById(R.id.editTextKickOffProfMedida);
+        kickOffProfVert = vista.findViewById(R.id.editTextKickOffProfVetical);
+        endBuildProfMed = vista.findViewById(R.id.editTextEndBuildProfMedida);
+        endBuildProfVert = vista.findViewById(R.id.editTextEndBuildProfVertical);
+
         dp1 = vista.findViewById(R.id.checkBoxDP1);
         dp2 = vista.findViewById(R.id.checkBoxDP2);
         dp3 = vista.findViewById(R.id.checkBoxDP3);
@@ -116,6 +125,8 @@ public class AddPozoFragment1 extends Fragment {
         configureSelectionGraphic();
         configureTypeSelection();
 
+        horizontalInfo.setVisibility(View.GONE);
+
         if(!AddPozoActivity.addNew){
             Pozo thisPozo = AddPozoActivity.pozo;
             textTitle.setText(R.string.updateTitle);
@@ -125,11 +136,13 @@ public class AddPozoFragment1 extends Fragment {
             descText.setEnabled(false);
             if(thisPozo.isVertical()){
                 type.check(R.id.radioButtonVert);
+                horizontalInfo.setVisibility(View.GONE);
             }else{
                 type.check(R.id.radioButtonHztl);
                 for (int i = 0; i < type.getChildCount(); i++) {
                     type.getChildAt(i).setEnabled(false);
                 }
+                horizontalInfo.setVisibility(View.VISIBLE);
             }
 
         }
@@ -146,9 +159,11 @@ public class AddPozoFragment1 extends Fragment {
                 switch (checkedId){
                     case R.id.radioButtonVert:
                         vertical = true;
+                        horizontalInfo.setVisibility(View.GONE);
                         break;
                     case R.id.radioButtonHztl:
                         vertical = false;
+                        horizontalInfo.setVisibility(View.VISIBLE);
                         break;
                 }
 

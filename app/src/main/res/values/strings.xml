@@ -25,6 +25,10 @@
     <string name="todo_tppz">Tipo de Pozo</string>
         <string name="todo_tpvr">Vertical</string>
         <string name="todo_tphz">Horizontal</string>
+        <string name="todo_kom">Kick Off Point Profundidad Medida (ft)</string>
+        <string name="todo_kov">Kick Off Point Profundidad Vertical (ft)</string>
+        <string name="todo_ebm">End of Build Profundidad Medida (ft)</string>
+        <string name="todo_ebv">End of Build Profundidad Vertical (ft)</string>
     <string name="todo_date">Fecha Creacion</string>
     <string name="envt_date">Fecha del Evento</string>
     <string name="todo_actv">Abierto</string>
@@ -57,6 +61,10 @@
     <string name="fnl_estr">Estroques</string>
     <string name="fnl_prcr">Presion Circulacion (psi)</string>
     <string name="fnl_psld">Peso del Lodo para Matar (ppg)</string>
+        <string name="fnl_esko">Estroques Hasta KOP (stk)</string>
+        <string name="fnl_eseb">Estroques Hasta EOB (stk)</string>
+        <string name="fnl_esko_small">Estroques KOP</string>
+        <string name="fnl_eseb_small">Estroques EOP</string>
     <string name="fnl_esfa">Estroques Fondo Arriba (stk)</string>
     <string name="fnl_esbr">Estroques Hasta Broca (stk)</string>
     <string name="fnl_crmp">Circulacion para Matar el Pozo (bbl)</string>
