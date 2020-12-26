@@ -1,5 +1,7 @@
 package com.example.appep.Data.Model;
 
+import com.example.appep.UI.AddPozoActivity;
+
 import java.util.ArrayList;
 
 public class EventoInterno {
@@ -52,6 +54,12 @@ public class EventoInterno {
     public Componente getHrrAdc() { return hrrAdc; }
     public void setHrrAdc(Componente hrrAdc) { this.hrrAdc = hrrAdc; }
 
+    public double getVolKop() { return volKop; }
+    public void setVolKop(double volKop) { this.volKop = volKop; }
+
+    public double getVolEob() { return volEob; }
+    public void setVolEob(double volEob) { this.volEob = volEob; }
+
     //Get an ArrayList of Componentes with all the components of this EventoInterno
     public ArrayList<Componente> getComponentesInterno(){
         ArrayList<Componente> componentes = new ArrayList<>();
@@ -90,7 +98,29 @@ public class EventoInterno {
     public void fillComponentesInterno(ArrayList<Componente> internalComponents) {
         this.volInterno = 0.0;
         this.longSarta = 0.0;
+        this.volKop = 0.0;
+        this.volEob = 0.0;
+
         for (Componente comp : internalComponents) {
+
+
+            if(!this.evento.getPozo().isVertical()){
+                double info[] = evento.getInfoHztl();
+
+                if(info[0] > (longSarta + comp.getLongitud()) ){
+                    volKop += comp.getCapacidad() * comp.getLongitud();
+                }else if(info[0] > longSarta){
+                    volKop += comp.getCapacidad() * (info[0] - longSarta);
+                }
+
+                if(info[2] > (longSarta + comp.getLongitud()) ){
+                    volEob += comp.getCapacidad() * comp.getLongitud();
+                }else if(info[2] > longSarta){
+                    volEob += comp.getCapacidad() * (info[2] - longSarta);
+                }
+
+            }
+
             this.volInterno += comp.getVolumen();
             this.longSarta += comp.getLongitud();
 
@@ -134,7 +164,7 @@ public class EventoInterno {
         boolean errorChecker = false;
 
         if(longSarta < evento.getInfoHztl()[0] || longSarta < evento.getInfoHztl()[2]){
-            error = "La longitud de la sartano puede ser menor que el KOP o EOB";
+            error = "La longitud de la sarta no puede ser menor que el KOP o EOB";
             errorChecker = true;
         }
 

@@ -96,11 +96,15 @@ public class AddPozoFragment2 extends Fragment {
         }else{
             volKopInt = view.findViewById(R.id.textInfoVolKopInt);
             volEobInt = view.findViewById(R.id.textInfoVolEobInt);
+            volKopInt.setText(df.format(eventoInterno.getVolKop()));
+            volEobInt.setText(df.format(eventoInterno.getVolEob()));
+
         }
 
 
         volInt.setText(df.format(eventoInterno.getVolInterno()));
         longInt.setText(df.format(eventoInterno.getLongSarta()));
+
 
         intComponentRecyclerView = view.findViewById(R.id.recyclerViewCompIntr);
         intComponentRecyclerView.setLayoutManager(new LinearLayoutManager(view.getContext(), LinearLayoutManager.VERTICAL, false));
