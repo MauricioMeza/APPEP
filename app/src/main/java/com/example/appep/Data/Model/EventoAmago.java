@@ -7,7 +7,7 @@ public class EventoAmago {
     private String id;
     private Evento evento;
     private double pesoOrglLodo, profVertical, profTotal, presReducidaBomba, desplBomba, presCierreTubo, presCierreRev, gananciaSuperficie, prFractura, prPoro;
-    private double estrHastaBroca, estrFondoArrb, circTotalMatarPozo;
+    private double estrHastaBroca, estrFondoArrb, estrKop, estrEob, circTotalMatarPozo;
 
     public EventoAmago(Evento evento) {
         this.evento = evento;
@@ -50,6 +50,18 @@ public class EventoAmago {
     public double calcEstroquesFndArriba(){
         double res = this.evento.getEventoAnular().getVolAnular() / this.desplBomba;
         this.setEstrFondoArrb(res);
+        return res;
+    }
+
+    public double calcEstroquesKOP(){
+        double res = this.evento.getEventoInterno().getVolKop() / this.desplBomba;
+        this.setEstrKop(res);
+        return res;
+    }
+
+    public double calcEstroquesEOB(){
+        double res = this.evento.getEventoInterno().getVolEob() / this.desplBomba;
+        this.setEstrEob(res);
         return res;
     }
 
@@ -108,6 +120,12 @@ public class EventoAmago {
 
     public double getPrPoro() { return prPoro; }
     public void setPrPoro(double prPoro) { this.prPoro = prPoro; }
+
+    public double getEstrKop() { return estrKop; }
+    public void setEstrKop(double estrKop) { this.estrKop = estrKop; }
+
+    public double getEstrEob() { return estrEob; }
+    public void setEstrEob(double estrEob) { this.estrEob = estrEob; }
 
     //TODO: See if i can aling the error with the textEdit it happened in
     public String amagoEventValidation(){

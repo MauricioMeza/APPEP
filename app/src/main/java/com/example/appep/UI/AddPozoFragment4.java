@@ -390,6 +390,14 @@ public class AddPozoFragment4 extends Fragment {
         estrHstBrca.setText(nf.format(hstaBroca));
         estrFndArrba.setText(nf.format(fndoArrba));
         circPrMtrPozo.setText(nf.format(circlTotl));
+
+        if(!eventoAmago.getEvento().getPozo().isVertical()){
+            double estrKop = eventoAmago.calcEstroquesKOP();
+            double estrEob = eventoAmago.calcEstroquesEOB();
+
+            estrKo.setText(nf.format(estrKop));
+            estrEb.setText(nf.format(estrEob));
+        }
     }
 
     //Calculation of aproximate and full version of PesoDLodoPaMatar
