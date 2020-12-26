@@ -5,6 +5,8 @@ import android.os.Bundle;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,6 +45,9 @@ public class AddPozoFragment1 extends Fragment {
     private EditText kickOffProfMed, kickOffProfVert, endBuildProfMed, endBuildProfVert;
     private TextView textTitle;
     private boolean componentSelected[], vertical;
+    private  String[] hztlInformation = new String[4];
+    private  double[] hztlNumbers = new double[4];
+    private TextWatcher textWatcher;
 
 
     // TODO: Rename and change types of parameters
@@ -151,7 +156,7 @@ public class AddPozoFragment1 extends Fragment {
 
     }
 
-    //Change type propertie from radiobuttons
+    //Change type properties from radiobuttons
     private void configureTypeSelection() {
         type.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -166,7 +171,6 @@ public class AddPozoFragment1 extends Fragment {
                         horizontalInfo.setVisibility(View.VISIBLE);
                         break;
                 }
-
             }
         });
     }
@@ -352,11 +356,51 @@ public class AddPozoFragment1 extends Fragment {
         broc.setEnabled(false);
     }
 
-    //Get the information of the EditTexts in the pozo as a String Array
+    //Get the information of the EditTexts in the pozo as a String Array, and check for errors on Input
     public String[] getInfoPozo(){
-        String[] infoPozo = {nameText.getText().toString(), descText.getText().toString(), String.valueOf(vertical)};
+        String[] infoPozo = new String[4];
+        infoPozo[0] = nameText.getText().toString();
+        infoPozo[1] = descText.getText().toString();
+        infoPozo[2] = String.valueOf(vertical);
+
+        if(infoPozo[0].equals("") || infoPozo[1].equals("")){
+            String[] exception = {"El nombre del pozo o campo no puede ser vacio"};
+            return exception;
+        }
+
+        if(vertical){
+            infoPozo[3] = "[0 , 0 , 0 , 0]" ;
+        }else{
+            hztlInformation[0] = kickOffProfMed.getText().toString();
+            hztlInformation[1] = kickOffProfVert.getText().toString();
+            hztlInformation[2] = endBuildProfMed.getText().toString();
+            hztlInformation[3] = endBuildProfVert.getText().toString();
+
+            for (int i=0; i < hztlInformation.length; i++){
+                try{
+                    hztlNumbers[i] = Double.parseDouble(hztlInformation[i]);
+                }catch(Exception e){
+                    String[] exception = {"El formato de la informacion ingresada no es correcta"};
+                    return exception;
+                }
+            }
+
+            if(hztlNumbers[0] <= hztlNumbers[1] || hztlNumbers[2] <= hztlNumbers[3]){
+                String[] exception = {"La profundidad total medida no puede ser menor que la vertical verdadera"};
+                return exception;
+            }
+            if(hztlNumbers[0] > hztlNumbers[2] || hztlNumbers[1] > hztlNumbers[3] ){
+                String[] exception = {"La profundidad del KOP no puede ser menor que la del EOP"};
+                return exception;
+            }
+
+            infoPozo[3] = "[" + kickOffProfMed.getText().toString() + ", " +  kickOffProfVert.getText().toString() + ", "
+                              + endBuildProfMed.getText().toString() + ", " +  endBuildProfVert.getText().toString() + "]";
+        }
         return infoPozo;
+
     }
 
     public boolean[] getComponentSelected() { return componentSelected; }
 }
+

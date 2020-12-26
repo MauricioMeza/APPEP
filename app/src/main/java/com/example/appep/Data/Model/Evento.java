@@ -9,6 +9,7 @@ public class Evento {
     private Pozo pozo;
     private Date fechaCreacion;
     private double pesoLodo;
+    private double infoHztl[];
     private double tablaEstr[][];
     private double volTotal, longTotal;
     private EventoInterno eventoInterno;
@@ -101,5 +102,6 @@ public class Evento {
     public Pozo getPozo() { return pozo; }
     public void setPozo(Pozo pozo) { this.pozo = pozo; }
 
-
+    public double[] getInfoHztl() { return infoHztl; }
+    public void setInfoHztl(double[] infoHztl) { this.infoHztl = infoHztl; }
 }

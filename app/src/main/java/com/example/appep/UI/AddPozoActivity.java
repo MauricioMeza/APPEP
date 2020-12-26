@@ -92,6 +92,13 @@ public class AddPozoActivity extends AppCompatActivity{
                 switch (currentFragment){
                     case 1:
                         String[] infoPozo = fragment1.getInfoPozo();
+
+                        //Make sure there is no mistakes in tha information gathering
+                        if(infoPozo.length == 1){
+                            Toast.makeText(getApplicationContext(), infoPozo[0], Toast.LENGTH_LONG).show();
+                            break;
+                        }
+
                         Evento evento = new Evento(fragment1.getComponentSelected());
 
                         if(addNew){
@@ -99,6 +106,17 @@ public class AddPozoActivity extends AppCompatActivity{
 
                         }else{
                            pozo.setVertical(Boolean.parseBoolean(infoPozo[2]));
+                        }
+
+                        if(!pozo.isVertical()){
+                            String str = infoPozo[3];
+                            String[] items = str.replaceAll("\\[", "").replaceAll("\\]", "").replaceAll("\\s", "").split(",");
+                            double[] results = new double[items.length];
+
+                            for (int i = 0; i < items.length; i++) {
+                                results[i] = Double.parseDouble(items[i]);
+                            }
+                            evento.setInfoHztl(results);
                         }
 
                         pozo.setNewEvento(evento);
