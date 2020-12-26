@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.appep.Data.Model.Componente;
@@ -37,8 +38,9 @@ public class AddPozoFragment2 extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    private TextView volInt, longInt;
-    private double volTotal, longTotal;
+    private TextView volInt, longInt, volKopInt, volEobInt;
+    private LinearLayout volsHztl;
+    private double volTotal, longTotal, volKop, volEob, info[];
     private RecyclerView intComponentRecyclerView;
     private ArrayList<Componente> comps;
     private EventoInterno eventoInterno;
@@ -87,6 +89,15 @@ public class AddPozoFragment2 extends Fragment {
         View view = inflater.inflate(R.layout.fragment_add_pozo2, container, false);
         volInt = view.findViewById(R.id.textNumVolInt);
         longInt = view.findViewById(R.id.textNumLongInt);
+        volsHztl = view.findViewById(R.id.LienarLayoutVolsHztl);
+
+        if(AddPozoActivity.pozo.isVertical()){
+            volsHztl.setVisibility(View.GONE);
+        }else{
+            volKopInt = view.findViewById(R.id.textInfoVolKopInt);
+            volEobInt = view.findViewById(R.id.textInfoVolEobInt);
+        }
+
 
         volInt.setText(df.format(eventoInterno.getVolInterno()));
         longInt.setText(df.format(eventoInterno.getLongSarta()));
@@ -108,13 +119,39 @@ public class AddPozoFragment2 extends Fragment {
 
     //Get the sum of the vol and long of all components and show it in the textViews of the fragment
     public void sumTotales(){
+        if(!AddPozoActivity.pozo.isVertical()){
+            info = AddPozoActivity.pozo.getEventos().get(0).getInfoHztl();
+            volKop = 0.0;
+            volEob = 0.0;
+        }
+
         volTotal = 0.0;
         longTotal = 0.0;
+
         for (Componente comp: comps) {
+
+            if(!AddPozoActivity.pozo.isVertical()){
+                if(info[0] > (longTotal + comp.getLongitud()) ){
+                    volKop += comp.getCapacidad() * comp.getLongitud();
+                }else if(info[0] > longTotal){
+                    volKop += comp.getCapacidad() * (info[0] - longTotal);
+                }
+
+                if(info[2] > (longTotal + comp.getLongitud()) ){
+                    volEob += comp.getCapacidad() * comp.getLongitud();
+                }else if(info[2] > longTotal){
+                    volEob += comp.getCapacidad() * (info[2] - longTotal);
+                }
+                volKopInt.setText(df.format(volKop));
+                volEobInt.setText(df.format(volEob));
+            }
+
             longTotal += comp.getLongitud();
             volTotal += comp.getVolumen();
         }
         volInt.setText(df.format(volTotal));
         longInt.setText(df.format(longTotal));
     }
+
+
 }

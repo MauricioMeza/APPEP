@@ -82,6 +82,8 @@
     <string name="comps_vol">Volumen (bbl)</string>
     <string name="comps_vol_intrn">Volumen Interno (bbl)</string>
     <string name="comps_vol_anulr">Volumen Anular (bbl)</string>
+    <string name="comps_vol_kop">Volumen Hasta KOP (bbl)</string>
+    <string name="comps_vol_eob">Volumen Hasta EOB (bbl)</string>
 
     <string name="todo_add_button">Añadir Pozo</string>
     <string name="todo_add_event">Añadir Nuevo Evento</string>

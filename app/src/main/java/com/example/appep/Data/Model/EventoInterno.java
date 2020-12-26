@@ -6,7 +6,7 @@ public class EventoInterno {
     //TODO: see if components work better on an Arraylist (They dont PS:FuckSqlite)
     private String id;
     private Evento evento;
-    private double volInterno, longSarta;
+    private double volInterno, longSarta, volKop, volEob;
     private Componente drillPipe1, drillPipe2, drillPipe3, hwdp, hrrAdc,
                         drillCollar, drillCollar2, broca, estabilizador;
 
@@ -132,6 +132,11 @@ public class EventoInterno {
         String componente = "";
         String error = "OK";
         boolean errorChecker = false;
+
+        if(longSarta < evento.getInfoHztl()[0] || longSarta < evento.getInfoHztl()[2]){
+            error = "La longitud de la sartano puede ser menor que el KOP o EOB";
+            errorChecker = true;
+        }
 
         for (Componente comp : comps) {
             if(comp.getLongitud() == 0 || comp.getDiamID() == 0 || comp.getDiamOD() == 0){
