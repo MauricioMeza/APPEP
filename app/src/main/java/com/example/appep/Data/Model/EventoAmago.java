@@ -25,15 +25,49 @@ public class EventoAmago {
 
     //Calculations fo this Programa de Circulacion Matrix
     public double[][] calcPrgrmCircMtrix(){
-        int size = 11;
-        double tablaEstr[][] = new double[size][2];
-        double icp = this.presReducidaBomba + this.presCierreTubo;
-        double fcp = this.presReducidaBomba * (evento.getPesoLodo()/this.pesoOrglLodo);
+        double tablaEstr[][];
+        double fcp = presReducidaBomba * (evento.getPesoLodo()/pesoOrglLodo);
+        double icp = presReducidaBomba + presCierreTubo;
+        double kopMd = evento.getInfoHztl()[0];
+        double kopVr = evento.getInfoHztl()[1];
+        double eobMd = evento.getInfoHztl()[2];
+        double eobVr = evento.getInfoHztl()[3];
 
-        for(int i=0; i<11; i++){
-            tablaEstr[i][0] = this.estrHastaBroca * (i* 0.1);
-            tablaEstr[i][1] = ((fcp-icp)*(0.1*i))+icp;
+
+        if(this.evento.getPozo().isVertical()){
+            int size = 11;
+            tablaEstr = new double[size][2];
+
+            for(int i=0; i<size; i++){
+                tablaEstr[i][0] = estrHastaBroca * (i* 0.1);
+                tablaEstr[i][1] = ((fcp-icp)*(0.1*i))+icp;
+            }
+        }else{
+            int size = 13;
+            tablaEstr = new double[size][2];
+
+            double kopCp = icp + ((fcp-presReducidaBomba)* kopMd/profTotal) - (presCierreTubo*kopVr/profVertical);
+            double eobCp = icp + ((fcp-presReducidaBomba)* eobMd/profTotal) - (presCierreTubo*eobVr/profVertical);
+
+
+            for(int i=0; i<size; i++){
+                if(i < 5){
+                    tablaEstr[i][0] = estrKop * (i* 0.25);
+                    tablaEstr[i][1] = ((kopCp - icp) * (0.25*i)) + icp;
+                }
+                if(i >= 5 && i < 9){
+                    tablaEstr[i][0] = ((estrEob - estrKop) * (0.25*i)) + estrKop;
+                    tablaEstr[i][1] = ((eobCp - kopCp) * (0.25*i)) + kopCp;
+                }
+                if(i >= 9){
+                    tablaEstr[i][0] = ((estrHastaBroca - estrEob) * (0.25*i)) + estrEob;
+                    tablaEstr[i][1] = ((fcp - eobCp) * (0.25*i)) + eobCp;
+                }
+            }
+
+
         }
+
         this.evento.setTablaEstr(tablaEstr);
         return tablaEstr;
     }

@@ -131,15 +131,18 @@ public class AddPozoFragment4 extends Fragment {
             estroques[i][1] = v.findViewById(names[i][1]);
         }
 
-        //Actions for when the Pozo is Vertical or Horizontal
+        //Default ProfTotal is the measured longitud
+        double longitud = eventoAmago.getEvento().getLongTotal();
+        prfTtlMed.setText(df.format(longitud));
+        eventoAmago.setProfTotal(longitud);
+        prfTtlMed.setEnabled(false);
+
+
+        //Actions for when the Pozo is Vertical
         Pozo pozo = AddPozoActivity.pozo;
         if(pozo.isVertical()){
-            double longitud = eventoAmago.getEvento().getLongTotal();
             prfVrtVrd.setText(df.format(longitud));
-            prfTtlMed.setText(df.format(longitud));
             eventoAmago.setProfVertical(longitud);
-            eventoAmago.setProfTotal(longitud);
-            prfTtlMed.setEnabled(false);
             prfVrtVrd.setEnabled(false);
 
             koLayout.setVisibility(View.GONE);
@@ -156,9 +159,6 @@ public class AddPozoFragment4 extends Fragment {
         return  v;
     }
 
-    //Configuration in case of the pozo being horizontal
-    private void configureHztl() {
-    }
 
     //TODO: Use formated textWatchers to refactor the textChanged Listeners
     //Configure the EditTexts that calculate PesoDLodoPaMatar
@@ -304,25 +304,7 @@ public class AddPozoFragment4 extends Fragment {
                 }else if(num.isEmpty()){
                     profVrt = 0;
                 }
-            }
-        });
-
-        prfTtlMed.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {  }
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {  }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                String num = s.toString();
-                double prfTtlMed = 0;
-                if(num.matches("[+-]?([0-9]*[.])?[0-9]+")){
-                    prfTtlMed = Double.parseDouble(num);
-                }else if(num.isEmpty()){
-                    prfTtlMed = 0;
-                }
-                eventoAmago.setProfTotal(prfTtlMed);
+                programaMatrixCalculations();
             }
         });
 
