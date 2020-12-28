@@ -251,14 +251,8 @@
                         android:id="@+id/layoutDivKOP"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
                         android:orientation="horizontal">
-
-                        <View
-                            android:id="@+id/divider15"
-                            android:layout_width="wrap_content"
-                            android:layout_height="1dp"
-                            android:layout_weight="1"
-                            android:background="?android:attr/listDivider" />
 
                         <TextView
                             android:layout_width="match_parent"
@@ -267,13 +261,6 @@
                             android:text="@string/fnl_esko_small"
                             android:textAlignment="center"
                             android:textSize="12sp"></TextView>
-
-                        <View
-                            android:id="@+id/divider16"
-                            android:layout_width="wrap_content"
-                            android:layout_height="1dp"
-                            android:layout_weight="1"
-                            android:background="?android:attr/listDivider" />
 
                     </LinearLayout>
 
@@ -370,14 +357,8 @@
                         android:id="@+id/layoutDivEOB"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
                         android:orientation="horizontal">
-
-                        <View
-                            android:id="@+id/divider17"
-                            android:layout_width="wrap_content"
-                            android:layout_height="1dp"
-                            android:layout_weight="1"
-                            android:background="?android:attr/listDivider" />
 
                         <TextView
                             android:layout_width="match_parent"
@@ -386,13 +367,6 @@
                             android:text="@string/fnl_eseb_small"
                             android:textAlignment="center"
                             android:textSize="12sp"></TextView>
-
-                        <View
-                            android:id="@+id/divider18"
-                            android:layout_width="wrap_content"
-                            android:layout_height="1dp"
-                            android:layout_weight="1"
-                            android:background="?android:attr/listDivider" />
 
                     </LinearLayout>
 

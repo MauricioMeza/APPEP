@@ -64,7 +64,7 @@
         <string name="fnl_esko">Estroques Hasta KOP (stk)</string>
         <string name="fnl_eseb">Estroques Hasta EOB (stk)</string>
         <string name="fnl_esko_small">Estroques KOP</string>
-        <string name="fnl_eseb_small">Estroques EOP</string>
+        <string name="fnl_eseb_small">Estroques EOB</string>
     <string name="fnl_esfa">Estroques Fondo Arriba (stk)</string>
     <string name="fnl_esbr">Estroques Hasta Broca (stk)</string>
     <string name="fnl_crmp">Circulacion para Matar el Pozo (bbl)</string>
