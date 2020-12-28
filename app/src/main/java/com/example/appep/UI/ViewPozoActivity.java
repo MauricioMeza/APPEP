@@ -178,7 +178,7 @@ public class ViewPozoActivity extends AppCompatActivity {
             SimpleDateFormat dateFormat = new SimpleDateFormat("EEE MMM dd hh:mm:ss zzz yyyy", Locale.ENGLISH);
             Date fecha = dateFormat.parse(c.getString(2));
             evento.setFechaCreacion(fecha);
-            evento.setTablaEstr(getMatrixFromToString(c.getString(3), 11));
+            evento.setTablaEstr(getMatrixFromToString(c.getString(3)));
             evento.setPesoLodo(c.getDouble(4));
             evento.setLongTotal(c.getDouble(5));
             evento.setVolTotal(c.getDouble(6));
@@ -202,11 +202,13 @@ public class ViewPozoActivity extends AppCompatActivity {
     }
 
     //Receives a String version of a 2 dimension array and transforms it into a 2 dimension array
-    public double[][] getMatrixFromToString(String matrixString, int rows){
+    public double[][] getMatrixFromToString(String matrixString){
         int cols = 2;
-        double[][] matrix = new double[rows][cols];
         matrixString = matrixString.replaceAll("\\[", "").replaceAll("\\]", "");
         String[] filaString = matrixString.split(",");
+        int rows = filaString.length/2;
+
+        double[][] matrix = new double[rows][cols];
 
         int iterator = 0;
         for(int i=0; i<rows; i++){

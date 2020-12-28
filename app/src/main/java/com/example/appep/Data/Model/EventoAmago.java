@@ -56,12 +56,12 @@ public class EventoAmago {
                     tablaEstr[i][1] = ((kopCp - icp) * (0.25*i)) + icp;
                 }
                 if(i >= 5 && i < 9){
-                    tablaEstr[i][0] = ((estrEob - estrKop) * (0.25*i)) + estrKop;
-                    tablaEstr[i][1] = ((eobCp - kopCp) * (0.25*i)) + kopCp;
+                    tablaEstr[i][0] = ((estrEob - estrKop) * (0.25*(i-4))) + estrKop;
+                    tablaEstr[i][1] = ((eobCp - kopCp) * (0.25*(i-4))) + kopCp;
                 }
                 if(i >= 9){
-                    tablaEstr[i][0] = ((estrHastaBroca - estrEob) * (0.25*i)) + estrEob;
-                    tablaEstr[i][1] = ((fcp - eobCp) * (0.25*i)) + eobCp;
+                    tablaEstr[i][0] = ((estrHastaBroca - estrEob) * (0.25*(i-8))) + estrEob;
+                    tablaEstr[i][1] = ((fcp - eobCp) * (0.25*(i-8))) + eobCp;
                 }
             }
 

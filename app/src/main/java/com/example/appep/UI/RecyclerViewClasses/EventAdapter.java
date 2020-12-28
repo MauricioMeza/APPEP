@@ -54,6 +54,14 @@ public class EventAdapter extends RecyclerView.Adapter<EventViewHolder>{
         holder.textViewEventPoro.setText(df.format(ultimoAmago.getPrPoro()));
 
         double[][] matrix = evento.getTablaEstr();
+
+        if(matrix.length == 11){
+            holder.kopLayoutDiv.setVisibility(View.GONE);
+            holder.eobLayoutDiv.setVisibility(View.GONE);
+            holder.extraTRow1.setVisibility(View.GONE);
+            holder.extraTRow2.setVisibility(View.GONE);
+        }
+
         for(int i=0; i<matrix.length; i++) {
             holder.estroques[i][0].setText(nf.format(matrix[i][0]));
             holder.estroques[i][1].setText(af.format(matrix[i][1]));
