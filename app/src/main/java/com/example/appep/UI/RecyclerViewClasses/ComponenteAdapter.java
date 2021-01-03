@@ -61,6 +61,16 @@ public class ComponenteAdapter extends RecyclerView.Adapter<ComponenteViewHolder
             holder.compEditOD.setEnabled(false);
         }
 
+        if(componente.isTable()){
+            holder.compRefs.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                }
+            });
+        }else{
+            holder.compRefs.setVisibility(View.GONE);
+        }
+
         holder.compResVol.setText(df.format(componente.getVolumen()));
         holder.compResCap.setText(df.format(componente.getCapacidad()));
 

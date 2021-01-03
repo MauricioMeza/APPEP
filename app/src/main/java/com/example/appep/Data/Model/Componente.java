@@ -11,10 +11,24 @@ public class Componente {
     private double diamID;
     private String type;
     private int img;
-
     private double volumen;
     private double capacidad;
     private Evento evento;
+    private boolean table;
+    private CompTipo tablas;
+
+
+
+    public Componente(int img, String type, Evento evento, CompTipo compTipo) {
+        this.type = type;
+        this.img = img;
+        this.evento = evento;
+        this.volumen = 0.0;
+        this.capacidad = 0.0;
+        this.longitud = 0.0;
+        this.table = true;
+        this.tablas = compTipo;
+    }
 
     public Componente(int img, String type, Evento evento) {
         this.type = type;
@@ -23,6 +37,7 @@ public class Componente {
         this.volumen = 0.0;
         this.capacidad = 0.0;
         this.longitud = 0.0;
+        this.table = false;
     }
 
     //Takes a list all Internal Components and all Anular Components and uses and algorithm to calculate volume of each anular
@@ -111,6 +126,7 @@ public class Componente {
     public Evento getEvento() { return evento; }
     public void setEvento(Evento evento) { this.evento = evento; }
 
-
-
+    public boolean isTable() { return table; }
+    public void setTable(boolean table) { this.table = table; }
 }
+

@@ -73,6 +73,7 @@
 
     <string name="num_frm">#.#####</string>
 
+    <string name="comps_ref">Ver Referencias</string>
     <string name="comps_lon">Longitud (ft)</string>
     <string name="comps_lon_sarta">Longitud de Sarta (ft)</string>
     <string name="comps_lon_anulr">Longitud Anular (ft)</string>

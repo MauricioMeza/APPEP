@@ -502,9 +502,12 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="8dp"
                                 android:layout_weight="1"
+                                android:paddingStart="32dp"
+                                android:paddingEnd="0dp"
                                 android:text="@string/fnl_esko_small"
-                                android:textAlignment="center"
-                                android:textSize="12sp"></TextView>
+                                android:textAlignment="viewStart"
+                                android:textSize="12sp"
+                                android:textStyle="bold"></TextView>
 
                         </LinearLayout>
 
@@ -520,7 +523,8 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:text="@string/temp_real"
-                                android:textAlignment="center" />
+                                android:textAlignment="center"
+                                android:textStyle="bold" />
 
                             <TextView
                                 android:id="@+id/textViewPrs5"
@@ -608,9 +612,12 @@
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
+                                android:paddingStart="32dp"
+                                android:paddingEnd="0dp"
                                 android:text="@string/fnl_eseb_small"
-                                android:textAlignment="center"
-                                android:textSize="12sp"></TextView>
+                                android:textAlignment="viewStart"
+                                android:textSize="12sp"
+                                android:textStyle="bold"></TextView>
 
                         </LinearLayout>
 
@@ -625,7 +632,8 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:text="@string/temp_real"
-                                android:textAlignment="center" />
+                                android:textAlignment="center"
+                                android:textStyle="bold" />
 
                             <TextView
                                 android:id="@+id/textViewPrs9"
