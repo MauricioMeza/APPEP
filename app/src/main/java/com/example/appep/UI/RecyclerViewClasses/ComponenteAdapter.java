@@ -1,5 +1,6 @@
 package com.example.appep.UI.RecyclerViewClasses;
 
+import android.app.Activity;
 import android.content.Context;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -9,15 +10,21 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.appep.Data.Model.CompTipo;
 import com.example.appep.Data.Model.Componente;
 import com.example.appep.R;
 import com.example.appep.UI.AddPozoActivity;
 import com.example.appep.UI.AddPozoFragment2;
+import com.example.appep.UI.EventCompTableDialog;
 
+import java.lang.reflect.Array;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class ComponenteAdapter extends RecyclerView.Adapter<ComponenteViewHolder> {
 
@@ -65,6 +72,10 @@ public class ComponenteAdapter extends RecyclerView.Adapter<ComponenteViewHolder
             holder.compRefs.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    double[][] doubles = componente.getTablas().getTableValues();
+                    List<double[]> valores = Arrays.asList(doubles);
+                    EventCompTableDialog eventCompTableDialog = new EventCompTableDialog(valores);
+                    eventCompTableDialog.show(((AppCompatActivity) context).getSupportFragmentManager(), "TABLE_DIALOG");
                 }
             });
         }else{

@@ -129,4 +129,8 @@ public enum CompTipo {
     CompTipo(double[][] doubles) {
         this.tableValues = doubles;
     }
+
+    public double[][] getTableValues() {
+        return tableValues;
+    }
 }
