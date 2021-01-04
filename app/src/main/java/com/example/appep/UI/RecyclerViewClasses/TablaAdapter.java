@@ -11,8 +11,10 @@ import com.example.appep.R;
 
 import java.util.List;
 
-public class TablaAdapter extends RecyclerView.Adapter<TablaViewHolder> {
-    List<double[]> referencias;
+public class TablaAdapter extends RecyclerView.Adapter<TablaViewHolder> implements View.OnClickListener {
+
+    private List<double[]> referencias;
+    private View.OnClickListener onClickListener;
 
     public TablaAdapter(List<double[]> referencias){
         this.referencias = referencias;
@@ -22,6 +24,7 @@ public class TablaAdapter extends RecyclerView.Adapter<TablaViewHolder> {
     @Override
     public TablaViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.tabla_layout, parent, false);
+        v.setOnClickListener(this);
         return new TablaViewHolder(v);
     }
 
@@ -35,5 +38,16 @@ public class TablaAdapter extends RecyclerView.Adapter<TablaViewHolder> {
     @Override
     public int getItemCount() {
         return referencias.size();
+    }
+
+    public void setOnClickListener(View.OnClickListener onClickListener){
+        this.onClickListener = onClickListener;
+    }
+
+    @Override
+    public void onClick(View v) {
+        if(onClickListener != null){
+            onClickListener.onClick(v);
+        }
     }
 }

@@ -74,7 +74,9 @@ public class ComponenteAdapter extends RecyclerView.Adapter<ComponenteViewHolder
                 public void onClick(View v) {
                     double[][] doubles = componente.getTablas().getTableValues();
                     List<double[]> valores = Arrays.asList(doubles);
+
                     EventCompTableDialog eventCompTableDialog = new EventCompTableDialog(valores);
+
                     eventCompTableDialog.show(((AppCompatActivity) context).getSupportFragmentManager(), "TABLE_DIALOG");
                 }
             });

@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -45,10 +46,27 @@ public class EventCompTableDialog extends DialogFragment {
         });
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.setAdapter(new TablaAdapter(datos));
+        TablaAdapter adapter = new TablaAdapter(datos);
+        recyclerView.setAdapter(adapter);
+        adapter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int n = recyclerView.getChildAdapterPosition(v);
+                double[] info = getInfo(n);
+                Bundle bundle = new Bundle();
+                bundle.putDoubleArray("info", info);
+                Toast.makeText(getContext(), String.valueOf(info[0]) + ", " + String.valueOf(info[1]) + ", " + String.valueOf(info[2]), Toast.LENGTH_LONG).show();
+                getDialog().dismiss();
+            }
+        });
 
         getDialog().getWindow().requestFeature(Window.FEATURE_NO_TITLE);
         getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
         return view;
+    }
+
+    public double[] getInfo(int n){
+        double[] data = datos.get(n);
+        return  data;
     }
 }
