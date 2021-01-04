@@ -78,7 +78,10 @@
     <string name="comps_lon_sarta">Longitud de Sarta (ft)</string>
     <string name="comps_lon_anulr">Longitud Anular (ft)</string>
     <string name="comps_od">Diametro Externo - OD (in)</string>
+        <string name="comps_od_small">Diam. Externo (in)</string>
     <string name="comps_id">Diametro Interno - ID (in)</string>
+        <string name="comps_id_small">Diam. Interno (in)</string>
+        <string name="comps_pso_small">Peso (lbs)</string>
     <string name="comps_cap">Capacidad (bbl/ft)</string>
     <string name="comps_vol">Volumen (bbl)</string>
     <string name="comps_vol_intrn">Volumen Interno (bbl)</string>

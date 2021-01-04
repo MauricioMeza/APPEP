@@ -33,9 +33,9 @@ public class EventCompTableDialog extends DialogFragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.history_event_layout, container, false);
-        exitButton = view.findViewById(R.id.buttonHistoryBack);
-        recyclerView = view.findViewById(R.id.recyclerViewHistory);
+        View view = inflater.inflate(R.layout.references_layout, container, false);
+        exitButton = view.findViewById(R.id.buttonRefsBack);
+        recyclerView = view.findViewById(R.id.recyclerViewRefs);
 
         exitButton.setOnClickListener(new View.OnClickListener() {
             @Override

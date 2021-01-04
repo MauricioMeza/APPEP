@@ -163,10 +163,13 @@ public class EventoInterno {
         String error = "OK";
         boolean errorChecker = false;
 
-        if(longSarta < evento.getInfoHztl()[0] || longSarta < evento.getInfoHztl()[2]){
-            error = "La longitud de la sarta no puede ser menor que el KOP o EOB";
-            errorChecker = true;
+        if(!evento.getPozo().isVertical()){
+            if(longSarta < evento.getInfoHztl()[0] || longSarta < evento.getInfoHztl()[2]){
+                error = "La longitud de la sarta no puede ser menor que el KOP o EOB";
+                errorChecker = true;
+            }
         }
+
 
         for (Componente comp : comps) {
             if(comp.getLongitud() == 0 || comp.getDiamID() == 0 || comp.getDiamOD() == 0){
