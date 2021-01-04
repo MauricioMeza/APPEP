@@ -1,5 +1,6 @@
 package com.example.appep.UI;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -151,6 +152,9 @@ public class AddPozoFragment4 extends Fragment {
             eobLayoutDiv.setVisibility(View.GONE);
             extraTRow1.setVisibility(View.GONE);
             extraTRow2.setVisibility(View.GONE);
+        }else{
+            estroques[4][0].setTypeface(null, Typeface.BOLD);
+            estroques[8][0].setTypeface(null, Typeface.BOLD);
         }
 
         configureEdits();
@@ -391,7 +395,5 @@ public class AddPozoFragment4 extends Fragment {
         pesoLodoTotal.setText("(" + df.format(psoLodoT) + ")");
         programaMatrixCalculations();
     }
-
-
 
 }

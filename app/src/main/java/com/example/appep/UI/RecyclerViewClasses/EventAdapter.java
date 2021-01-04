@@ -1,5 +1,6 @@
 package com.example.appep.UI.RecyclerViewClasses;
 
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -60,6 +61,9 @@ public class EventAdapter extends RecyclerView.Adapter<EventViewHolder>{
             holder.eobLayoutDiv.setVisibility(View.GONE);
             holder.extraTRow1.setVisibility(View.GONE);
             holder.extraTRow2.setVisibility(View.GONE);
+        }else{
+            holder.estroques[4][0].setTypeface(null, Typeface.BOLD);
+            holder.estroques[8][0].setTypeface(null, Typeface.BOLD);
         }
 
         for(int i=0; i<matrix.length; i++) {
