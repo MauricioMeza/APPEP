@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.appep.Data.Model.CompTipo;
@@ -26,16 +27,22 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class ComponenteAdapter extends RecyclerView.Adapter<ComponenteViewHolder> {
-
+public class ComponenteAdapter extends RecyclerView.Adapter<ComponenteViewHolder> implements Returning{
+    private RecyclerView.Adapter adapter = this;
+    private Fragment currentFragment;
     private Context context;
-    private  ArrayList<Componente> componentes;
+    private ArrayList<Componente> componentes;
     private static DecimalFormat df = new DecimalFormat("#.#####");
 
+    //Variables used for selection of reference component information in dialog Fragment
+    private int currentSelectedReference;
+    private ComponenteViewHolder currentSelectedHolder;
 
-    public ComponenteAdapter(Context context, ArrayList<Componente> componentes){
+
+    public ComponenteAdapter(Context context, ArrayList<Componente> componentes, Fragment currentFragment){
         this.context = context;
         this.componentes = componentes;
+        this.currentFragment = currentFragment;
     }
 
     @Override
@@ -75,8 +82,11 @@ public class ComponenteAdapter extends RecyclerView.Adapter<ComponenteViewHolder
                     double[][] doubles = componente.getTablas().getTableValues();
                     List<double[]> valores = Arrays.asList(doubles);
 
-                    EventCompTableDialog eventCompTableDialog = new EventCompTableDialog(valores);
+                    currentSelectedReference = position;
+                    currentSelectedHolder = holder;
 
+                    EventCompTableDialog eventCompTableDialog = new EventCompTableDialog(valores, adapter);
+                    eventCompTableDialog.setTargetFragment(currentFragment, 1);
                     eventCompTableDialog.show(((AppCompatActivity) context).getSupportFragmentManager(), "TABLE_DIALOG");
                 }
             });
@@ -184,4 +194,13 @@ public class ComponenteAdapter extends RecyclerView.Adapter<ComponenteViewHolder
 
     }
 
+
+    @Override
+    public void returnInfo(double[] info) {
+        componentes.get(currentSelectedReference).setDiamOD(info[0]);
+        componentes.get(currentSelectedReference).setDiamID(info[2]);
+        componentCalculations(currentSelectedHolder, currentSelectedReference);
+        this.notifyDataSetChanged();
+
+    }
 }

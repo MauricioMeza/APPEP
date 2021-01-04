@@ -1,5 +1,7 @@
 package com.example.appep.UI;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -18,16 +20,20 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.appep.Data.Model.Evento;
 import com.example.appep.R;
 import com.example.appep.UI.RecyclerViewClasses.EventAdapter;
+import com.example.appep.UI.RecyclerViewClasses.Returning;
 import com.example.appep.UI.RecyclerViewClasses.TablaAdapter;
 
 import java.util.List;
 
 public class EventCompTableDialog extends DialogFragment {
+    RecyclerView.Adapter adapter;
+    private Returning returning;
     Button exitButton;
     RecyclerView recyclerView;
     List<double[]> datos;
 
-    public EventCompTableDialog(List<double[]> datos) {
+    public EventCompTableDialog(List<double[]> datos, RecyclerView.Adapter adapter) {
+        this.adapter = adapter;
         this.datos = datos;
     }
 
@@ -46,15 +52,15 @@ public class EventCompTableDialog extends DialogFragment {
         });
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        TablaAdapter adapter = new TablaAdapter(datos);
-        recyclerView.setAdapter(adapter);
-        adapter.setOnClickListener(new View.OnClickListener() {
+        TablaAdapter innerAdapter = new TablaAdapter(datos);
+        recyclerView.setAdapter(innerAdapter);
+        innerAdapter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 int n = recyclerView.getChildAdapterPosition(v);
                 double[] info = getInfo(n);
-                Bundle bundle = new Bundle();
-                bundle.putDoubleArray("info", info);
+                returning = (Returning) adapter;
+                returning.returnInfo(info);
                 Toast.makeText(getContext(), String.valueOf(info[0]) + ", " + String.valueOf(info[1]) + ", " + String.valueOf(info[2]), Toast.LENGTH_LONG).show();
                 getDialog().dismiss();
             }
