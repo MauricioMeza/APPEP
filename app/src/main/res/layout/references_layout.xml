@@ -27,7 +27,7 @@
 
                 <TextView
                     android:id="@+id/textViewOD"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/comps_od_small"
@@ -35,7 +35,7 @@
 
                 <TextView
                     android:id="@+id/textViewPeso"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/comps_pso_small"
@@ -43,7 +43,7 @@
 
                 <TextView
                     android:id="@+id/textViewID"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/comps_id_small"
