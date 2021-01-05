@@ -31,10 +31,12 @@ public class EventCompTableDialog extends DialogFragment {
     Button exitButton;
     RecyclerView recyclerView;
     List<double[]> datos;
+    List<String[]> nombres;
 
-    public EventCompTableDialog(List<double[]> datos, RecyclerView.Adapter adapter) {
+    public EventCompTableDialog(List<double[]> datos, List<String[]> nombres, RecyclerView.Adapter adapter) {
         this.adapter = adapter;
         this.datos = datos;
+        this.nombres = nombres;
     }
 
     @Nullable
@@ -52,7 +54,7 @@ public class EventCompTableDialog extends DialogFragment {
         });
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        TablaAdapter innerAdapter = new TablaAdapter(datos);
+        TablaAdapter innerAdapter = new TablaAdapter(datos, nombres);
         recyclerView.setAdapter(innerAdapter);
         innerAdapter.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,7 +63,6 @@ public class EventCompTableDialog extends DialogFragment {
                 double[] info = getInfo(n);
                 returning = (Returning) adapter;
                 returning.returnInfo(info);
-                Toast.makeText(getContext(), String.valueOf(info[0]) + ", " + String.valueOf(info[1]) + ", " + String.valueOf(info[2]), Toast.LENGTH_LONG).show();
                 getDialog().dismiss();
             }
         });

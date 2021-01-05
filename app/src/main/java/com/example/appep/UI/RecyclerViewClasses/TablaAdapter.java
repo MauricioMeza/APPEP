@@ -12,11 +12,12 @@ import com.example.appep.R;
 import java.util.List;
 
 public class TablaAdapter extends RecyclerView.Adapter<TablaViewHolder> implements View.OnClickListener {
-
+    private List<String[]> refNombres;
     private List<double[]> referencias;
     private View.OnClickListener onClickListener;
 
-    public TablaAdapter(List<double[]> referencias){
+    public TablaAdapter(List<double[]> referencias, List<String[]> refNombres){
+        this.refNombres = refNombres;
         this.referencias = referencias;
     }
 
@@ -30,9 +31,9 @@ public class TablaAdapter extends RecyclerView.Adapter<TablaViewHolder> implemen
 
     @Override
     public void onBindViewHolder(@NonNull TablaViewHolder holder, int position) {
-        holder.od.setText(String.valueOf(referencias.get(position)[0]));
+        holder.od.setText(String.valueOf(refNombres.get(position)[0]));
         holder.peso.setText(String.valueOf(referencias.get(position)[1]));
-        holder.id.setText(String.valueOf(referencias.get(position)[2]));
+        holder.id.setText(String.valueOf(refNombres.get(position)[1]));
     }
 
     @Override

@@ -80,12 +80,14 @@ public class ComponenteAdapter extends RecyclerView.Adapter<ComponenteViewHolder
                 @Override
                 public void onClick(View v) {
                     double[][] doubles = componente.getTablas().getTableValues();
+                    String[][] strings = componente.getTablas().getTableNames();
                     List<double[]> valores = Arrays.asList(doubles);
+                    List<String[]> nombres = Arrays.asList(strings);
 
                     currentSelectedReference = position;
                     currentSelectedHolder = holder;
 
-                    EventCompTableDialog eventCompTableDialog = new EventCompTableDialog(valores, adapter);
+                    EventCompTableDialog eventCompTableDialog = new EventCompTableDialog(valores, nombres, adapter);
                     eventCompTableDialog.setTargetFragment(currentFragment, 1);
                     eventCompTableDialog.show(((AppCompatActivity) context).getSupportFragmentManager(), "TABLE_DIALOG");
                 }
