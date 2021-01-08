@@ -29,6 +29,7 @@ import java.util.List;
 
 public class ComponenteAdapter extends RecyclerView.Adapter<ComponenteViewHolder> implements Returning{
     private RecyclerView.Adapter adapter = this;
+    private RecyclerView recyclerVier;
     private Fragment currentFragment;
     private Context context;
     private ArrayList<Componente> componentes;
@@ -39,10 +40,11 @@ public class ComponenteAdapter extends RecyclerView.Adapter<ComponenteViewHolder
     private ComponenteViewHolder currentSelectedHolder;
 
 
-    public ComponenteAdapter(Context context, ArrayList<Componente> componentes, Fragment currentFragment){
+    public ComponenteAdapter(Context context, ArrayList<Componente> componentes, Fragment currentFragment, RecyclerView recyclerView){
         this.context = context;
         this.componentes = componentes;
         this.currentFragment = currentFragment;
+        this.recyclerVier = recyclerView;
     }
 
     @Override
@@ -196,13 +198,13 @@ public class ComponenteAdapter extends RecyclerView.Adapter<ComponenteViewHolder
 
     }
 
-
+    //Actions performed on the dataset, and recyclerview after a component is sleceted from the dialog
     @Override
     public void returnInfo(double[] info) {
         componentes.get(currentSelectedReference).setDiamOD(info[0]);
         componentes.get(currentSelectedReference).setDiamID(info[2]);
         componentCalculations(currentSelectedHolder, currentSelectedReference);
         this.notifyDataSetChanged();
-
+        recyclerVier.scrollToPosition(currentSelectedReference);
     }
 }
