@@ -28,10 +28,6 @@ public class EventoAmago {
         double tablaEstr[][];
         double fcp = presReducidaBomba * (evento.getPesoLodo()/pesoOrglLodo);
         double icp = presReducidaBomba + presCierreTubo;
-        double kopMd = evento.getInfoHztl()[0];
-        double kopVr = evento.getInfoHztl()[1];
-        double eobMd = evento.getInfoHztl()[2];
-        double eobVr = evento.getInfoHztl()[3];
 
 
         if(this.evento.getPozo().isVertical()){
@@ -43,6 +39,10 @@ public class EventoAmago {
                 tablaEstr[i][1] = ((fcp-icp)*(0.1*i))+icp;
             }
         }else{
+            double kopMd = evento.getInfoHztl()[0];
+            double kopVr = evento.getInfoHztl()[1];
+            double eobMd = evento.getInfoHztl()[2];
+            double eobVr = evento.getInfoHztl()[3];
             int size = 13;
             tablaEstr = new double[size][2];
 

@@ -205,6 +205,5 @@ public class ComponenteAdapter extends RecyclerView.Adapter<ComponenteViewHolder
         componentes.get(currentSelectedReference).setDiamID(info[2]);
         componentCalculations(currentSelectedHolder, currentSelectedReference);
         this.notifyDataSetChanged();
-        recyclerVier.scrollToPosition(currentSelectedReference);
     }
 }
