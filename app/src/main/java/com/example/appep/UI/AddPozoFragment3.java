@@ -100,7 +100,7 @@ public class AddPozoFragment3 extends Fragment {
         anlComponentRecyclerView = view.findViewById(R.id.recyclerViewCompAnlr);
         anlComponentRecyclerView.setLayoutManager(new LinearLayoutManager(view.getContext(), LinearLayoutManager.VERTICAL, false));
         anlComponentRecyclerView.setAdapter(new ComponenteAdapter(view.getContext(), comps, this, anlComponentRecyclerView));
-
+        anlComponentRecyclerView.setFocusable(false);
         return view;
     }
 

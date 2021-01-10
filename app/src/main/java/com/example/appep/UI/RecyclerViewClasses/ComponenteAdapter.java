@@ -45,6 +45,7 @@ public class ComponenteAdapter extends RecyclerView.Adapter<ComponenteViewHolder
         this.componentes = componentes;
         this.currentFragment = currentFragment;
         this.recyclerVier = recyclerView;
+        setHasStableIds(true);
     }
 
     @Override
@@ -167,6 +168,16 @@ public class ComponenteAdapter extends RecyclerView.Adapter<ComponenteViewHolder
         return componentes.size();
     }
 
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        return position;
+    }
+
     //Calculate Capacity and Volume from the info of the Componente and show it in the textViews of each componente
     public void componentCalculations(ComponenteViewHolder holder, int position){
         double cap;
@@ -203,7 +214,7 @@ public class ComponenteAdapter extends RecyclerView.Adapter<ComponenteViewHolder
     public void returnInfo(double[] info) {
         componentes.get(currentSelectedReference).setDiamOD(info[0]);
         componentes.get(currentSelectedReference).setDiamID(info[2]);
-        componentCalculations(currentSelectedHolder, currentSelectedReference);
-        this.notifyDataSetChanged();
+        currentSelectedHolder.compEditOD.setText(String.valueOf(info[0]));
+        currentSelectedHolder.compEditID.setText(String.valueOf(info[2]));
     }
 }
