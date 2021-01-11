@@ -70,6 +70,7 @@
     <string name="fnl_crmp">Circulacion para Matar el Pozo (bbl)</string>
     <string name="fnl_prfr">Presion de Fractura (psi)</string>
     <string name="fnl_prpr">Presion de Poro (psi)</string>
+    <string name="fnl_prad">Advertencia: Presion Hidrostatica por fuera de rango</string>
 
     <string name="num_frm">#.#####</string>
 

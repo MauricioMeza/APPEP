@@ -74,7 +74,7 @@ public class EventoAmago {
 
     //Calculations fo this Estroques hasta broca
     public double calcEstroquesABroca(){
-        double res = this.evento.getEventoInterno().getVolInterno() / this.desplBomba;
+        double res = evento.getEventoInterno().getVolInterno() / desplBomba;
         this.setEstrHastaBroca(res);
         return res;
     }
@@ -82,27 +82,32 @@ public class EventoAmago {
 
     //Calculations fo this Estroques fondo Arriba
     public double calcEstroquesFndArriba(){
-        double res = this.evento.getEventoAnular().getVolAnular() / this.desplBomba;
+        double res = evento.getEventoAnular().getVolAnular() / desplBomba;
         this.setEstrFondoArrb(res);
         return res;
     }
 
     public double calcEstroquesKOP(){
-        double res = this.evento.getEventoInterno().getVolKop() / this.desplBomba;
+        double res = evento.getEventoInterno().getVolKop() / desplBomba;
         this.setEstrKop(res);
         return res;
     }
 
     public double calcEstroquesEOB(){
-        double res = this.evento.getEventoInterno().getVolEob() / this.desplBomba;
+        double res = evento.getEventoInterno().getVolEob() / desplBomba;
         this.setEstrEob(res);
         return res;
     }
 
     //Calculations fo this Circulacion Total para matar
     public double calcCircTotalPaMatarPozo(){
-        double res = this.estrFondoArrb + this.estrHastaBroca;
+        double res = estrFondoArrb + estrHastaBroca;
         this.setCircTotalMatarPozo(res);
+        return res;
+    }
+
+    public double calcPresionHidrostatica(){
+        double res = evento.getPesoLodo() * profVertical * 0.052;
         return res;
     }
 
@@ -172,15 +177,9 @@ public class EventoAmago {
             }
         }
 
-        /*
         if(prFractura < prPoro){
             return "La presion de fractura debe ser mayor a la presion de poro";
         }
-
-        if(!(prFractura > evento.getPesoLodo() && prPoro < evento.getPesoLodo())){
-            return "Los resultados no concuerdan con las presiones de fractura y poro";
-        }
-        */
 
         return "OK";
     }

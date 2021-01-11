@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.appep.Data.Model.EventoAmago;
 import com.example.appep.Data.Model.Pozo;
@@ -42,6 +43,7 @@ public class AddPozoFragment4 extends Fragment {
     private EventoAmago eventoAmago;
     private EditText prsCrrTbo, prsCrrRev, gncSpr,    prsRedBmb, dspBmb,   psoOrgLdo, prfVrtVrd, prfTtlMed, prFr, prPr;
     private LinearLayout koLayout, ebLayout, kopLayoutDiv, eobLayoutDiv;
+    private TextView presAdv;
     private TextView estrKo, estrEb;
     private TableRow extraTRow1, extraTRow2;
     private TextView estrFndArrba, estrHstBrca, circPrMtrPozo, pesoLodoAprox, pesoLodoTotal;
@@ -127,6 +129,9 @@ public class AddPozoFragment4 extends Fragment {
         pesoLodoAprox = v.findViewById(R.id.textViewPesoLodoAprx);
         pesoLodoTotal = v.findViewById(R.id.textViewPesoLodoTotal);
 
+        presAdv = v.findViewById(R.id.textViewAdvertencia);
+        presAdv.setVisibility(View.GONE);
+
         for(int i=0; i<names.length; i++){
             estroques[i][0] = v.findViewById(names[i][0]);
             estroques[i][1] = v.findViewById(names[i][1]);
@@ -165,6 +170,7 @@ public class AddPozoFragment4 extends Fragment {
 
 
     //TODO: Use formated textWatchers to refactor the textChanged Listeners
+    //TODO: Make sure that you are not calling programaMatrixCalculations twice
     //Configure the EditTexts that calculate PesoDLodoPaMatar
     private void configureEdits() {
 
@@ -185,7 +191,6 @@ public class AddPozoFragment4 extends Fragment {
                 }
                 eventoAmago.setPresCierreTubo(psoCrr);
                 pesoLodoCalculations();
-                programaMatrixCalculations();
             }
         });
 
@@ -286,7 +291,6 @@ public class AddPozoFragment4 extends Fragment {
                 }
                 eventoAmago.setPesoOrglLodo(psoOrg);
                 pesoLodoCalculations();
-                programaMatrixCalculations();
             }
         });
 
@@ -309,6 +313,7 @@ public class AddPozoFragment4 extends Fragment {
                     profVrt = 0;
                 }
                 programaMatrixCalculations();
+                presionHidrostaticaCalculations();
             }
         });
 
@@ -329,6 +334,7 @@ public class AddPozoFragment4 extends Fragment {
                     prFrac = 0;
                 }
                 eventoAmago.setPrFractura(prFrac);
+                presionHidrostaticaCalculations();
             }
         });
 
@@ -349,6 +355,7 @@ public class AddPozoFragment4 extends Fragment {
                     prPoro = 0;
                 }
                 eventoAmago.setPrPoro(prPoro);
+                presionHidrostaticaCalculations();
             }
         });
 
@@ -394,6 +401,22 @@ public class AddPozoFragment4 extends Fragment {
         pesoLodoAprox.setText(af.format(psoLodoT));
         pesoLodoTotal.setText("(" + df.format(psoLodoT) + ")");
         programaMatrixCalculations();
+        presionHidrostaticaCalculations();
+    }
+
+    private void presionHidrostaticaCalculations() {
+        double prsHidro = eventoAmago.calcPresionHidrostatica();
+        double prsPoro = eventoAmago.getPrPoro();
+        double prsFrac = eventoAmago.getPrFractura();
+
+        Toast.makeText(getContext(), String.valueOf(prsHidro), Toast.LENGTH_SHORT).show();
+
+        if( (prsPoro > 0 && prsFrac > 0) && (prsHidro < prsPoro || prsHidro > prsFrac)){
+            presAdv.setVisibility(View.VISIBLE);
+        }else{
+            presAdv.setVisibility(View.GONE);
+        }
+
     }
 
 }
