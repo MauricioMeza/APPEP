@@ -409,10 +409,13 @@ public class AddPozoFragment4 extends Fragment {
         double prsPoro = eventoAmago.getPrPoro();
         double prsFrac = eventoAmago.getPrFractura();
 
-        Toast.makeText(getContext(), String.valueOf(prsHidro), Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getContext(), String.valueOf(prsHidro), Toast.LENGTH_SHORT).show();
 
         if( (prsPoro > 0 && prsFrac > 0) && (prsHidro < prsPoro || prsHidro > prsFrac)){
             presAdv.setVisibility(View.VISIBLE);
+            presAdv.setText(R.string.fnl_prad);
+            presAdv.append(" " + af.format(prsHidro) + " psi");
+
         }else{
             presAdv.setVisibility(View.GONE);
         }
