@@ -40,6 +40,14 @@
 
             </androidx.recyclerview.widget.RecyclerView>
 
+            <TextView
+                android:id="@+id/textView16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:text="@string/temp_lrmipsm2"
+                android:textAlignment="center" />
+
             <View
                 android:id="@+id/divider10"
                 android:layout_width="match_parent"
