@@ -10,7 +10,7 @@ public class Pozo implements Serializable {
     private int id;
     private String nombre;
     private String campo;
-    private Date fecha_creacion;
+    private Date fechaCreacion;
     private boolean abierto;
     private boolean vertical;
     private ArrayList<Evento> eventos;
@@ -18,7 +18,7 @@ public class Pozo implements Serializable {
     //For Update Pozo
     public Pozo(int id) {
         this.id = id;
-        this.fecha_creacion = new Date();
+        this.fechaCreacion = new Date();
         this.abierto = true;
         this.eventos = new ArrayList<>();
     }
@@ -27,7 +27,7 @@ public class Pozo implements Serializable {
         this.nombre = nombre;
         this.campo = campo;
         this.vertical = type;
-        this.fecha_creacion = new Date();
+        this.fechaCreacion = new Date();
         this.abierto = true;
         this.eventos = new ArrayList<>();
     }
@@ -43,8 +43,8 @@ public class Pozo implements Serializable {
     public boolean isAbierto() { return abierto; }
     public void setAbierto(boolean abierto) { this.abierto = abierto;}
 
-    public Date getFecha_creacion() { return fecha_creacion; }
-    public void setFecha_creacion(Date fecha_creacion) { this.fecha_creacion = fecha_creacion;}
+    public Date getFechaCreacion() { return fechaCreacion; }
+    public void setFechaCreacion(Date fechaCreacion) { this.fechaCreacion = fechaCreacion;}
 
     public boolean isVertical() { return vertical; }
     public void setVertical(boolean vertical) { this.vertical = vertical; }
@@ -52,6 +52,8 @@ public class Pozo implements Serializable {
 
     public ArrayList<Evento> getEventos() { return eventos; }
     public void setEventos(ArrayList<Evento> eventos) { this.eventos = eventos; }
+
+    //Set a new Evento in the Pozo when created in order of creation date
     public void setNewEvento(Evento evento){
         evento.setPozo(this);
         this.eventos.add(evento);

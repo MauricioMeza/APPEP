@@ -37,7 +37,7 @@ public class PozoAdapter extends RecyclerView.Adapter<PozoViewHolder> implements
     public void onBindViewHolder(PozoViewHolder holder, int position) {
         holder.nombre.setText(listaToDos.get(position).getNombre());
         holder.descripcion.setText(listaToDos.get(position).getCampo());
-        holder.fecha.setText(listaToDos.get(position).getFecha_creacion().toString());
+        holder.fecha.setText(listaToDos.get(position).getFechaCreacion().toString());
 
         if(!listaToDos.get(position).isAbierto()){
             holder.nombre.setPaintFlags(Paint.STRIKE_THRU_TEXT_FLAG);

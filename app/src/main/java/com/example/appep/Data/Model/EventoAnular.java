@@ -4,14 +4,11 @@ import java.util.ArrayList;
 
 public class EventoAnular {
     //TODO: see if components work better on an Arraylist
-    private String id;
     private Evento evento;
     private double volAnular, longAnular;
     private Componente revestimiento1, revestimiento2, revestimiento3, hueco;
 
     public EventoAnular(Evento evento){ this.evento = evento; }
-
-    public String getId() { return id; }
 
     public Evento getEvento() { return evento; }
     public void setEvento(Evento evento) { this.evento = evento; }

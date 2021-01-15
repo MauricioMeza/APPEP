@@ -6,7 +6,6 @@ import java.util.ArrayList;
 
 public class EventoInterno {
     //TODO: see if components work better on an Arraylist (They dont PS:FuckSqlite)
-    private String id;
     private Evento evento;
     private double volInterno, longSarta, volKop, volEob;
     private Componente drillPipe1, drillPipe2, drillPipe3, hwdp, hrrAdc,
@@ -15,8 +14,6 @@ public class EventoInterno {
     public EventoInterno(Evento evento){
         this.evento = evento;
     }
-
-    public String getId() { return id; }
 
     public Evento getEvento() { return evento; }
     public void setEvento(Evento evento) { this.evento = evento; }

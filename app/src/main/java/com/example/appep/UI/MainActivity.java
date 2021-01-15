@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
             pozo.setCampo(cursor.getString(2));
             SimpleDateFormat dateFormat = new SimpleDateFormat("EEE MMM dd hh:mm:ss zzz yyyy", Locale.ENGLISH);
             Date fecha = dateFormat.parse(cursor.getString(3));
-            pozo.setFecha_creacion(fecha);
+            pozo.setFechaCreacion(fecha);
             boolean active = (cursor.getInt(4) != 0);
             boolean type = (cursor.getInt(5) != 0);
             pozo.setAbierto(active);

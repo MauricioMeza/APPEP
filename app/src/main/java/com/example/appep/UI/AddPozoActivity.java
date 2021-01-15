@@ -13,7 +13,7 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import android.app.Fragment;
+
 import android.widget.Toast;
 
 import com.example.appep.Data.Local.DBSQLiteHelper;
@@ -28,7 +28,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Arrays.*;
 import java.util.Date;
 import java.util.Locale;
 
@@ -204,7 +203,7 @@ public class AddPozoActivity extends AppCompatActivity{
         ContentValues values = new ContentValues();
         values.put(DBUtilities.TABLA_NOMBRE, pozo.getNombre());
         values.put(DBUtilities.TABLA_CAMPO, pozo.getCampo());
-        values.put(DBUtilities.TABLA_FECHA_AP, pozo.getFecha_creacion().toString());
+        values.put(DBUtilities.TABLA_FECHA_AP, pozo.getFechaCreacion().toString());
         values.put(DBUtilities.TABLA_ABIERTO, pozo.isAbierto());
         values.put(DBUtilities.TABLA_VERTICAL, pozo.isVertical());
 
@@ -251,7 +250,7 @@ public class AddPozoActivity extends AppCompatActivity{
         SimpleDateFormat dateFormat = new SimpleDateFormat("EEE MMM dd hh:mm:ss zzz yyyy", Locale.ENGLISH);
         try {
             Date fecha = dateFormat.parse(cursor.getString(3));
-            pozo.setFecha_creacion(fecha);
+            pozo.setFechaCreacion(fecha);
         } catch (ParseException e) {
             e.printStackTrace();
         }

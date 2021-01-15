@@ -11,7 +11,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -75,7 +74,7 @@ public class ViewPozoActivity extends AppCompatActivity {
 
         textViewNombre.setText(pozoInfo.getNombre());
         textViewDesc.setText(pozoInfo.getCampo());
-        textViewFecha.setText(pozoInfo.getFecha_creacion().toString());
+        textViewFecha.setText(pozoInfo.getFechaCreacion().toString());
         textViewNumr.setText(String.valueOf(pozoInfo.getId()));
         if(pozoInfo.isVertical()){
             textViewVer.setText(R.string.todo_tpvr);

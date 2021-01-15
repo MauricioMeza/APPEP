@@ -4,7 +4,6 @@ import com.example.appep.R;
 
 public class EventoAmago {
 
-    private String id;
     private Evento evento;
     private double pesoOrglLodo, profVertical, profTotal, presReducidaBomba, desplBomba, presCierreTubo, presCierreRev, gananciaSuperficie, prFractura, prPoro;
     private double estrHastaBroca, estrFondoArrb, estrKop, estrEob, circTotalMatarPozo;
@@ -124,8 +123,6 @@ public class EventoAmago {
     public double getProfTotal() { return profTotal; }
     public void setProfTotal(double profTotal) { this.profTotal = profTotal; }
 
-
-
     public double getPresReducidaBomba() { return presReducidaBomba; }
     public void setPresReducidaBomba(double presReducidaBomba) { this.presReducidaBomba = presReducidaBomba; }
 
@@ -166,6 +163,7 @@ public class EventoAmago {
     public double getEstrEob() { return estrEob; }
     public void setEstrEob(double estrEob) { this.estrEob = estrEob; }
 
+    //Validate no Ceros, Negatives, PrFr>PrPr, blanks and equal long returning error String if found
     //TODO: See if i can aling the error with the textEdit it happened in
     public String amagoEventValidation(){
         double[] properties = {pesoOrglLodo, profVertical, profTotal, presReducidaBomba, desplBomba, presCierreTubo, presCierreRev, gananciaSuperficie, prFractura, prPoro};

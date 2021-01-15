@@ -83,24 +83,28 @@ public class Componente {
         return anularComps;
     }
 
+
     //Calculation of this components capacity
     public double calcCapacidad(){
         double capacidad = Math.pow(this.diamID, 2) / 1029.4;
         this.capacidad = capacidad;
         return capacidad;
     }
+
     //Calculation of this components volume
     public double calcVolumen(){
         double volumen = this.capacidad * this.longitud;
         this.volumen = volumen;
         return volumen;
     }
+
     //Calculate and add to this components volume (in case anulars have many capacities)
     public double addVolumen(double currentLongitud){
         double volumen = this.volumen + (this.capacidad * currentLongitud);
         this.volumen = volumen;
         return volumen;
     }
+
 
     public double getLongitud() { return longitud; }
     public void setLongitud(double longitud) { this.longitud = longitud; }
