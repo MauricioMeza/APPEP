@@ -1,6 +1,7 @@
 package com.example.appep.Data.Model;
 
 public enum CompTipo {
+    
     REV(new double[][]{ {4.5,   9.5,    4.09},
                         {4.5,   10.5,   4.052},
                         {4.5,   11.6,   4},
