@@ -1,6 +1,8 @@
 <resources>
 
-    <string name="app_name">APPEP</string>
+    <string name="app_name">Well Control Mobile APP</string>
+    <string name="app_name1">Well Control</string>
+    <string name="app_name2">Mobile APP</string>
 
     <string name="addTitle">Añadir Nuevo Pozo</string>
         <string name="updateTitle">Añadir Nuevo Evento</string>
