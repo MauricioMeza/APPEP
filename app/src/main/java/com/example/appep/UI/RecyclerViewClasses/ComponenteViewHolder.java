@@ -13,7 +13,7 @@ import com.example.appep.R;
 
 public class ComponenteViewHolder extends RecyclerView.ViewHolder {
 
-    TextView compTitle, compResVol, compResCap;
+    TextView compTitle, compResVol, compResCap, compTitleLong;
     EditText compEditLong, compEditOD, compEditID;
     ImageView compImage;
     Button compRefs;
@@ -22,8 +22,8 @@ public class ComponenteViewHolder extends RecyclerView.ViewHolder {
     public ComponenteViewHolder(View itemView) {
         super(itemView);
 
-
         compTitle = (TextView) itemView.findViewById(R.id.textViewCompTitle);
+        compTitleLong = (TextView) itemView.findViewById(R.id.textViewLong);
         compResVol = (TextView) itemView.findViewById(R.id.textViewNumVol);
         compResCap = (TextView) itemView.findViewById(R.id.textViewNumCap);
 
