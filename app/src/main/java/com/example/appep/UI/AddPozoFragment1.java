@@ -385,8 +385,12 @@ public class AddPozoFragment1 extends Fragment {
                 }
             }
 
-            if(hztlNumbers[0] <= hztlNumbers[1] || hztlNumbers[2] <= hztlNumbers[3]){
-                String[] exception = {"La profundidad total medida no puede ser menor que la vertical verdadera"};
+            if(hztlNumbers[0] < hztlNumbers[1]){
+                String[] exception = {"La profundidad total medida del EOB no puede ser menor o igual que la vertical verdadera"};
+                return exception;
+            }
+            if(hztlNumbers[2] <= hztlNumbers[3]){
+                String[] exception = {"La profundidad total medida del KOP no puede ser menor que la vertical verdadera"};
                 return exception;
             }
             if(hztlNumbers[0] > hztlNumbers[2] || hztlNumbers[1] > hztlNumbers[3] ){

@@ -76,6 +76,7 @@ public class ComponenteAdapter extends RecyclerView.Adapter<ComponenteViewHolder
         //Anular components will not have External components
         if(AddPozoActivity.currentFragment == 3){
             holder.compEditOD.setEnabled(false);
+
         }
 
         if(componente.isTable()){
