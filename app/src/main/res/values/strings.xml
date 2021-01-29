@@ -69,7 +69,7 @@
         <string name="fnl_eseb_small">Estroques EOB</string>
     <string name="fnl_esfa">Estroques Fondo Arriba (stk)</string>
     <string name="fnl_esbr">Estroques Hasta Broca (stk)</string>
-    <string name="fnl_crmp">Circulacion para Matar el Pozo (bbl)</string>
+    <string name="fnl_crmp">Circulacion para Matar el Pozo (stk)</string>
     <string name="fnl_prfr">Presion de Fractura (psi)</string>
     <string name="fnl_prpr">Presion de Poro (psi)</string>
     <string name="fnl_prad">Advertencia: Presion Hidrostatica por fuera de rango</string>
