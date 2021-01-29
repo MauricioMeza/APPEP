@@ -18,7 +18,7 @@
     <string name="temp_date">dd/mm/aaaa</string>
     <string name="temp_real">0.0</string>
     <string name="temp_double">(0.00)</string>
-    <string name="temp_lrmipsm">Recomendacion: Para realizar un control de pozo correcto la broca debe estar en el fondo del pozo.</string>
+    <string name="temp_lrmipsm">Recomendacion: Para un correcto uso de la aplicación y obtener datos verídicos, asegúrese de que la posición de la broca sea en fondo, sino realice una operación de stripping, con el fin de realizar una operación efectiva, por otra parte recuerde que la calidad de los datos ingresados tiene una relación directa con los resultados arrojados por el aplicativo.</string>
     <string name="temp_lrmipsm2">Recomendacion: Si la informacion de la broca es despreciable utilizar los mismos valores de ID Y OD usados en el anterior componente con una longitud de 1ft</string>
 
 
